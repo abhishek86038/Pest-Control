@@ -870,6 +870,251 @@ footer{
   .footer-partner-card{flex-direction:column; align-items:flex-start;}
   .partner-cta-btn{align-self:flex-start;}
 }
+
+/* ===================== ORBITAL LOGO BUTTON & EXPANDING ORBIT MENU ===================== */
+.orbital-container{
+  position:fixed;
+  bottom:28px;
+  right:28px;
+  z-index:9999;
+  user-select:none;
+}
+.orbital-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.4);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  z-index:9997;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+.orbital-backdrop.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* Central Floating Logo Button */
+.orbital-logo-btn{
+  position:relative;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  background:linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  border:2px solid var(--gold);
+  padding:0;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(15,23,42,.6), 0 0 20px rgba(234,179,8,.35);
+  transition:all .35s cubic-bezier(0.16,1,0.3,1);
+  z-index:9999;
+  outline:none;
+}
+.orbital-logo-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 16px 36px rgba(15,23,42,.7), 0 0 28px rgba(234,179,8,.55);
+}
+.orbital-logo-btn:active{
+  transform:scale(0.95);
+}
+.logo-btn-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+}
+.logo-icon-img{
+  width:32px;
+  height:32px;
+  object-fit:contain;
+  transition:transform .3s ease, opacity .25s ease;
+}
+.logo-close-icon{
+  position:absolute;
+  color:#fff;
+  font-size:22px;
+  font-weight:700;
+  opacity:0;
+  transform:rotate(-90deg) scale(0.6);
+  transition:all .3s cubic-bezier(0.16,1,0.3,1);
+}
+.orbital-container.active .logo-icon-img{
+  opacity:0;
+  transform:rotate(90deg) scale(0.5);
+}
+.orbital-container.active .logo-close-icon{
+  opacity:1;
+  transform:rotate(0deg) scale(1);
+}
+.logo-pulse-ring{
+  position:absolute;
+  inset:-5px;
+  border-radius:50%;
+  border:2px solid var(--gold);
+  opacity:.6;
+  animation:orbitalPulse 2.2s infinite;
+  pointer-events:none;
+}
+@keyframes orbitalPulse{
+  0%{transform:scale(1); opacity:.7;}
+  50%{transform:scale(1.22); opacity:.1;}
+  100%{transform:scale(1); opacity:.7;}
+}
+.orbital-container.active .logo-pulse-ring{
+  animation:none;
+  opacity:0;
+}
+
+/* Orbital SVG Arc Track */
+.orbital-arc-canvas{
+  position:absolute;
+  bottom:31px;
+  right:31px;
+  width:320px;
+  height:320px;
+  pointer-events:none;
+  z-index:9997;
+  opacity:0;
+  transform:scale(0.5);
+  transform-origin:bottom right;
+  transition:all .4s cubic-bezier(0.16,1,0.3,1);
+}
+.orbital-container.active .orbital-arc-canvas{
+  opacity:1;
+  transform:scale(1);
+}
+.orbital-arc-canvas svg{
+  width:100%;
+  height:100%;
+}
+
+/* Travelers on Arc */
+.orbit-traveler{
+  offset-path:path("M0,300 C0,134 134,0 300,0");
+  -webkit-offset-path:path("M0,300 C0,134 134,0 300,0");
+  position:absolute;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 12px var(--gold);
+  animation:travelArc 4s linear infinite;
+}
+@keyframes travelArc{
+  0%{offset-distance:0%; -webkit-offset-distance:0%; opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:1;}
+  100%{offset-distance:100%; -webkit-offset-distance:100%; opacity:0;}
+}
+
+/* Orbital Options Fan-out */
+.orbital-menu{
+  position:absolute;
+  bottom:31px;
+  right:31px;
+  width:0;
+  height:0;
+  pointer-events:none;
+  z-index:9998;
+}
+.orbital-item{
+  position:absolute;
+  width:50px;
+  height:50px;
+  margin:-25px 0 0 -25px;
+  border-radius:50%;
+  background:linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  border:1.5px solid rgba(234,179,8,.65);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  text-decoration:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.5), 0 0 14px rgba(234,179,8,.2);
+  opacity:0;
+  transform:scale(0.3);
+  transition:transform .4s cubic-bezier(0.16,1,0.3,1), opacity .3s ease, border-color .2s;
+  pointer-events:none;
+}
+.orbital-item:hover{
+  transform:scale(1.15) !important;
+  border-color:var(--gold);
+  box-shadow:0 12px 28px rgba(0,0,0,.65), 0 0 20px rgba(234,179,8,.45);
+}
+.orbital-container.active .orbital-item{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* Tooltip Labels */
+.orbital-label{
+  position:absolute;
+  right:60px;
+  background:rgba(15,23,42,.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(234,179,8,.35);
+  color:#fff;
+  font-family:'Outfit',sans-serif;
+  font-size:12.5px;
+  font-weight:700;
+  padding:5px 12px;
+  border-radius:100px;
+  white-space:nowrap;
+  box-shadow:0 4px 14px rgba(0,0,0,.4);
+  pointer-events:none;
+  opacity:0;
+  transform:translateX(10px);
+  transition:all .25s ease;
+}
+.orbital-item:hover .orbital-label{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* Specific item orbital positions along the quarter-circle arc (radius ~ 180px) */
+/* Angle 90deg (top): x=0, y=-190 */
+.orbital-container.active .item-1{
+  transform:translate(0px, -190px) scale(1);
+  transition-delay:.04s;
+}
+/* Angle 67.5deg: x=-72, y=-175 */
+.orbital-container.active .item-2{
+  transform:translate(-75px, -174px) scale(1);
+  transition-delay:.08s;
+}
+/* Angle 45deg: x=-134, y=-134 */
+.orbital-container.active .item-3{
+  transform:translate(-140px, -135px) scale(1);
+  transition-delay:.12s;
+}
+/* Angle 22.5deg: x=-175, y=-72 */
+.orbital-container.active .item-4{
+  transform:translate(-182px, -74px) scale(1);
+  transition-delay:.16s;
+}
+/* Angle 0deg (left): x=-195, y=0 */
+.orbital-container.active .item-5{
+  transform:translate(-200px, 0px) scale(1);
+  transition-delay:.2s;
+}
+
+@media (max-width:768px){
+  .orbital-container{bottom:84px; right:18px;}
+  .orbital-logo-btn{width:56px; height:56px;}
+  .orbital-arc-canvas{bottom:28px; right:28px; width:260px; height:260px;}
+  .orbital-menu{bottom:28px; right:28px;}
+  .orbital-item{width:46px; height:46px; margin:-23px 0 0 -23px; font-size:18px;}
+  .orbital-container.active .item-1{transform:translate(0px, -150px) scale(1);}
+  .orbital-container.active .item-2{transform:translate(-58px, -138px) scale(1);}
+  .orbital-container.active .item-3{transform:translate(-110px, -106px) scale(1);}
+  .orbital-container.active .item-4{transform:translate(-142px, -56px) scale(1);}
+  .orbital-container.active .item-5{transform:translate(-154px, 0px) scale(1);}
+  .orbital-label{font-size:11px; padding:4px 10px;}
+}
 </style>
 </head>
 <body>
@@ -894,6 +1139,8 @@ footer{
 
 <section class="hero">
   <div class="blob blob1"></div><div class="blob blob2"></div>
+  </div>
+
   <div class="wrap">
     <div>
       <div class="eyebrow">Queensland &amp; NSW · Family owned since 1985</div>
@@ -1695,6 +1942,109 @@ document.querySelectorAll('.faq-question').forEach(header => {
     }
   });
 });
+
+// 7. Interactive Orbital Logo & Radial Menu
+const orbitalContainer = document.getElementById('orbital-container');
+const orbitalLogoBtn = document.getElementById('orbital-logo-btn');
+const orbitalBackdrop = document.getElementById('orbital-backdrop');
+
+if (orbitalContainer && orbitalLogoBtn) {
+  function toggleOrbitalMenu(open) {
+    const shouldOpen = open !== undefined ? open : !orbitalContainer.classList.contains('active');
+    if (shouldOpen) {
+      orbitalContainer.classList.add('active');
+      if (orbitalBackdrop) orbitalBackdrop.classList.add('active');
+    } else {
+      orbitalContainer.classList.remove('active');
+      if (orbitalBackdrop) orbitalBackdrop.classList.remove('active');
+    }
+  }
+
+  orbitalLogoBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleOrbitalMenu();
+  });
+
+  if (orbitalBackdrop) {
+    orbitalBackdrop.addEventListener('click', () => toggleOrbitalMenu(false));
+  }
+
+  document.querySelectorAll('.orbital-item').forEach(item => {
+    item.addEventListener('click', () => {
+      toggleOrbitalMenu(false);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && orbitalContainer.classList.contains('active')) {
+      toggleOrbitalMenu(false);
+    }
+  });
+}
+
 </script>
+
+
+<!-- ===================== ORBITAL LOGO BUTTON & INTERACTIVE OPTIONS ===================== -->
+<div id="orbital-backdrop" class="orbital-backdrop"></div>
+<div id="orbital-container" class="orbital-container">
+  <!-- Glowing Orbital Arc Canvas -->
+  <div class="orbital-arc-canvas" aria-hidden="true">
+    <svg viewBox="0 0 320 320" fill="none">
+      <defs>
+        <linearGradient id="orbitalArcGrad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stop-color="#EAB308" stop-opacity="0.15"/>
+          <stop offset="50%" stop-color="#EAB308" stop-opacity="0.65"/>
+          <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.2"/>
+        </linearGradient>
+      </defs>
+      <!-- Circular arc with radius 195px centered at (320, 320) -->
+      <path d="M120,320 A200,200 0 0,1 320,120" stroke="url(#orbitalArcGrad)" stroke-width="4" stroke-dasharray="8 6"/>
+      <path d="M120,320 A200,200 0 0,1 320,120" stroke="rgba(234,179,8,0.25)" stroke-width="32" stroke-linecap="round"/>
+    </svg>
+    <div class="orbit-traveler" style="animation-delay:0s;"></div>
+    <div class="orbit-traveler" style="animation-delay:-1.3s; background:#38BDF8; box-shadow:0 0 12px #38BDF8;"></div>
+    <div class="orbit-traveler" style="animation-delay:-2.6s; background:#A78BFA; box-shadow:0 0 12px #A78BFA;"></div>
+  </div>
+
+  <!-- Radial Options positioned on Orbit -->
+  <div class="orbital-menu">
+    <!-- Option 1: Call -->
+    <a href="tel:1800814199" class="orbital-item item-1" title="Call Emergency Hotline">
+      <span>📞</span>
+      <span class="orbital-label">1800 814 199 (24/7 Call)</span>
+    </a>
+    <!-- Option 2: Instant $50 Voucher -->
+    <a href="#calculator" class="orbital-item item-2" title="Calculate Quote & $50 Voucher">
+      <span>🎟️</span>
+      <span class="orbital-label">Instant $50 Voucher Quote</span>
+    </a>
+    <!-- Option 3: Diagnostics -->
+    <a href="#services" class="orbital-item item-3" title="Pest Diagnostics Hub">
+      <span>🕷️</span>
+      <span class="orbital-label">Pest Diagnostics</span>
+    </a>
+    <!-- Option 4: Termite Defense -->
+    <a href="#termite" class="orbital-item item-4" title="Termite Barrier & Inspection">
+      <span>🛡️</span>
+      <span class="orbital-label">Termite Defense</span>
+    </a>
+    <!-- Option 5: Suburb Dispatch -->
+    <a href="#postcode-input" class="orbital-item item-5" title="Check Local Technician Dispatch">
+      <span>⚡</span>
+      <span class="orbital-label">Check Suburb Dispatch</span>
+    </a>
+  </div>
+
+  <!-- Central Circular Logo Trigger Button -->
+  <button id="orbital-logo-btn" class="orbital-logo-btn" aria-label="Open Creepy Crawly Quick Actions Menu" title="Tap for Quick Options">
+    <div class="logo-btn-inner">
+      <img src="data:image/png;base64,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" alt="CC Logo" class="logo-icon-img">
+      <span class="logo-close-icon">✕</span>
+    </div>
+    <span class="logo-pulse-ring"></span>
+  </button>
+</div>
+
 </body>
 </html>
