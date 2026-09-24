@@ -53,7 +53,7 @@ nav.scrolled{padding:10px 0; background:rgba(246,245,238,.88); backdrop-filter:b
 @media (max-width:760px){.navlinks{display:none;} .phone{display:none;}}
 
 /* HERO */
-.hero{position:relative; background:radial-gradient(120% 140% at 15% 0%, var(--forest) 0%, var(--forest-deep) 62%, #071810 100%); color:#fff; padding:96px 0 120px; overflow:hidden;}
+.hero{position:relative; background-color:var(--forest); background-image:linear-gradient(120deg, rgba(15,58,46,.92), rgba(10,41,33,.85)), url('hero.jpg'); background-size:cover; background-position:center; color:#fff; padding:96px 0 120px; overflow:hidden;}
 .hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .8fr; gap:50px; align-items:center;}
 .blob{position:absolute; border-radius:50%; filter:blur(2px); opacity:.5; animation:float 9s ease-in-out infinite;}
 .blob1{width:340px; height:340px; background:radial-gradient(circle,rgba(240,175,30,.35),transparent 70%); top:-90px; right:-60px; animation-delay:0s;}
@@ -66,17 +66,12 @@ nav.scrolled{padding:10px 0; background:rgba(246,245,238,.88); backdrop-filter:b
 .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
 .voucher{margin-top:38px; display:inline-flex; align-items:center; gap:14px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); padding:14px 20px; border-radius:16px;}
 .voucher b{color:var(--gold); font-family:'Outfit',sans-serif; font-size:20px;}
-.hero-visual{position:relative; border-radius:26px; overflow:hidden; border:1px solid rgba(255,255,255,.16); box-shadow:0 24px 50px -12px rgba(0,0,0,.6); background:rgba(255,255,255,.04); backdrop-filter:blur(10px);}
-.hero-visual-media{position:relative; width:100%; height:320px; overflow:hidden;}
-.hero-visual-media img{width:100%; height:100%; object-fit:cover; object-position:center 30%; transition:transform .8s cubic-bezier(.2,.7,.2,1);}
-.hero-visual:hover .hero-visual-media img{transform:scale(1.04);}
-.hero-badge-tag{position:absolute; top:18px; left:18px; z-index:3; background:rgba(10,41,33,.88); backdrop-filter:blur(8px); border:1px solid rgba(240,175,30,.4); color:var(--gold-soft); padding:6px 14px; border-radius:100px; font-size:12.5px; font-weight:600; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 14px rgba(0,0,0,.3);}
-.hero-badge-tag::before{content:""; width:7px; height:7px; border-radius:50%; background:#22c55e; box-shadow:0 0 10px #22c55e;}
-.hero-stats-panel{background:rgba(10,41,33,.78); backdrop-filter:blur(12px); border-top:1px solid rgba(255,255,255,.12); padding:22px 24px; display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-.hero-stat-mini{display:flex; flex-direction:column;}
-.hero-stat-mini .num{font-family:'Outfit',sans-serif; font-weight:800; font-size:24px; color:var(--gold-soft); line-height:1.1;}
-.hero-stat-mini .lbl{font-size:12.5px; color:rgba(255,255,255,.7); margin-top:3px;}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;} .hero-visual-media{height:260px;}}
+.hero-card{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:24px; padding:30px; backdrop-filter:blur(6px);}
+.hero-stat{display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.12);}
+.hero-stat:last-child{border-bottom:none;}
+.hero-stat .num{font-family:'Outfit',sans-serif; font-weight:800; font-size:26px; color:var(--gold-soft);}
+.hero-stat .lbl{font-size:13.5px; color:rgba(255,255,255,.65); text-align:right; max-width:18ch;}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;}}
 
 /* TRUST BAR */
 .trust{padding:26px 0; border-bottom:1px solid var(--line); background:var(--paper-dim);}
@@ -120,10 +115,11 @@ nav.scrolled{padding:10px 0; background:rgba(246,245,238,.88); backdrop-filter:b
 
 /* GUARANTEE BAND */
 .guarantee{background:var(--gold); color:var(--forest-deep);}
+.guarantee-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
 .g-row{display:grid; grid-template-columns:repeat(4,1fr); gap:30px;}
 .g-item .num{font-family:'Outfit',sans-serif; font-weight:800; font-size:40px;}
 .g-item .lbl{font-size:14.5px; font-weight:600; margin-top:6px; max-width:16ch;}
-@media (max-width:800px){.g-row{grid-template-columns:1fr 1fr;}}
+@media (max-width:800px){.guarantee-grid{grid-template-columns:1fr;} .g-row{grid-template-columns:1fr 1fr;}}
 
 /* TESTIMONIALS */
 .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
@@ -178,17 +174,11 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
       </div>
       <div class="voucher">🎟️ <span>New customers get a <b>$50 discount voucher</b> on their first service</span></div>
     </div>
-    <div class="hero-visual reveal">
-      <div class="hero-badge-tag">Certified On-Site Inspection · AS 3660.2</div>
-      <div class="hero-visual-media">
-        <img src="images/hero-technician.jpg" alt="Licensed pest control technician inspecting home foundation" width="800" height="450" loading="eager">
-      </div>
-      <div class="hero-stats-panel">
-        <div class="hero-stat-mini"><span class="num">200K+</span><span class="lbl">Homes protected in QLD &amp; NSW</span></div>
-        <div class="hero-stat-mini"><span class="num">40 yrs</span><span class="lbl">Heritage, Australian owned</span></div>
-        <div class="hero-stat-mini"><span class="num">24 hr</span><span class="lbl">Rapid emergency dispatch</span></div>
-        <div class="hero-stat-mini"><span class="num">655077</span><span class="lbl">QBCC licence number</span></div>
-      </div>
+    <div class="hero-card reveal">
+      <div class="hero-stat"><span class="num">200K+</span><span class="lbl">Homes protected across QLD &amp; NSW</span></div>
+      <div class="hero-stat"><span class="num">40 yrs</span><span class="lbl">In business, still family owned</span></div>
+      <div class="hero-stat"><span class="num">24 hr</span><span class="lbl">Rapid response on emergency call-outs</span></div>
+      <div class="hero-stat"><span class="num">655077</span><span class="lbl">QBCC licence number</span></div>
     </div>
   </div>
 </section>
@@ -227,6 +217,9 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
       <h2>Three systems. One goal: zero termites, forever.</h2>
       <p>We match the system to your property — not the other way around.</p>
     </div>
+    <img src="termite-diagram.jpg" alt="Termite barrier cross-section diagram" 
+         style="width:100%; max-width:640px; margin:0 auto 40px; display:block; 
+         border-radius:20px; border:1px solid rgba(255,255,255,.12);">
     <div class="tech-row reveal">
       <div class="tech-cell"><div class="n">Termidor</div><h4>Non-repellent soil barrier</h4><p>Creates a lethal transfer zone termites can't detect, carrying treatment back to the colony.</p></div>
       <div class="tech-cell"><div class="n">Sentricon</div><h4>AlwaysActive baiting</h4><p>In-ground stations halt colony growth by blocking chitin synthesis — no drilling required.</p></div>
@@ -237,12 +230,18 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
 
 <section class="section guarantee" id="guarantee">
   <div class="wrap">
-    <div class="head reveal"><div class="tag" style="color:var(--forest-deep)">Our promise</div><h2 style="color:var(--forest-deep)">If pests come back, so do we — free.</h2></div>
-    <div class="g-row reveal">
-      <div class="g-item"><div class="num">100%</div><div class="lbl">Refund if you're still unsatisfied after re-treatment</div></div>
-      <div class="g-item"><div class="num">24h</div><div class="lbl">Emergency technician dispatch</div></div>
-      <div class="g-item"><div class="num">0</div><div class="lbl">Airborne toxins once treatment dries</div></div>
-      <div class="g-item"><div class="num">40+</div><div class="lbl">Years of accountable, local ownership</div></div>
+    <div class="guarantee-grid">
+      <div>
+        <div class="head reveal"><div class="tag" style="color:var(--forest-deep)">Our promise</div><h2 style="color:var(--forest-deep)">If pests come back, so do we — free.</h2></div>
+        <div class="g-row reveal">
+          <div class="g-item"><div class="num">100%</div><div class="lbl">Refund if you're still unsatisfied after re-treatment</div></div>
+          <div class="g-item"><div class="num">24h</div><div class="lbl">Emergency technician dispatch</div></div>
+          <div class="g-item"><div class="num">0</div><div class="lbl">Airborne toxins once treatment dries</div></div>
+          <div class="g-item"><div class="num">40+</div><div class="lbl">Years of accountable, local ownership</div></div>
+        </div>
+      </div>
+      <img src="guarantee.jpg" alt="Technician completing inspection checklist" 
+           style="width:100%; border-radius:20px;">
     </div>
   </div>
 </section>
@@ -251,9 +250,9 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
   <div class="wrap">
     <div class="head reveal"><div class="tag">Real customers</div><h2>What Queensland families are saying</h2></div>
     <div class="t-grid reveal">
-      <div class="t-card"><div class="stars">★★★★★</div><p>"Prompt, fair pricing, and they actually explained what was causing the ant trail instead of just spraying and leaving."</p><div class="who">— Toowoomba homeowner</div></div>
-      <div class="t-card"><div class="stars">★★★★★</div><p>"Booked a termite inspection before buying our house. Found an issue the building inspector missed — saved us a lot of stress."</p><div class="who">— Brisbane home buyer</div></div>
-      <div class="t-card"><div class="stars">★★★★★</div><p>"Family business feel from the first phone call. They've handled every pest job for us for years now."</p><div class="who">— Kingaroy property manager</div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Prompt, fair pricing, and they actually explained what was causing the ant trail instead of just spraying and leaving."</p><img src="avatar-1.jpg" alt="" style="width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:16px;"><div class="who">— Toowoomba homeowner</div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Booked a termite inspection before buying our house. Found an issue the building inspector missed — saved us a lot of stress."</p><img src="avatar-2.jpg" alt="" style="width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:16px;"><div class="who">— Brisbane home buyer</div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Family business feel from the first phone call. They've handled every pest job for us for years now."</p><img src="avatar-3.jpg" alt="" style="width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:16px;"><div class="who">— Kingaroy property manager</div></div>
     </div>
   </div>
 </section>
@@ -269,6 +268,9 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
       <span class="loc-chip">Rockhampton / Gladstone</span>
       <span class="loc-chip">Sydney Western Suburbs</span>
     </div>
+    <img src="locations-map.jpg" alt="Map of Queensland and NSW service regions" 
+         style="width:100%; max-width:520px; margin:32px auto 0; display:block; 
+         border-radius:16px;">
   </div>
 </section>
 
