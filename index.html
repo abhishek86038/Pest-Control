@@ -474,11 +474,46 @@ nav.scrolled{padding:12px 0; background:rgba(255,255,255,.95); box-shadow:0 4px 
   .locations-img-wrap{height:250px;}
 }
 
-/* CTA */
-.cta{background:linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color:#fff; border-radius:28px; padding:64px 44px; text-align:center; margin:0 28px 100px; position:relative; overflow:hidden; box-shadow:0 24px 60px -15px rgba(15,23,42,.35);}
-.cta h2{color:#fff; font-size:clamp(26px,3.6vw,38px); max-width:20ch; margin:0 auto 16px;}
-.cta p{color:rgba(255,255,255,.75); margin:0 auto; font-size:16px;}
-.cta .hero-ctas{justify-content:center; margin-top:28px;}
+/* CTA — Background with inspection checklist technician image */
+.cta{
+  position:relative;
+  color:#fff;
+  border-radius:28px;
+  padding:76px 44px;
+  text-align:center;
+  margin:0 28px 100px;
+  overflow:hidden;
+  box-shadow:0 24px 60px -15px rgba(15,23,42,.35);
+  background-image: linear-gradient(135deg, rgba(15,23,42,.88) 0%, rgba(15,23,42,.82) 100%), url('guarantee.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+}
+.cta::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center, rgba(234,179,8,.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+.cta h2{position:relative; z-index:2; color:#fff; font-size:clamp(28px,3.8vw,42px); max-width:22ch; margin:0 auto 16px; text-shadow:0 2px 12px rgba(0,0,0,.35);}
+.cta p{position:relative; z-index:2; color:rgba(255,255,255,.88); margin:0 auto; font-size:16.5px; max-width:48ch; text-shadow:0 1px 8px rgba(0,0,0,.35);}
+.cta .hero-ctas{position:relative; z-index:2; justify-content:center; margin-top:32px;}
+.cta .btn-cta-secondary{
+  background:rgba(255,255,255,.14);
+  border:1.5px solid rgba(255,255,255,.45);
+  color:#fff;
+  backdrop-filter:blur(8px);
+  font-weight:600;
+  transition:all .25s ease;
+}
+.cta .btn-cta-secondary:hover{
+  background:#fff;
+  color:var(--navy);
+  border-color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px -6px rgba(0,0,0,.3);
+}
 
 footer{padding:50px 0 40px; font-size:14px; color:var(--slate-muted); background:var(--paper); border-top:1px solid var(--line);}
 footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;}
@@ -716,7 +751,7 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
 <div class="cta reveal" id="quote">
   <h2>Ready to send the pests packing?</h2>
   <p>Free quotes, fast response, and a $50 voucher waiting for new customers.</p>
-  <div class="hero-ctas"><a class="btn btn-gold" href="tel:1800814199">Call 1800 814 199</a><a class="btn btn-line" style="color:#fff;border-color:rgba(255,255,255,.3)" href="#">Request a Quote Online</a></div>
+  <div class="hero-ctas"><a class="btn btn-gold" href="tel:1800814199">Call 1800 814 199</a><a class="btn btn-cta-secondary" href="#">Request a Quote Online</a></div>
 </div>
 
 <footer>
