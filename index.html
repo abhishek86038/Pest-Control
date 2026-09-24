@@ -746,8 +746,130 @@ nav.scrolled{padding:12px 0; background:rgba(255,255,255,.95); box-shadow:0 4px 
   body{padding-bottom:72px;}
 }
 
-footer{padding:50px 0 40px; font-size:14px; color:var(--slate-muted); background:var(--paper); border-top:1px solid var(--line);}
-footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+/* FOOTER & TECH PARTNER SHOWCASE */
+footer{
+  padding:64px 0 44px;
+  background:#FFFFFF;
+  border-top:1px solid var(--line);
+  color:var(--slate-mid);
+}
+.footer-main-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:40px;
+  align-items:center;
+  padding-bottom:36px;
+  border-bottom:1px solid var(--line);
+}
+.footer-brand-title{
+  font-size:22px;
+  color:var(--navy);
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.footer-desc{
+  font-size:14.5px;
+  color:var(--slate-muted);
+  max-width:48ch;
+  line-height:1.6;
+}
+.footer-partner-card{
+  background:linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:20px;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  box-shadow:0 12px 30px -10px rgba(15,23,42,.25);
+  transition:all .3s ease;
+  text-decoration:none;
+}
+.footer-partner-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(234,179,8,.55);
+  box-shadow:0 18px 36px -10px rgba(15,23,42,.35);
+}
+.partner-badge-label{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--gold-soft);
+  margin-bottom:4px;
+}
+.partner-logo-text{
+  font-family:'Outfit',sans-serif;
+  font-weight:800;
+  font-size:24px;
+  color:#FFFFFF;
+  letter-spacing:-.02em;
+  display:flex;
+  align-items:center;
+  gap:2px;
+  line-height:1.1;
+}
+.partner-logo-ai{
+  background:linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-weight:900;
+}
+.partner-sub{
+  font-size:12px;
+  color:rgba(255,255,255,.75);
+  display:block;
+  margin-top:4px;
+}
+.partner-cta-btn{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  padding:8px 16px;
+  border-radius:100px;
+  font-size:12.5px;
+  font-weight:600;
+  white-space:nowrap;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .2s;
+}
+.footer-partner-card:hover .partner-cta-btn{
+  background:var(--gold);
+  color:var(--navy-deep);
+  border-color:var(--gold);
+}
+.footer-bottom-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+  padding-top:28px;
+  font-size:13.5px;
+  color:var(--slate-muted);
+}
+.footer-bottom-bar a{
+  color:var(--navy);
+  font-weight:600;
+  transition:color .2s;
+  text-decoration:none;
+}
+.footer-bottom-bar a:hover{
+  color:var(--gold-hover);
+}
+@media (max-width:860px){
+  .footer-main-grid{grid-template-columns:1fr; gap:24px;}
+  .footer-partner-card{flex-direction:column; align-items:flex-start;}
+  .partner-cta-btn{align-self:flex-start;}
+}
 </style>
 </head>
 <body>
@@ -1317,8 +1439,42 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
 
 <footer>
   <div class="wrap">
-    <span class="brand">Creepy Crawly Pest Control</span>
-    <span>QBCC Licence 655077 · © 2026 Creepy Crawly Pest Control Pty Ltd</span>
+    <div class="footer-main-grid">
+      <div class="footer-brand-col">
+        <div class="logo footer-brand-title">
+          <span class="logo-mark">CC</span>
+          <span class="brand">Creepy Crawly</span>
+        </div>
+        <p class="footer-desc">Queensland &amp; NSW's trusted family-owned pest control and termite defense specialists since 1985. Fully QBCC licensed (#655077) and AS 3660.2 certified with a 100% money-back guarantee.</p>
+      </div>
+
+      <div class="footer-partner-col">
+        <a href="https://jobgen.ai" target="_blank" rel="noopener" class="footer-partner-card">
+          <div>
+            <div class="partner-badge-label">
+              <span>✦</span> Technology Partner
+            </div>
+            <div class="partner-logo-text">
+              <span>JobGen</span><span class="partner-logo-ai">.Ai</span>
+            </div>
+            <span class="partner-sub">Next-Gen AI Fleet Dispatch &amp; Diagnostics</span>
+          </div>
+          <div class="partner-cta-btn">
+            <span>Visit Partner</span> ↗
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <span>QBCC Licence 655077 · © 2026 Creepy Crawly Pest Control Pty Ltd · All Rights Reserved</span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span>AI Platform Powered by</span>
+        <a href="https://jobgen.ai" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:2px; font-weight:800; font-family:'Outfit',sans-serif; color:var(--navy); font-size:15px;">
+          JobGen<span style="color:#2563EB;">.Ai</span>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
 
