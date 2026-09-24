@@ -64,7 +64,13 @@ nav.scrolled{padding:10px 0; background:rgba(246,245,238,.88); backdrop-filter:b
 @media (max-width:760px){.navlinks{display:none;} .phone{display:none;}}
 
 /* HERO */
-.hero{position:relative; background-color:var(--forest); background-image:linear-gradient(120deg, rgba(15,58,46,.92), rgba(10,41,33,.85)), url('hero.jpg'); background-size:cover; background-position:center; color:#fff; padding:96px 0 120px; overflow:hidden;}
+.hero{
+  position:relative; color:#fff; padding:96px 0 120px; overflow:hidden;
+  background-image: linear-gradient(120deg, rgba(15,58,46,.92), rgba(10,41,33,.88)), url('hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .hero .wrap{position:relative; z-index:2; display:grid; grid-template-columns:1.1fr .8fr; gap:50px; align-items:center;}
 .blob{position:absolute; border-radius:50%; filter:blur(2px); opacity:.5; animation:float 9s ease-in-out infinite;}
 .blob1{width:340px; height:340px; background:radial-gradient(circle,rgba(240,175,30,.35),transparent 70%); top:-90px; right:-60px; animation-delay:0s;}
@@ -117,6 +123,16 @@ nav.scrolled{padding:10px 0; background:rgba(246,245,238,.88); backdrop-filter:b
 .tech .head .tag{color:var(--gold-soft);}
 .tech .head h2, .tech .head p{color:#fff;}
 .tech .head p{opacity:.65;}
+.tech-visual{
+  width:100%;
+  max-width:560px;
+  height:280px;
+  object-fit:cover;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.15);
+  display:block;
+  margin:0 auto 44px;
+}
 .tech-row{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.1); border-radius:20px; overflow:hidden;}
 .tech-cell{background:var(--forest-deep); padding:32px 26px;}
 .tech-cell .n{font-family:'Outfit',sans-serif; font-weight:800; font-size:15px; color:var(--gold);}
@@ -126,23 +142,33 @@ nav.scrolled{padding:10px 0; background:rgba(246,245,238,.88); backdrop-filter:b
 
 /* GUARANTEE BAND */
 .guarantee{background:var(--gold); color:var(--forest-deep);}
-.guarantee-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
+.guarantee-flex{ display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; }
+.guarantee-img{ width:100%; height:320px; object-fit:cover; border-radius:20px; }
+@media (max-width:800px){ .guarantee-flex{ grid-template-columns:1fr; } .guarantee-img{ height:220px; order:-1; } }
 .g-row{display:grid; grid-template-columns:repeat(4,1fr); gap:30px;}
 .g-item .num{font-family:'Outfit',sans-serif; font-weight:800; font-size:40px;}
 .g-item .lbl{font-size:14.5px; font-weight:600; margin-top:6px; max-width:16ch;}
-@media (max-width:800px){.guarantee-grid{grid-template-columns:1fr;} .g-row{grid-template-columns:1fr 1fr;}}
+@media (max-width:800px){.g-row{grid-template-columns:1fr 1fr;}}
 
 /* TESTIMONIALS */
 .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
 .t-card{background:#fff; border:1px solid var(--line); border-radius:20px; padding:28px;}
 .t-card .stars{color:var(--gold); letter-spacing:2px; margin-bottom:14px;}
 .t-card p{font-size:15px; opacity:.85;}
+.t-avatar{
+  width:44px; height:44px; border-radius:50%; object-fit:cover;
+  margin-top:16px; border:2px solid var(--gold-soft);
+}
 .t-card .who{margin-top:18px; font-weight:600; font-size:14px; opacity:1;}
 @media (max-width:860px){.t-grid{grid-template-columns:1fr;}}
 
 /* LOCATIONS */
 .loc-row{display:flex; gap:14px; flex-wrap:wrap;}
 .loc-chip{border:1px solid var(--line); border-radius:100px; padding:11px 20px; font-size:14.5px; font-weight:500; background:#fff;}
+.locations-img{
+  width:100%; max-width:480px; height:auto;
+  border-radius:16px; display:block; margin:32px auto 0;
+}
 
 /* CTA */
 .cta{background:var(--forest); color:#fff; border-radius:28px; padding:64px 44px; text-align:center; margin:0 28px 100px; position:relative; overflow:hidden;}
@@ -228,9 +254,7 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
       <h2>Three systems. One goal: zero termites, forever.</h2>
       <p>We match the system to your property — not the other way around.</p>
     </div>
-    <img src="termite-diagram.jpg" alt="Termite barrier cross-section diagram" 
-         style="width:100%; max-width:640px; margin:0 auto 40px; display:block; 
-         border-radius:20px; border:1px solid rgba(255,255,255,.12);">
+    <img src="termite-diagram.jpg" alt="Termite barrier cross-section diagram" class="tech-visual">
     <div class="tech-row reveal">
       <div class="tech-cell"><div class="n">Termidor</div><h4>Non-repellent soil barrier</h4><p>Creates a lethal transfer zone termites can't detect, carrying treatment back to the colony.</p></div>
       <div class="tech-cell"><div class="n">Sentricon</div><h4>AlwaysActive baiting</h4><p>In-ground stations halt colony growth by blocking chitin synthesis — no drilling required.</p></div>
@@ -241,8 +265,8 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
 
 <section class="section guarantee" id="guarantee">
   <div class="wrap">
-    <div class="guarantee-grid">
-      <div>
+    <div class="guarantee-flex">
+      <div class="guarantee-text">
         <div class="head reveal"><div class="tag" style="color:var(--forest-deep)">Our promise</div><h2 style="color:var(--forest-deep)">If pests come back, so do we — free.</h2></div>
         <div class="g-row reveal">
           <div class="g-item"><div class="num">100%</div><div class="lbl">Refund if you're still unsatisfied after re-treatment</div></div>
@@ -251,8 +275,7 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
           <div class="g-item"><div class="num">40+</div><div class="lbl">Years of accountable, local ownership</div></div>
         </div>
       </div>
-      <img src="guarantee.jpg" alt="Technician completing inspection checklist" 
-           style="width:100%; border-radius:20px;">
+      <img src="guarantee.jpg" alt="Technician completing inspection checklist" class="guarantee-img">
     </div>
   </div>
 </section>
@@ -261,9 +284,9 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
   <div class="wrap">
     <div class="head reveal"><div class="tag">Real customers</div><h2>What Queensland families are saying</h2></div>
     <div class="t-grid reveal">
-      <div class="t-card"><div class="stars">★★★★★</div><p>"Prompt, fair pricing, and they actually explained what was causing the ant trail instead of just spraying and leaving."</p><img src="avatar-1.jpg" alt="" style="width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:16px;"><div class="who">— Toowoomba homeowner</div></div>
-      <div class="t-card"><div class="stars">★★★★★</div><p>"Booked a termite inspection before buying our house. Found an issue the building inspector missed — saved us a lot of stress."</p><img src="avatar-2.jpg" alt="" style="width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:16px;"><div class="who">— Brisbane home buyer</div></div>
-      <div class="t-card"><div class="stars">★★★★★</div><p>"Family business feel from the first phone call. They've handled every pest job for us for years now."</p><img src="avatar-3.jpg" alt="" style="width:44px; height:44px; border-radius:50%; object-fit:cover; margin-top:16px;"><div class="who">— Kingaroy property manager</div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Prompt, fair pricing, and they actually explained what was causing the ant trail instead of just spraying and leaving."</p><img src="avatar-1.jpg" alt="" class="t-avatar"><div class="who">— Toowoomba homeowner</div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Booked a termite inspection before buying our house. Found an issue the building inspector missed — saved us a lot of stress."</p><img src="avatar-2.jpg" alt="" class="t-avatar"><div class="who">— Brisbane home buyer</div></div>
+      <div class="t-card"><div class="stars">★★★★★</div><p>"Family business feel from the first phone call. They've handled every pest job for us for years now."</p><img src="avatar-3.jpg" alt="" class="t-avatar"><div class="who">— Kingaroy property manager</div></div>
     </div>
   </div>
 </section>
@@ -279,9 +302,7 @@ footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16
       <span class="loc-chip">Rockhampton / Gladstone</span>
       <span class="loc-chip">Sydney Western Suburbs</span>
     </div>
-    <img src="locations-map.jpg" alt="Map of Queensland and NSW service regions" 
-         style="width:100%; max-width:520px; margin:32px auto 0; display:block; 
-         border-radius:16px;">
+    <img src="locations-map.jpg" alt="Map of Queensland and NSW service regions" class="locations-img">
   </div>
 </section>
 
