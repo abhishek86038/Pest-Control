@@ -3155,14 +3155,14 @@
       /* 3D Cylindrical Spray Bottle Canvas & Container */
       .spray-can-3d {
         position: absolute;
-        right: 4%;
-        top: 6%;
-        width: clamp(280px, 24vw, 420px);
-        height: clamp(450px, 48vw, 700px);
+        right: 5%;
+        top: 8%;
+        width: clamp(230px, 19vw, 340px);
+        height: clamp(380px, 39vw, 580px);
         z-index: 22;
         pointer-events: auto;
         contain: layout paint;
-        filter: drop-shadow(0 28px 36px rgba(0, 0, 0, .75));
+        filter: drop-shadow(0 22px 30px rgba(0, 0, 0, .7));
       }
       .spray-can-3d canvas {
         width: 100% !important;
@@ -3197,10 +3197,10 @@
 
       @media (max-width: 768px) {
         .spray-can-3d {
-          width: clamp(160px, 35vw, 240px);
-          height: clamp(260px, 50vw, 380px);
+          width: clamp(140px, 28vw, 200px);
+          height: clamp(230px, 42vw, 320px);
           right: 2%;
-          top: 8%;
+          top: 9%;
         }
       }
     </style>
@@ -3419,6 +3419,7 @@
 
           // 3D Assembly Group
           const canGroup = new THREE.Group();
+          canGroup.scale.set(0.92, 0.92, 0.92);
           scene.add(canGroup);
 
           // PBR Materials
