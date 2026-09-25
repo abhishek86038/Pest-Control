@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#0F3A2E"/>
-  <circle cx="32" cy="32" r="22" stroke="#F0AF1E" stroke-width="2.5" fill="none" opacity="0.6"/>
-  <text x="32" y="39" font-family="Outfit, sans-serif" font-size="22" font-weight="800" fill="#F7D690" text-anchor="middle">CC</text>
+  <rect width="64" height="64" rx="16" fill="#0F2438"/>
+  <path d="M32 10L14 17V32C14 43 21.5 52 32 55C42.5 52 50 43 50 32V17L32 10Z" fill="none" stroke="#F59E0B" stroke-width="3"/>
+  <circle cx="32" cy="32" r="10" stroke="#F59E0B" stroke-width="2" stroke-dasharray="3 2" fill="none"/>
+  <ellipse cx="32" cy="32" rx="3.5" ry="5.5" fill="#F59E0B"/>
+  <circle cx="32" cy="25" r="2" fill="#FEF3C7"/>
 </svg>
