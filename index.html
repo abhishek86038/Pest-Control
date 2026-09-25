@@ -81,21 +81,11 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --paper: #0B131D;
-        --paper-dim: #111B28;
-        --ink: #F1F5F9;
-        --line: rgba(255, 255, 255, .1);
-      }
-    }
-
-    :root[data-theme="dark"] {
-      --paper: #0B131D;
-      --paper-dim: #111B28;
-      --ink: #F1F5F9;
-      --line: rgba(255, 255, 255, .1);
+    /* Lock default colors so dark mode and light mode view identically */
+    :root,
+    :root[data-theme="dark"],
+    :root[data-theme="light"] {
+      color-scheme: light;
     }
 
     h1,
@@ -3884,7 +3874,6 @@
   <section class="pest-quick-selector" id="pest-selector">
     <div class="wrap">
       <div class="pest-quick-head reveal">
-        <div class="tag">Instant Pest Identification</div>
         <h2>What pest is invading your home?</h2>
         <p style="margin:8px auto 0; text-align:center;">Select your pest issue below for instant eradication protocols,
           threat assessments, and price estimates.</p>
@@ -4078,7 +4067,6 @@
     style="background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
     <div class="wrap">
       <div class="head reveal" style="text-align:center; margin:0 auto 48px;">
-        <div class="tag">Instant Pricing Transparency</div>
         <h2>Calculate your estimated treatment in 30 seconds</h2>
         <p style="margin:12px auto 0;">No hidden contractor callout fees. Transparent pricing backed by our $50
           first-service discount.</p>
@@ -4179,7 +4167,6 @@
   <section class="section" id="comparison">
     <div class="wrap">
       <div class="head reveal">
-        <div class="tag">The Professional Difference</div>
         <h2>Why Queensland homeowners choose Creepy Crawly</h2>
         <p>Not all pest treatments are equal. Here is how our four decades of licensed protection compare against
           typical budget spray operators.</p>
@@ -4240,7 +4227,6 @@
   <section class="section" id="journey">
     <div class="wrap">
       <div class="head reveal">
-        <div class="tag">What to Expect</div>
         <h2>Your 4-step home protection journey</h2>
         <p>No mess, no lingering fumes, and complete clarity before, during, and after your service.</p>
       </div>
@@ -4324,7 +4310,6 @@
   <section class="section">
     <div class="wrap">
       <div class="head reveal">
-        <div class="tag">Real customers</div>
         <h2>What Queensland families are saying</h2>
         <p>Over 200,000 households protected since 1985 with an average 4.9-star rating across Google and ProductReview.
         </p>
@@ -4400,7 +4385,6 @@
   <section class="section" id="faq">
     <div class="wrap">
       <div class="head reveal">
-        <div class="tag">Common Inquiries</div>
         <h2>Frequently Asked Questions</h2>
         <p>Straight answers regarding pet safety, preparation, warranties, and weather.</p>
       </div>
@@ -4475,7 +4459,6 @@
   <section class="section" id="locations">
     <div class="wrap">
       <div class="head reveal">
-        <div class="tag">Where we work</div>
         <h2>Six regions across QLD &amp; NSW</h2>
         <p>Local teams based directly in your community for rapid dispatch and emergency same-day callouts.</p>
       </div>
