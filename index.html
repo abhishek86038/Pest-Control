@@ -424,7 +424,7 @@
       }
     }
 
-    /* 4. HERO SECTION — WITH PEST-CONTROL ERADICATION BACKGROUND */
+    /* 4. HERO SECTION — CINEMATIC ERADICATION VIDEO BACKGROUND */
     .hero {
       position: relative;
       color: #FFFFFF;
@@ -435,14 +435,41 @@
       padding: 40px 0;
       box-sizing: border-box;
       overflow: hidden;
-      background-image:
-        linear-gradient(90deg, rgba(8, 20, 32, 0.94) 0%, rgba(8, 20, 32, 0.84) 44%, rgba(8, 20, 32, 0.38) 72%, rgba(8, 20, 32, 0.16) 100%),
-        linear-gradient(180deg, rgba(8, 20, 32, 0.40) 0%, transparent 35%, rgba(8, 20, 32, 0.55) 100%),
-        url('hero-bg.png?v=2');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background-color: #081420;
       border-bottom: 3px solid var(--gold);
+    }
+
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-bg-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      filter: brightness(0.85) contrast(1.05);
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8, 20, 32, 0.94) 0%, rgba(8, 20, 32, 0.82) 44%, rgba(8, 20, 32, 0.42) 72%, rgba(8, 20, 32, 0.22) 100%),
+        linear-gradient(180deg, rgba(8, 20, 32, 0.45) 0%, transparent 35%, rgba(8, 20, 32, 0.60) 100%);
+      pointer-events: none;
+      z-index: 2;
     }
 
     .hero::before {
@@ -453,11 +480,12 @@
       background-size: 24px 24px;
       opacity: .35;
       pointer-events: none;
+      z-index: 3;
     }
 
     .hero .wrap {
       position: relative;
-      z-index: 2;
+      z-index: 10;
       width: 100%;
       display: flex;
       align-items: center;
@@ -639,10 +667,6 @@
     @media (max-width:960px) {
       .hero {
         min-height: auto;
-        background-position: 72% center;
-        background-image:
-          linear-gradient(180deg, rgba(8, 20, 32, 0.92) 0%, rgba(8, 20, 32, 0.80) 52%, rgba(8, 20, 32, 0.92) 100%),
-          url('hero-bg.png?v=2');
         padding: 60px 0 72px;
       }
 
@@ -3099,6 +3123,14 @@
 
   <!-- 4. HERO SECTION (AUTHORITATIVE PEST CONTROL) -->
   <section class="hero" id="hero">
+    <!-- HERO CINEMATIC BACKGROUND VIDEO -->
+    <div class="hero-video-wrap" aria-hidden="true">
+      <video class="hero-bg-video" autoplay loop muted playsinline preload="auto" poster="hero-bg.png?v=2">
+        <source src="Pest_control_website_hero_video_20260925143045_gwr_video_mvp.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+
     <div class="wrap">
       <div class="hero-content">
         <div class="spray-reveal-text">
