@@ -1,8 +1,0 @@
-# Image files
-*.png
-*.jpg
-*.jpeg
-*.webp
-*.gif
-*.ico
-!favicon.svg
