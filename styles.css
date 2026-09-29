@@ -231,27 +231,54 @@
       gap: 16px;
     }
 
+    .nav-brand-cluster {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 34px;
+      z-index: 40;
+    }
+
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: var(--navy);
+      position: relative;
+      z-index: 50;
       text-decoration: none;
+      overflow: visible;
     }
 
     .brand-logo-img {
-      height: 34px;
+      height: 68px;
       width: auto;
-      max-width: 110px;
+      max-width: 145px;
       object-fit: contain;
       display: block;
+      position: relative;
+      z-index: 60;
+      margin: -14px 0 -14px -2px;
+      /* Physical die-cut sticker effect: layered shadows for realistic lift */
+      filter:
+        drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45))
+        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+      transform: translateY(6px) rotate(-1.5deg);
       transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), filter .25s ease;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+      will-change: transform;
+    }
+
+    nav.nav-floating .brand-logo-img {
+      transform: translateY(0) rotate(-1.5deg);
     }
 
     .logo:hover .brand-logo-img {
-      transform: scale(1.05);
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.22));
+      transform: translateY(4px) scale(1.06) rotate(0deg);
+      filter:
+        drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55))
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.40));
+    }
+
+    nav.nav-floating .logo:hover .brand-logo-img {
+      transform: translateY(-2px) scale(1.06) rotate(0deg);
     }
 
     .logo-shield-box {
@@ -291,11 +318,6 @@
       margin-top: 1px;
     }
 
-    .nav-brand-cluster {
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
 
     /* Center Navigation Links */
     .navlinks-container {
@@ -424,6 +446,11 @@
 
       .brand-subtitle {
         display: none;
+      }
+
+      .brand-logo-img {
+        height: 56px;
+        margin: -12px 0 -12px -2px;
       }
     }
 
