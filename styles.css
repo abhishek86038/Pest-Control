@@ -3778,13 +3778,27 @@
 
       .spray-reveal-text {
         opacity: 0;
-        transform: translate3d(0, 14px, 0);
-        animation: heroTextReveal .65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: 0.15s;
-        will-change: transform, opacity;
+        transform: translate3d(0, 16px, 0) scale(0.97);
+        filter: blur(14px);
+        animation: heroSmokeReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 2.05s; /* Smoke sprays first, then text emerges from the mist */
+        will-change: transform, opacity, filter;
       }
-      @keyframes heroTextReveal {
-        to { opacity: 1; transform: translate3d(0, 0, 0); }
+      @keyframes heroSmokeReveal {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, 16px, 0) scale(0.97);
+          filter: blur(14px);
+        }
+        45% {
+          opacity: 0.70;
+          filter: blur(5px);
+        }
+        100% {
+          opacity: 1;
+          transform: translate3d(0, 0, 0) scale(1);
+          filter: blur(0);
+        }
       }
 
       .spray-rig {
@@ -3817,11 +3831,11 @@
         cursor: grabbing;
       }
 
-      /* 60fps GPU-composited aerosol mist — pure transform/opacity, NO software blur filters */
+      /* 60fps GPU-composited aerosol mist smoke particles */
       .fog-p {
         position: absolute;
         border-radius: 50%;
-        background: radial-gradient(circle closest-side, rgba(242, 246, 252, .75) 0%, rgba(225, 236, 248, .42) 40%, rgba(210, 225, 242, .12) 70%, transparent 100%);
+        background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.92) 0%, rgba(240, 246, 255, 0.70) 35%, rgba(215, 232, 252, 0.28) 65%, transparent 100%);
         opacity: 0;
         transform: translate3d(0, 0, 0) scale(0.35);
         animation-name: fogDisperseSmooth;
@@ -3833,8 +3847,8 @@
       }
       @keyframes fogDisperseSmooth {
         0%   { opacity: 0; transform: translate3d(0, 0, 0) rotate(0deg) scale(0.35); }
-        14%  { opacity: 0.88; }
-        50%  { opacity: 0.50; }
+        15%  { opacity: 0.92; }
+        50%  { opacity: 0.60; }
         100% { opacity: 0; transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--rot)) scale(var(--scale-end)); }
       }
 
