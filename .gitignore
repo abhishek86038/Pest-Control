@@ -1,8 +1,9 @@
-# Ignore image assets
-*.jpg
-*.jpeg
-*.png
-*.webp
-*.gif
-images/
+# Environment variables and secrets (NEVER COMMIT)
+.env
+.env.local
+.env.*.local
+
+# Scratch and test files
 scratch/
+.DS_Store
+Thumbs.db
