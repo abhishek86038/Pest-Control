@@ -2800,6 +2800,8 @@
     /* FOOTER & TECH PARTNER SHOWCASE */
     /* ===================== COMPACT DARK FOOTER (USER REFERENCE DESIGN) ===================== */
     footer {
+      position: relative;
+      overflow: hidden;
       background: #141414;
       color: #FFFFFF;
       padding: 36px 0 22px;
@@ -2807,7 +2809,19 @@
       text-align: center;
     }
 
+    .footer-bugs-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
     .footer-wrap {
+      position: relative;
+      z-index: 2;
       max-width: 980px;
       margin: 0 auto;
       padding: 0 20px;
