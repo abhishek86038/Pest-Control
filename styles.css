@@ -143,10 +143,10 @@
       pointer-events: auto;
     }
 
-    /* Collapses smoothly and adds top padding when hero is scrolled or header scrolled */
+    /* Collapses smoothly and adds generous floating top space when hero is scrolled or header scrolled */
     .site-header.has-floating-nav,
     .site-header.scrolled-header {
-      padding-top: 14px;
+      padding-top: 24px;
     }
 
     .site-header.has-floating-nav .top-utility-bar,
@@ -155,7 +155,7 @@
       opacity: 0;
       border-bottom-color: transparent;
       pointer-events: none;
-      margin-top: -14px;
+      margin-top: -24px;
     }
 
     /* TIER 2: MAIN NAVIGATION BAR */
@@ -188,9 +188,9 @@
     /* POP-OUT FLOATING NAV BAR WHEN HERO SECTION IS SCROLLED + TOP PADDING */
     nav.nav-floating {
       position: relative;
-      width: min(calc(100% - 32px), 1380px);
-      margin: 0 auto;
-      border-radius: 18px;
+      width: min(calc(100% - 36px), 1380px);
+      margin: 8px auto 0 auto;
+      border-radius: 20px;
       padding: 6px 0;
       background: rgba(11, 25, 40, 0.95) !important;
       backdrop-filter: blur(20px) saturate(180%);
@@ -586,8 +586,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(8, 20, 32, 0.94) 0%, rgba(8, 20, 32, 0.82) 44%, rgba(8, 20, 32, 0.42) 72%, rgba(8, 20, 32, 0.22) 100%),
-        linear-gradient(180deg, rgba(8, 20, 32, 0.45) 0%, transparent 35%, rgba(8, 20, 32, 0.60) 100%);
+        linear-gradient(90deg, rgba(8, 20, 32, 0.72) 0%, rgba(8, 20, 32, 0.52) 44%, rgba(8, 20, 32, 0.22) 72%, rgba(8, 20, 32, 0.08) 100%),
+        linear-gradient(180deg, rgba(8, 20, 32, 0.32) 0%, transparent 35%, rgba(8, 20, 32, 0.45) 100%);
       pointer-events: none;
       z-index: 2;
     }
@@ -1197,23 +1197,35 @@
       color: #475569 !important;
     }
 
-    /* 2. Black Overlayed Image Sections */
+    /* 2. Overlayed Image Sections - Lightened for rich visual atmosphere */
     .section.theme-dark-image,
     section.theme-dark-image,
-    .pest-quick-selector.theme-dark-image,
     .cta.theme-dark-image {
       position: relative;
-      background-color: #070D14 !important;
+      background-color: #0B1624 !important;
       background-image: 
-        linear-gradient(180deg, rgba(6, 12, 20, 0.94) 0%, rgba(8, 17, 28, 0.97) 100%),
+        linear-gradient(180deg, rgba(8, 17, 28, 0.48) 0%, rgba(10, 22, 36, 0.58) 100%),
         url('guarantee.jpg') !important;
       background-size: cover !important;
       background-position: center !important;
       background-repeat: no-repeat !important;
       background-attachment: scroll;
       color: #FFFFFF !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .pest-quick-selector.theme-dark-image {
+      position: relative;
+      background-color: #0B1624 !important;
+      background-image: 
+        linear-gradient(180deg, rgba(8, 17, 28, 0.50) 0%, rgba(10, 22, 36, 0.60) 100%),
+        url('calculator-bg.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      color: #FFFFFF !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
     .theme-dark-image .head h2,
     .theme-dark-image h2 {
@@ -1565,12 +1577,19 @@
       }
     }
 
-    /* GUARANTEE BAND - DARK THEME */
+    /* GUARANTEE BAND - DARK THEME WITH VISIBLE BACKGROUND */
     .guarantee {
-      background: #0B1320 !important;
+      position: relative;
+      background-color: #0B1624 !important;
+      background-image: 
+        linear-gradient(180deg, rgba(8, 17, 28, 0.46) 0%, rgba(10, 22, 36, 0.58) 100%),
+        url('guarantee.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
       color: #FFFFFF !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       padding: 85px 0 95px;
     }
 
@@ -1749,7 +1768,8 @@
       background: #FFFFFF;
       border: 1px solid var(--line);
       border-radius: 20px;
-      overflow: hidden;
+      overflow: visible !important;
+      position: relative;
       display: flex;
       flex-direction: column;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
@@ -2606,11 +2626,18 @@
       }
     }
 
-    /* VALUE COMPARISON TABLE - DARK THEME */
+    /* VALUE COMPARISON TABLE - DARK THEME WITH VISIBLE BACKGROUND */
     #comparison {
-      background: #0A111C !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      background-color: #0B1624 !important;
+      background-image: 
+        linear-gradient(180deg, rgba(8, 17, 28, 0.52) 0%, rgba(10, 22, 36, 0.62) 100%),
+        url('what-to-expect-bg.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       padding: 85px 0 95px;
     }
 
@@ -2938,12 +2965,18 @@
       }
     }
 
-    /* INTERACTIVE CATEGORIZED ACCORDION FAQ - DARK THEME */
+    /* INTERACTIVE CATEGORIZED ACCORDION FAQ - DARK THEME WITH VISIBLE BACKGROUND */
     #faq {
       position: relative;
-      background: #0A111C !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background-color: #0B1624 !important;
+      background-image: 
+        linear-gradient(180deg, rgba(8, 17, 28, 0.50) 0%, rgba(10, 22, 36, 0.60) 100%),
+        url('faq-bg.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       padding: 92px 0 100px;
       overflow: hidden;
     }
@@ -4747,5 +4780,91 @@
 .modal-primary-btn:hover {
   background: #D97706;
   color: #FFFFFF;
+}
+
+/* ==========================================================================
+   INTERACTIVE ANT POP-UP PEEKER ON CARD HOVER
+   ========================================================================== */
+.journey-card,
+.t-card,
+.pest-item-card,
+.dispatch-console-card,
+.franchise-spotlight-card,
+.exec-leader-card,
+.partner-feat-card,
+.price-card {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.card-ant-peeker {
+  position: absolute;
+  top: 0;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(18px) scale(0.65) rotate(10deg);
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+  overflow: visible;
+}
+
+.card-ant-peeker svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.45));
+}
+
+/* Organic alternating placements */
+.journey-card:nth-child(even) .card-ant-peeker,
+.t-card:nth-child(2) .card-ant-peeker,
+.pest-item-card:nth-child(3) .card-ant-peeker,
+.pest-item-card:nth-child(6) .card-ant-peeker {
+  right: auto;
+  left: 28px;
+}
+
+/* Ant crawls and pops out from behind the card on hover */
+.journey-card:hover .card-ant-peeker,
+.t-card:hover .card-ant-peeker,
+.pest-item-card:hover .card-ant-peeker,
+.dispatch-console-card:hover .card-ant-peeker,
+.franchise-spotlight-card:hover .card-ant-peeker,
+.exec-leader-card:hover .card-ant-peeker,
+.partner-feat-card:hover .card-ant-peeker,
+.price-card:hover .card-ant-peeker {
+  opacity: 1;
+  transform: translateY(-34px) scale(1) rotate(-3deg);
+  animation: antPeekerTwitch 2.8s ease-in-out infinite 0.42s;
+}
+
+@keyframes antPeekerTwitch {
+  0%, 100% {
+    transform: translateY(-34px) scale(1) rotate(-3deg);
+  }
+  28% {
+    transform: translateY(-37px) scale(1.03) rotate(3deg);
+  }
+  56% {
+    transform: translateY(-33px) scale(0.98) rotate(-6deg);
+  }
+  82% {
+    transform: translateY(-36px) scale(1.02) rotate(1deg);
+  }
+}
+
+/* Keep card text, photos and badges layered in front of the crawling ant */
+.journey-card > *:not(.card-ant-peeker),
+.t-card > *:not(.card-ant-peeker),
+.pest-item-card > *:not(.card-ant-peeker),
+.dispatch-console-card > *:not(.card-ant-peeker),
+.franchise-spotlight-card > *:not(.card-ant-peeker),
+.exec-leader-card > *:not(.card-ant-peeker),
+.partner-feat-card > *:not(.card-ant-peeker) {
+  position: relative;
+  z-index: 1;
 }
 
