@@ -52,17 +52,16 @@
     // Initial state calculation on page load
     updateNavbarScrolled();
 
-    // 3. Interactive Suburb & Postcode Dispatch Checker
+    // 3. Interactive Suburb & Postcode Dispatch Checker (Western Sydney and surrounds)
     const dispatchData = {
-      '2745': { name: 'Glenmore Park (Sydney Franchise HQ)', units: 4, nextSlot: 'Today 1:15 PM', emergency: true },
+      '2745': { name: 'Glenmore Park (Sydney Western Suburbs Base)', units: 4, nextSlot: 'Today 1:15 PM', emergency: true },
       '2750': { name: 'Penrith & Nepean Valley', units: 3, nextSlot: 'Today 2:30 PM', emergency: true },
       '2148': { name: 'Blacktown & Western Corridor', units: 4, nextSlot: 'Today 3:15 PM', emergency: true },
       '2150': { name: 'Parramatta & Central West', units: 3, nextSlot: 'Tomorrow 9:00 AM', emergency: true },
       '2154': { name: 'The Hills & Castle Hill', units: 2, nextSlot: 'Tomorrow 10:15 AM', emergency: true },
       '2170': { name: 'Liverpool & South West', units: 3, nextSlot: 'Tomorrow 8:45 AM', emergency: true },
       '2560': { name: 'Campbelltown & Macarthur', units: 2, nextSlot: 'Tomorrow 11:30 AM', emergency: true },
-      '2774': { name: 'Lower Blue Mountains (Blaxland / Glenbrook)', units: 2, nextSlot: 'Tomorrow 1:00 PM', emergency: true },
-      '4350': { name: 'Toowoomba (National HQ)', units: 3, nextSlot: 'Tomorrow 8:30 AM', emergency: true }
+      '2774': { name: 'Lower Blue Mountains (Blaxland / Glenbrook)', units: 2, nextSlot: 'Tomorrow 1:00 PM', emergency: true }
     };
 
     function updateDispatch(inputVal) {
@@ -82,11 +81,11 @@
       if (match) {
         boxEl.className = 'dispatch-status-box active-dispatch';
         badgeEl.textContent = `🟢 ${match.units} Units Active in ${match.name.split('&')[0].trim()} Today`;
-        detailsEl.innerHTML = `Next available inspection slot: <b>${match.nextSlot}</b>.<br>Same-day emergency response guaranteed across <b>${match.code}</b> and surrounding areas.`;
+        detailsEl.innerHTML = `Next available inspection slot: <b>${match.nextSlot}</b>.<br>Same-day emergency response dispatched across <b>${match.code}</b> and surrounding areas.`;
       } else {
         boxEl.className = 'dispatch-status-box active-dispatch';
-        badgeEl.textContent = `🟢 Mobile Units Dispatched Across Sydney & Regional Corridors`;
-        detailsEl.innerHTML = `Priority dispatch confirmed for <b>${inputVal}</b>.<br>Next available service window: <b>Within 24 Hours</b>. Call <b>1800 814 199</b> for immediate allocation.`;
+        badgeEl.textContent = `🟢 Mobile Units Dispatched Across Western Sydney & Surrounds`;
+        detailsEl.innerHTML = `Priority dispatch confirmed for <b>${inputVal}</b>.<br>Servicing Western Sydney and surrounds from 5 Hovea Close, Glenmore Park. Call <b>1800 814 199</b> for immediate allocation.`;
       }
     }
 
