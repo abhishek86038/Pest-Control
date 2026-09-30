@@ -9,34 +9,42 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    // 2. Sticky to Floating Fixed Navbar (Pops out when hero scrolls past)
     const navEl = document.getElementById('nav');
-    const heroEl = document.getElementById('hero') || document.querySelector('.hero');
+    const siteHeaderEl = document.getElementById('siteHeader');
+    const heroEl = document.getElementById('hero') || document.querySelector('.hero') || document.querySelector('.page-hero');
 
-    let wasScrolled = false;
     function updateNavbarScrolled() {
-      if (!navEl) return;
       const scrollY = window.scrollY || window.pageYOffset || 0;
-      const isScrolled = scrollY > 15;
-      if (isScrolled !== wasScrolled) {
-        wasScrolled = isScrolled;
-        navEl.classList.toggle('scrolled', isScrolled);
+      if (navEl) navEl.classList.toggle('scrolled', scrollY > 15);
+      if (siteHeaderEl) siteHeaderEl.classList.toggle('scrolled-header', scrollY > 25);
+
+      // Determine if past hero section
+      let isPastHero = false;
+      if (heroEl) {
+        const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+        isPastHero = scrollY > (heroBottom - 120);
+      } else {
+        isPastHero = scrollY > 300;
       }
+      if (navEl) navEl.classList.toggle('nav-floating', isPastHero);
+      if (siteHeaderEl) siteHeaderEl.classList.toggle('has-floating-nav', isPastHero);
     }
 
     // High performance scroll listener using passive event
     window.addEventListener('scroll', updateNavbarScrolled, { passive: true });
+    window.addEventListener('resize', updateNavbarScrolled, { passive: true });
 
     // IntersectionObserver on Hero boundary for zero-overhead floating navbar detection
     if (heroEl && 'IntersectionObserver' in window) {
       const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const isPastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-          navEl.classList.toggle('nav-floating', isPastHero);
+          if (navEl) navEl.classList.toggle('nav-floating', isPastHero);
+          if (siteHeaderEl) siteHeaderEl.classList.toggle('has-floating-nav', isPastHero);
         });
       }, {
         threshold: [0],
-        rootMargin: "-70px 0px 0px 0px"
+        rootMargin: "-80px 0px 0px 0px"
       });
       heroObserver.observe(heroEl);
     }
@@ -46,12 +54,15 @@
 
     // 3. Interactive Suburb & Postcode Dispatch Checker
     const dispatchData = {
-      '4350': { name: 'Toowoomba & Darling Downs', units: 3, nextSlot: 'Tomorrow 8:30 AM', emergency: true },
-      '4000': { name: 'Brisbane Metro & Northside', units: 5, nextSlot: 'Today 2:00 PM', emergency: true },
-      '4217': { name: 'Gold Coast & Surfers Paradise', units: 2, nextSlot: 'Tomorrow 9:00 AM', emergency: true },
-      '4551': { name: 'Sunshine Coast & Caloundra', units: 3, nextSlot: 'Tomorrow 10:30 AM', emergency: true },
-      '4700': { name: 'Rockhampton & Gracemere', units: 2, nextSlot: 'Thursday 8:00 AM', emergency: true },
-      '2150': { name: 'Sydney Western Suburbs & Parramatta', units: 4, nextSlot: 'Tomorrow 9:30 AM', emergency: true }
+      '2745': { name: 'Glenmore Park (Sydney Franchise HQ)', units: 4, nextSlot: 'Today 1:15 PM', emergency: true },
+      '2750': { name: 'Penrith & Nepean Valley', units: 3, nextSlot: 'Today 2:30 PM', emergency: true },
+      '2148': { name: 'Blacktown & Western Corridor', units: 4, nextSlot: 'Today 3:15 PM', emergency: true },
+      '2150': { name: 'Parramatta & Central West', units: 3, nextSlot: 'Tomorrow 9:00 AM', emergency: true },
+      '2154': { name: 'The Hills & Castle Hill', units: 2, nextSlot: 'Tomorrow 10:15 AM', emergency: true },
+      '2170': { name: 'Liverpool & South West', units: 3, nextSlot: 'Tomorrow 8:45 AM', emergency: true },
+      '2560': { name: 'Campbelltown & Macarthur', units: 2, nextSlot: 'Tomorrow 11:30 AM', emergency: true },
+      '2774': { name: 'Lower Blue Mountains (Blaxland / Glenbrook)', units: 2, nextSlot: 'Tomorrow 1:00 PM', emergency: true },
+      '4350': { name: 'Toowoomba (National HQ)', units: 3, nextSlot: 'Tomorrow 8:30 AM', emergency: true }
     };
 
     function updateDispatch(inputVal) {
@@ -74,7 +85,7 @@
         detailsEl.innerHTML = `Next available inspection slot: <b>${match.nextSlot}</b>.<br>Same-day emergency response guaranteed across <b>${match.code}</b> and surrounding areas.`;
       } else {
         boxEl.className = 'dispatch-status-box active-dispatch';
-        badgeEl.textContent = `🟢 Technicians Dispatched Across QLD & NSW`;
+        badgeEl.textContent = `🟢 Mobile Units Dispatched Across Sydney & Regional Corridors`;
         detailsEl.innerHTML = `Priority dispatch confirmed for <b>${inputVal}</b>.<br>Next available service window: <b>Within 24 Hours</b>. Call <b>1800 814 199</b> for immediate allocation.`;
       }
     }
@@ -334,28 +345,26 @@
     const spiderHeroRig = document.getElementById('spiderHeroRig');
     if (spiderHeroRig) {
       function triggerSpiderSequence() {
-        // Clear any previous state and trigger fresh sequence
         spiderHeroRig.classList.remove('active', 'settled');
         void spiderHeroRig.offsetWidth; // Force reflow
+        // Synchronized with hero smoke text reveal at ~2.05s
         setTimeout(() => {
           spiderHeroRig.classList.add('active');
-        }, 200);
-        // After descent and treatment fog, settle into permanent lifelike idle on screen
+        }, 2050);
         setTimeout(() => {
           spiderHeroRig.classList.add('settled');
-        }, 3200);
+        }, 4800);
       }
 
       if (document.readyState === 'complete') {
         triggerSpiderSequence();
       } else {
         window.addEventListener('load', triggerSpiderSequence, { once: true });
-        // Fallback safety trigger in case load is delayed by slow background video
         setTimeout(() => {
           if (!spiderHeroRig.classList.contains('active')) {
             triggerSpiderSequence();
           }
-        }, 1200);
+        }, 2200);
       }
     }
 
@@ -412,5 +421,82 @@
       }
     }
 
+    // 8. Site Header & Modals Controller (PayPal Invoice, Client Login, Contactless, Franchise, Search)
+    const siteHeader = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (siteHeader) {
+        const sc = window.scrollY || window.pageYOffset || 0;
+        siteHeader.classList.toggle('scrolled-header', sc > 40);
+      }
+    }, { passive: true });
+
+    function openModal(modalId) {
+      const m = document.getElementById(modalId);
+      if (m) {
+        m.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeAllModals() {
+      document.querySelectorAll('.cc-modal-backdrop').forEach(m => m.classList.remove('active'));
+      document.body.style.overflow = '';
+    }
+
+    const btnPp = document.getElementById('openPaypalModal');
+    if (btnPp) btnPp.addEventListener('click', () => openModal('paypalModal'));
+
+    const btnLogin = document.getElementById('openClientLoginModal');
+    if (btnLogin) btnLogin.addEventListener('click', () => openModal('clientLoginModal'));
+
+    const btnCovid = document.getElementById('openCovidPolicy');
+    if (btnCovid) btnCovid.addEventListener('click', () => openModal('covidPolicyModal'));
+
+    const btnFranchise = document.getElementById('openFranchiseModal');
+    if (btnFranchise) btnFranchise.addEventListener('click', () => openModal('franchiseModal'));
+
+    const btnSearch = document.getElementById('navSearchTrigger');
+    if (btnSearch) btnSearch.addEventListener('click', () => openModal('searchModal'));
+
+    // Mobile Navigation Drawer Controller
+    const mobileToggle = document.getElementById('navMobileToggle');
+    const mobileDrawer = document.getElementById('mobileNavDrawer');
+    const mobileBackdrop = document.getElementById('mobileNavBackdrop');
+    const mobileClose = document.getElementById('mobileDrawerClose');
+
+    function openMobileDrawer() {
+      if (mobileDrawer) mobileDrawer.classList.add('active');
+      if (mobileBackdrop) mobileBackdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileDrawer() {
+      if (mobileDrawer) mobileDrawer.classList.remove('active');
+      if (mobileBackdrop) mobileBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileToggle) mobileToggle.addEventListener('click', openMobileDrawer);
+    if (mobileClose) mobileClose.addEventListener('click', closeMobileDrawer);
+    if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileDrawer);
+    document.querySelectorAll('.mobile-nav-links a').forEach(a => {
+      a.addEventListener('click', closeMobileDrawer);
+    });
 
 
+    document.querySelectorAll('.cc-modal-close').forEach(btn => {
+      btn.addEventListener('click', closeAllModals);
+    });
+
+    document.querySelectorAll('.cc-modal-backdrop').forEach(backdrop => {
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeAllModals();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeAllModals();
+        if (typeof closeMobileDrawer === 'function') closeMobileDrawer();
+      }
+    });

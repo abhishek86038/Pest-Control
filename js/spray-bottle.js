@@ -303,6 +303,38 @@
           nozzleMarker.position.set(-0.46, 2.05, 0);
           canGroup.add(nozzleMarker);
 
+          // Direction marker pointing forward along nozzle axis
+          const nozzleDirMarker = new THREE.Object3D();
+          nozzleDirMarker.position.set(-0.86, 2.02, 0);
+          canGroup.add(nozzleDirMarker);
+
+          // Expose precise 3D-to-screen projection for realistic canvas spray alignment
+          window.__get3DNozzleScreenData = function(){
+            if(!nozzleMarker || !camera || !renderer) return null;
+            const v = new THREE.Vector3();
+            nozzleMarker.getWorldPosition(v);
+            v.project(camera);
+
+            const vDir = new THREE.Vector3();
+            nozzleDirMarker.getWorldPosition(vDir);
+            vDir.project(camera);
+
+            const cRect = renderer.domElement.getBoundingClientRect();
+            const rRect = rig.getBoundingClientRect();
+
+            const x = (cRect.left - rRect.left) + (v.x * 0.5 + 0.5) * cRect.width;
+            const y = (cRect.top - rRect.top) + (-v.y * 0.5 + 0.5) * cRect.height;
+
+            const dirX = (cRect.left - rRect.left) + (vDir.x * 0.5 + 0.5) * cRect.width;
+            const dirY = (cRect.top - rRect.top) + (-vDir.y * 0.5 + 0.5) * cRect.height;
+
+            const dx = dirX - x;
+            const dy = dirY - y;
+            const angle = Math.atan2(dy, dx);
+
+            return { x, y, angle };
+          };
+
           // Initial orientation: front label faces camera directly
           canGroup.rotation.y = 0;
 
@@ -383,42 +415,19 @@
             requestAnimationFrame(animate);
             const elapsed = performance.now() - startTime;
 
-            // Phase 1: 3D Physical Can Shake (0.28s to 1.36s)
-            if(elapsed >= 280 && elapsed < 1380){
-              const shakeT = (elapsed - 280) * 0.018;
-              canGroup.rotation.z = Math.sin(shakeT * 2.2) * 0.12;
-              canGroup.rotation.x = Math.cos(shakeT * 1.8) * 0.05;
-              canGroup.position.x = Math.sin(shakeT * 2.2) * 0.04;
-            } else if(elapsed < 2350){
-              canGroup.rotation.z *= 0.88;
-              canGroup.rotation.x *= 0.88;
-              canGroup.position.x *= 0.88;
+            // Subtle realistic valve micro-vibration during 50-PSI pressurized discharge
+            if(elapsed >= 950 && elapsed < 2850){
+              const vib = Math.sin(elapsed * 0.12) * 0.008;
+              canGroup.rotation.z = vib;
+              canGroup.rotation.x = Math.cos(elapsed * 0.15) * 0.005;
+            } else {
+              canGroup.rotation.z *= 0.85;
+              canGroup.rotation.x *= 0.85;
             }
 
-            // Phase 2: Smooth settle (+4%) starting after spray ends (2.35s)
-            if(elapsed >= 2350){
-              const scaleProgress = Math.min((elapsed - 2350) / 750, 1);
-              const ease = 1 - Math.pow(1 - scaleProgress, 3); // Cubic ease-out
-              currentScale = 0.86 + (targetScale - 0.86) * ease;
-              canGroup.scale.set(currentScale, currentScale, currentScale);
-            }
-
-            // Phase 3: Continuous 360-degree rotation starting at 2.7s
-            if(elapsed >= 2700){
-              if(isDragging){
-                canGroup.rotation.y += manualRotationVel;
-                manualRotationVel *= 0.92;
-              } else {
-                // Continuous 360 degree spin (~6.5s full revolution)
-                canGroup.rotation.y += 0.011 + manualRotationVel;
-                manualRotationVel *= 0.95;
-              }
-
-              // Subtle 3D dynamic tilt responding to mouse cursor
-              const targetTiltZ = -mouseNormX * 0.06;
-              const targetTiltX = mouseNormY * 0.06;
-              canGroup.rotation.z += (targetTiltZ - canGroup.rotation.z) * 0.05;
-              canGroup.rotation.x += (targetTiltX - canGroup.rotation.x) * 0.05;
+            if(isDragging){
+              canGroup.rotation.y += manualRotationVel;
+              manualRotationVel *= 0.92;
             }
 
             renderer.render(scene, camera);
@@ -463,63 +472,358 @@
           init3DBottle();
         }
 
-        // --- AEROSOL MIST PARTICLES EMITTER ---
-        const rig = document.getElementById('sprayRig');
-        if(!rig) return;
+        // --- PHOTOREALISTIC TRANSLUCENT AEROSOL MIST SIMULATION (STATIONARY ON RIGHT) ---
+        (function initAerosolMistEngine(){
+          const rig = document.getElementById('sprayRig');
+          if(!rig) return;
 
-        function spawnParticle(ratio){
-          const p = document.createElement('span');
-          p.className = 'fog-p';
+          let canvas = document.getElementById('sprayCanvas');
+          if(!canvas){
+            canvas = document.createElement('canvas');
+            canvas.id = 'sprayCanvas';
+            canvas.className = 'spray-canvas';
+            rig.appendChild(canvas);
+          }
+          const ctx = canvas.getContext('2d', { alpha: true });
+          if(!ctx) return;
 
-          const heroW = rig.offsetWidth || window.innerWidth;
-          const heroH = rig.offsetHeight || window.innerHeight;
+          let dpr = Math.min(window.devicePixelRatio || 1, 2);
+          let w = 0, h = 0;
 
-          // Get exact 3D nozzle position in pixels
-          let coords = { x: heroW * 0.78, y: heroH * 0.28 };
-          if(typeof window.getNozzleScreenCoords === 'function'){
-            try { coords = window.getNozzleScreenCoords(); } catch(e){}
+          function resizeCanvas(){
+            w = rig.clientWidth || window.innerWidth;
+            h = rig.clientHeight || window.innerHeight;
+            canvas.width = Math.round(w * dpr);
+            canvas.height = Math.round(h * dpr);
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          }
+          window.addEventListener('resize', resizeCanvas);
+          resizeCanvas();
+
+          // ============================================================
+          // PRE-RENDERED HIGH-FIDELITY TRANSLUCENT MIST TEXTURES
+          // ============================================================
+
+          // 1. Atomized Core Stream Texture (64x64) - Pressurized exit stream
+          const coreTex = document.createElement('canvas');
+          coreTex.width = 64; coreTex.height = 64;
+          const cCtx = coreTex.getContext('2d');
+          const cGrad = cCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
+          cGrad.addColorStop(0.0, 'rgba(255, 255, 255, 0.92)');
+          cGrad.addColorStop(0.20, 'rgba(245, 250, 255, 0.68)');
+          cGrad.addColorStop(0.50, 'rgba(225, 240, 255, 0.22)');
+          cGrad.addColorStop(0.85, 'rgba(215, 235, 255, 0.04)');
+          cGrad.addColorStop(1.0, 'rgba(200, 225, 255, 0)');
+          cCtx.fillStyle = cGrad;
+          cCtx.fillRect(0, 0, 64, 64);
+
+          // 2. Conical Expanding Mist Puff (96x96) - Delicate atomized micro-vapor
+          const mistPuffTex = document.createElement('canvas');
+          mistPuffTex.width = 96; mistPuffTex.height = 96;
+          const mpCtx = mistPuffTex.getContext('2d');
+          const mpGrad = mpCtx.createRadialGradient(48, 48, 0, 48, 48, 48);
+          mpGrad.addColorStop(0.0, 'rgba(255, 255, 255, 0.45)');
+          mpGrad.addColorStop(0.25, 'rgba(246, 250, 255, 0.28)');
+          mpGrad.addColorStop(0.55, 'rgba(230, 242, 255, 0.12)');
+          mpGrad.addColorStop(0.80, 'rgba(218, 236, 252, 0.03)');
+          mpGrad.addColorStop(1.0, 'rgba(210, 230, 250, 0)');
+          mpCtx.fillStyle = mpGrad;
+          mpCtx.fillRect(0, 0, 96, 96);
+
+          // 3. Diffuse Atmospheric Vapor Veil (128x128) - Soft translucent mist blanket over text
+          const veilTex = document.createElement('canvas');
+          veilTex.width = 128; veilTex.height = 128;
+          const vCtx = veilTex.getContext('2d');
+          const vGrad = vCtx.createRadialGradient(64, 64, 0, 64, 64, 64);
+          vGrad.addColorStop(0.0, 'rgba(248, 252, 255, 0.24)');
+          vGrad.addColorStop(0.35, 'rgba(238, 246, 255, 0.14)');
+          vGrad.addColorStop(0.70, 'rgba(222, 238, 252, 0.05)');
+          vGrad.addColorStop(1.0, 'rgba(210, 230, 250, 0)');
+          vCtx.fillStyle = vGrad;
+          vCtx.fillRect(0, 0, 128, 128);
+
+          // 4. Atomized Micro-Droplets (24x24)
+          const dropTex = document.createElement('canvas');
+          dropTex.width = 24; dropTex.height = 24;
+          const dCtx = dropTex.getContext('2d');
+          const dGrad = dCtx.createRadialGradient(12, 12, 0, 12, 12, 12);
+          dGrad.addColorStop(0.0, 'rgba(255, 255, 255, 0.95)');
+          dGrad.addColorStop(0.30, 'rgba(240, 250, 255, 0.45)');
+          dGrad.addColorStop(0.70, 'rgba(220, 240, 255, 0.10)');
+          dGrad.addColorStop(1.0, 'rgba(210, 235, 255, 0)');
+          dCtx.fillStyle = dGrad;
+          dCtx.fillRect(0, 0, 24, 24);
+
+          const particles = [];
+          const maxParticles = 420;
+          let isSpraying = false;
+          let isFinished = false;
+
+          // Spray Timing: Begins at 750ms after bottle settles, sprays text for 2.05s
+          const sprayStart = 750;
+          const sprayDuration = 2050;
+
+          setTimeout(function(){
+            isSpraying = true;
+          }, sprayStart);
+
+          setTimeout(function(){
+            isSpraying = false;
+          }, sprayStart + sprayDuration);
+
+          // Clean up container after bottle fades away (4.4s)
+          setTimeout(function(){
+            const canBox = document.getElementById('can3dContainer');
+            if(canBox){ canBox.style.display = 'none'; }
+            isFinished = true;
+          }, 4450);
+
+          // Real-time nozzle position and aim angle tracker (aimed directly left at hero text)
+          function getNozzlePosition(){
+            if(typeof window.__get3DNozzleScreenData === 'function'){
+              const d = window.__get3DNozzleScreenData();
+              if(d) return d;
+            }
+            const canBox = document.getElementById('can3dContainer');
+            if(canBox){
+              const cr = canBox.getBoundingClientRect();
+              const rr = rig.getBoundingClientRect();
+              return {
+                x: (cr.left - rr.left) + cr.width * 0.38,
+                y: (cr.top - rr.top) + cr.height * 0.165,
+                angle: Math.PI + 0.04 // Directly left toward headline text with subtle downward bias
+              };
+            }
+            return { x: w * 0.78, y: h * 0.24, angle: Math.PI + 0.04 };
           }
 
-          // Full-screen expanse across the hero width
-          const minTravel = heroW * 0.40;
-          const maxTravel = heroW * 0.88;
-          const distance  = minTravel + Math.random() * (maxTravel - minTravel);
-          const distFactor = distance / maxTravel;
+          // Natural Pressurized Exit Cone Jet (Anchored to nozzle aperture)
+          function drawNozzlePlume(nx, ny, angle){
+            ctx.save();
+            ctx.translate(nx, ny);
+            ctx.rotate(angle);
+            ctx.globalCompositeOperation = 'screen';
 
-          // Vertical spread across full height
-          const coneSpread = (heroH * 0.32) + ratio * (heroH * 0.70);
-          const spread     = (Math.random() - 0.5) * coneSpread;
+            const len = 64 + Math.sin(performance.now() * 0.05) * 6;
+            const spread = 14 + Math.cos(performance.now() * 0.07) * 2;
 
-          // Volumetric scale
-          const startSize = 32 + Math.random() * 24;
-          const endScale  = 8 + distFactor * 14;
-          const rot       = (Math.random() - 0.5) * 50;
+            // Feathered pressurized stream
+            const grad = ctx.createLinearGradient(0, 0, len, 0);
+            grad.addColorStop(0.0, 'rgba(255, 255, 255, 0.88)');
+            grad.addColorStop(0.25, 'rgba(240, 248, 255, 0.55)');
+            grad.addColorStop(0.60, 'rgba(225, 240, 255, 0.20)');
+            grad.addColorStop(1.0, 'rgba(200, 225, 255, 0)');
 
-          p.style.width  = startSize + 'px';
-          p.style.height = startSize + 'px';
-          p.style.left = coords.x + 'px';
-          p.style.top  = coords.y + 'px';
-          p.style.setProperty('--dx', (-distance) + 'px');
-          p.style.setProperty('--dy', spread + 'px');
-          p.style.setProperty('--rot', rot + 'deg');
-          p.style.setProperty('--scale-end', endScale.toFixed(2));
-          p.style.animationDuration = (0.75 + Math.random() * 0.45) + 's';
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.moveTo(0, -2.5);
+            ctx.lineTo(len, -spread);
+            ctx.lineTo(len, spread);
+            ctx.lineTo(0, 2.5);
+            ctx.closePath();
+            ctx.fill();
 
-          rig.appendChild(p);
-          setTimeout(() => p.remove(), 1400);
-        }
+            // Tiny crisp orifice flash
+            const ptGrad = ctx.createRadialGradient(0, 0, 0, 0, 0, 7);
+            ptGrad.addColorStop(0, 'rgba(255, 255, 255, 0.98)');
+            ptGrad.addColorStop(0.40, 'rgba(240, 250, 255, 0.55)');
+            ptGrad.addColorStop(1, 'rgba(215, 235, 255, 0)');
+            ctx.fillStyle = ptGrad;
+            ctx.beginPath();
+            ctx.arc(0, 0, 7, 0, Math.PI * 2);
+            ctx.fill();
 
-        const sprayStart = 1450;    // start right after shake
-        const sprayDuration = 800;  // 800ms emission window
-        const tickEvery = 22;       // 36 particles total — 60fps silky smooth
+            ctx.restore();
+          }
 
-        setTimeout(function(){
-          const t0 = performance.now();
-          const interval = setInterval(function(){
-            const elapsed = performance.now() - t0;
-            const ratio = Math.min(elapsed / sprayDuration, 1);
-            spawnParticle(ratio);
-            if(elapsed >= sprayDuration){ clearInterval(interval); }
-          }, tickEvery);
-        }, sprayStart);
+          // Main 60fps Particle Physics & Render Loop
+          function updateMist(){
+            if(isFinished && particles.length === 0){
+              ctx.clearRect(0, 0, w, h);
+              return;
+            }
+            requestAnimationFrame(updateMist);
+
+            const nData = getNozzlePosition();
+            const nx = nData.x;
+            const ny = nData.y;
+            const aimAngle = nData.angle || (Math.PI + 0.04);
+
+            // ============================================================
+            // EMISSION STAGE: Natural Conical Aerosol Spray Toward Text
+            // ============================================================
+            if(isSpraying && particles.length < maxParticles){
+              // 1. High-Speed Jet Core (2 per frame) - Fast atomized exit stream
+              for(let i = 0; i < 2; i++){
+                const spd = 24 + Math.random() * 9;
+                const ang = aimAngle + (Math.random() - 0.5) * 0.12; // tight jet core (~7 deg)
+                particles.push({
+                  type: 'core',
+                  x: nx + (Math.random() - 0.5) * 3,
+                  y: ny + (Math.random() - 0.5) * 3,
+                  vx: Math.cos(ang) * spd,
+                  vy: Math.sin(ang) * spd,
+                  drag: 0.942,
+                  buoyancy: -0.015 + (Math.random() - 0.5) * 0.02,
+                  radius: 3.5 + Math.random() * 2,
+                  startRadius: 3.5 + Math.random() * 2,
+                  maxRadius: 28 + Math.random() * 12,
+                  life: 0,
+                  maxLife: 38 + Math.random() * 18,
+                  maxAlpha: 0.82,
+                  rot: 0,
+                  rotSpeed: 0
+                });
+              }
+
+              // 2. Expanding Conical Mist Puffs (3-4 per frame) - Fans over headline text
+              const puffCount = 3 + (Math.random() > 0.4 ? 1 : 0);
+              for(let i = 0; i < puffCount; i++){
+                const spd = 16 + Math.random() * 10;
+                const ang = aimAngle + (Math.random() - 0.48) * 0.40; // conical fan (~23 deg covering text lines)
+                const startR = 6 + Math.random() * 4;
+                particles.push({
+                  type: 'puff',
+                  x: nx + (Math.random() - 0.5) * 4,
+                  y: ny + (Math.random() - 0.5) * 4,
+                  vx: Math.cos(ang) * spd,
+                  vy: Math.sin(ang) * spd,
+                  drag: 0.954,
+                  buoyancy: -0.025 + (Math.random() - 0.5) * 0.03,
+                  radius: startR,
+                  startRadius: startR,
+                  maxRadius: 48 + Math.random() * 22, // 48px - 70px natural mist puff
+                  life: 0,
+                  maxLife: 62 + Math.random() * 32,
+                  maxAlpha: 0.38 + Math.random() * 0.10, // Translucent and airy!
+                  rot: Math.random() * Math.PI * 2,
+                  rotSpeed: (Math.random() - 0.5) * 0.02
+                });
+              }
+
+              // 3. Delicate Atmospheric Vapor Veil (1 per frame) - Soft mist rolling over words
+              if(Math.random() > 0.30){
+                const spd = 10 + Math.random() * 8;
+                const ang = aimAngle + (Math.random() - 0.5) * 0.55;
+                const startR = 14 + Math.random() * 8;
+                particles.push({
+                  type: 'veil',
+                  x: nx + (Math.random() - 0.5) * 6,
+                  y: ny + (Math.random() - 0.5) * 6,
+                  vx: Math.cos(ang) * spd,
+                  vy: Math.sin(ang) * spd,
+                  drag: 0.965,
+                  buoyancy: -0.035 - Math.random() * 0.025,
+                  radius: startR,
+                  startRadius: startR,
+                  maxRadius: 75 + Math.random() * 30, // 75px - 105px soft atmospheric veil
+                  life: 0,
+                  maxLife: 85 + Math.random() * 40,
+                  maxAlpha: 0.20 + Math.random() * 0.08, // Subtle, ethereal haze
+                  rot: Math.random() * Math.PI * 2,
+                  rotSpeed: (Math.random() - 0.5) * 0.012
+                });
+              }
+
+              // 4. Atomized Micro-Droplets (2 per frame) - Fine mist specks
+              for(let i = 0; i < 2; i++){
+                const spd = 26 + Math.random() * 14;
+                const ang = aimAngle + (Math.random() - 0.5) * 0.24;
+                particles.push({
+                  type: 'droplet',
+                  x: nx,
+                  y: ny,
+                  vx: Math.cos(ang) * spd,
+                  vy: Math.sin(ang) * spd,
+                  drag: 0.932,
+                  buoyancy: 0,
+                  radius: 1.5 + Math.random() * 1.2,
+                  startRadius: 1.5 + Math.random() * 1.2,
+                  maxRadius: 3.8 + Math.random() * 1.5,
+                  life: 0,
+                  maxLife: 20 + Math.random() * 10,
+                  maxAlpha: 0.88,
+                  rot: 0,
+                  rotSpeed: 0
+                });
+              }
+            }
+
+            // ============================================================
+            // PHYSICS & DISSIPATION UPDATE
+            // ============================================================
+            for(let i = particles.length - 1; i >= 0; i--){
+              const p = particles[i];
+              p.life++;
+              const prog = p.life / p.maxLife;
+              if(prog >= 1){
+                particles.splice(i, 1);
+                continue;
+              }
+
+              // Smooth aerodynamic drag deceleration
+              p.vx *= p.drag;
+              p.vy = (p.vy * p.drag) + p.buoyancy;
+              p.x += p.vx;
+              p.y += p.vy;
+              p.rot += p.rotSpeed;
+
+              // Progressive non-linear expansion
+              p.radius = p.startRadius + (p.maxRadius - p.startRadius) * (1 - Math.pow(1 - prog, 2.2));
+
+              // Natural Alpha Envelope: Sharp pressurized attack, smooth exponential evaporation
+              if(prog < 0.12){
+                p.alpha = p.maxAlpha * (prog / 0.12);
+              } else {
+                const fadeProg = (prog - 0.12) / 0.88;
+                p.alpha = p.maxAlpha * Math.pow(1 - fadeProg, 1.8);
+              }
+            }
+
+            // ============================================================
+            // DUAL-PASS TRANSLUCENT COMPOSITE RENDERING
+            // ============================================================
+            ctx.clearRect(0, 0, w, h);
+
+            // Pass 1: Soft Volumetric Mist Puffs & Atmospheric Veil (source-over for velvety translucent mist)
+            ctx.globalCompositeOperation = 'source-over';
+            for(let i = 0; i < particles.length; i++){
+              const p = particles[i];
+              if(p.type !== 'puff' && p.type !== 'veil') continue;
+
+              const tex = p.type === 'puff' ? mistPuffTex : veilTex;
+              const r = p.radius;
+              ctx.save();
+              ctx.globalAlpha = p.alpha;
+              ctx.translate(p.x, p.y);
+              if(p.rot) ctx.rotate(p.rot);
+              ctx.drawImage(tex, -r, -r, r * 2, r * 2);
+              ctx.restore();
+            }
+
+            // Pass 2: High-Velocity Jet Core & Atomized Droplets (screen mode for crisp pressurized stream)
+            ctx.globalCompositeOperation = 'screen';
+            for(let i = 0; i < particles.length; i++){
+              const p = particles[i];
+              if(p.type !== 'core' && p.type !== 'droplet') continue;
+
+              const tex = p.type === 'core' ? coreTex : dropTex;
+              const r = p.radius;
+              ctx.save();
+              ctx.globalAlpha = p.alpha;
+              ctx.translate(p.x, p.y);
+              ctx.drawImage(tex, -r, -r, r * 2, r * 2);
+              ctx.restore();
+            }
+
+            // Pass 3: Pressurized Nozzle Exit Plume
+            if(isSpraying){
+              drawNozzlePlume(nx, ny, aimAngle);
+            }
+          }
+
+          requestAnimationFrame(updateMist);
+        })();
       })();

@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Creepy Crawly Pest Control — Protecting Queensland Homes Since 1985</title>
+  <title>Creepy Crawly Pest Control — Sydney Branch &amp; Franchise | Protecting Sydney Homes Since 1985</title>
   <meta name="description"
     content="Safe, effective pest control & termite management across Queensland and NSW. 40+ years in business, QBCC licensed, pet-friendly treatments with 100% money-back guarantee.">
   <meta name="theme-color" content="#0F2438">
   <link rel="icon" type="image/png" href="logo.png">
-  <meta property="og:title" content="Creepy Crawly Pest Control — Protecting Queensland Homes Since 1985">
+  <meta property="og:title" content="Creepy Crawly Pest Control — Sydney Branch &amp; Franchise">
   <meta property="og:description"
     content="Safe, effective pest control & termite management. 40+ years in business, QBCC licensed, 100% money-back guarantee.">
   <meta property="og:image" content="hero.jpg">
@@ -23,47 +23,151 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800&family=Bebas+Neue&family=Oswald:wght@700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 
 <body>
 
-  <!-- MAIN PEST CONTROL NAVIGATION -->
-  <nav id="nav">
-    <div class="wrap">
-      <div class="nav-brand-cluster">
-        <a href="#" class="logo" aria-label="Creepy Crawly Pest Control Home">
-          <img src="logo.png" alt="Creepy Crawly Pest Control" class="brand-logo-img">
-        </a>
-      </div>
+  <!-- SITE HEADER WRAPPER (TOP UTILITY BAR + MAIN NAVIGATION) -->
+  <header class="site-header" id="siteHeader">
+    <!-- TOP UTILITY BAR (EXACT AS BENCHMARK CREEPY CRAWLY SCREENSHOT) -->
+    <div class="top-utility-bar" id="topUtilityBar">
+      <div class="utility-wrap">
+        <div class="util-left">
+          <!-- 1. Contactless Treatment Policy (Orange Badge) -->
+          <button type="button" class="util-item util-covid" id="openCovidPolicy">
+            <span class="util-covid-sub">READ OUR COVID-19</span>
+            <span class="util-covid-main">Contactless Treatment Policy</span>
+          </button>
+        </div>
 
-      <!-- Center Navigation Links Container -->
-      <div class="navlinks-container">
-        <div class="navlinks" id="nav-links">
-          <a href="#pest-selector">Pest Library</a>
-          <a href="#partner">Tech Partner</a>
-          <a href="#calculator">Price Calculator</a>
-          <a href="#comparison">Why Choose Us</a>
-          <a href="#faq">FAQ</a>
-          <a href="#locations">Service Areas</a>
+        <div class="util-right">
+          <!-- 2. Free Call Phone Strip -->
+          <a href="tel:1800814199" class="util-item util-phone">
+            <div class="util-headset-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+            </div>
+            <div class="util-phone-text">
+              <span class="util-phone-sub">FREE CALL</span>
+              <span class="util-phone-num">1800 814 199</span>
+            </div>
+          </a>
+
+          <!-- 3. Request a Quote (Green Button) -->
+          <a href="#calculator" class="util-item util-quote-btn">
+            <span>Request a Quote</span>
+          </a>
+
+          <!-- 4. Client Login -->
+          <button type="button" class="util-item util-login-btn" id="openClientLoginModal">
+            <span>Client Login</span>
+            <span class="util-arrow-circle">➔</span>
+          </button>
+
+          <!-- 5. Pay an Invoice with PayPal -->
+          <button type="button" class="util-item util-paypal-btn" id="openPaypalModal">
+            <span class="util-paypal-sub">PAY AN INVOICE WITH</span>
+            <div class="paypal-logo-badge">
+              <span class="pp-p1">Pay</span><span class="pp-p2">Pal</span>
+            </div>
+          </button>
+
+          <!-- 6. Franchise Opportunities -->
+          <button type="button" class="util-item util-franchise-btn" id="openFranchiseModal">
+            <span>Franchise Opportunities</span>
+          </button>
         </div>
       </div>
-
-      <div class="navcta">
-        <a href="tel:1800814199" class="phone-cta-simple">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-            </path>
-          </svg>
-          <span>1800 814 199</span>
-        </a>
-        <a class="btn btn-gold btn-nav-compact" href="#calculator">Instant $50 Quote</a>
-      </div>
     </div>
-  </nav>
-  <div class="nav-spacer" aria-hidden="true"></div>
+
+    <!-- MAIN PEST CONTROL NAVIGATION (EXACT BENCHMARK SEQUENCE) -->
+    <nav id="nav">
+      <div class="wrap">
+        <div class="nav-brand-cluster">
+          <a href="index.html" class="logo" aria-label="Creepy Crawly Pest Control Home">
+            <img src="logo.png" alt="Creepy Crawly Pest Control" class="brand-logo-img">
+          </a>
+        </div>
+
+        <!-- Center Navigation Links Container -->
+        <div class="navlinks-container">
+          <div class="navlinks" id="nav-links">
+            <a href="index.html">Home</a>
+            <span class="nav-sep">|</span>
+            <a href="services.html#residential">Pest Control</a>
+            <span class="nav-sep">|</span>
+            <a href="services.html#termites">Termite Control</a>
+            <span class="nav-sep">|</span>
+            <a href="services.html#commercial"><span class="full-comm">Commercial / Sterimist</span><span class="short-comm">Commercial</span></a>
+            <span class="nav-sep">|</span>
+            <a href="services.html#builders">Builders</a>
+            <span class="nav-sep">|</span>
+            <a href="services.html#home-buyers">Home Buyers</a>
+            <span class="nav-sep">|</span>
+            <a href="about.html">About Us</a>
+            <span class="nav-sep">|</span>
+            <a href="technology-partner.html">Tech Partner</a>
+            <span class="nav-sep">|</span>
+            <a href="#quote">Contact</a>
+            <span class="nav-sep">|</span>
+            <a href="news.html">News</a>
+          </div>
+        </div>
+
+        <!-- Search Icon Trigger & Mobile Menu Toggle -->
+        <div class="nav-actions-wrap">
+          <button type="button" class="nav-search-btn" id="navSearchTrigger" aria-label="Search Creepy Crawly Site" title="Search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <button type="button" class="nav-mobile-toggle" id="navMobileToggle" aria-label="Open Mobile Menu" title="Menu">
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER & BACKDROP -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <img src="logo.png" alt="Creepy Crawly" class="mobile-drawer-logo">
+      <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Mobile Menu">&times;</button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html#residential">Pest Control</a>
+      <a href="services.html#termites">Termite Control</a>
+      <a href="services.html#commercial">Commercial Services / Sterimist</a>
+      <a href="services.html#builders">Builders</a>
+      <a href="services.html#home-buyers">Home Buyers</a>
+      <a href="about.html">About Us</a>
+      <a href="technology-partner.html">Technology Partner</a>
+      <a href="#quote">Contact</a>
+      <a href="news.html">News & Biosecurity</a>
+    </nav>
+    <div class="mobile-nav-actions">
+      <a href="tel:1800814199" class="mobile-action-btn mobile-btn-phone">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+          <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+        </svg>
+        <span>Free Call 1800 814 199</span>
+      </a>
+      <a href="#calculator" class="mobile-action-btn mobile-btn-quote">Request a Free Quote</a>
+      <button type="button" class="mobile-action-btn mobile-btn-paypal" onclick="document.getElementById('mobileDrawerClose').click(); document.getElementById('openPaypalModal').click();">
+        <span>Pay Invoice with PayPal</span>
+      </button>
+    </div>
+  </aside>
 
   <!-- 4. HERO SECTION (AUTHORITATIVE PEST CONTROL) -->
   <section class="hero" id="hero">
@@ -77,47 +181,42 @@
 
     <!-- CINEMATIC HERO SPIDER ANIMATION RIG (Auto-plays on page load) -->
     <div class="spider-hero-rig" id="spiderHeroRig" aria-hidden="true">
-      <!-- Natural Spider Web (Jal) anchored in hero ceiling/eave -->
+      <!-- Natural Spider Web (Jal) anchored in hero top-left corner/eave -->
       <div class="spider-web-rig" id="spiderWebRig">
-        <svg class="spider-web-svg" viewBox="0 0 260 190" width="260" height="190" fill="none">
+        <svg class="spider-web-svg" viewBox="0 0 240 220" width="240" height="220" fill="none">
           <defs>
             <linearGradient id="webSilkGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="rgba(255, 255, 255, 0.40)" />
-              <stop offset="50%" stop-color="rgba(255, 255, 255, 0.24)" />
-              <stop offset="100%" stop-color="rgba(255, 255, 255, 0.10)" />
+              <stop offset="0%" stop-color="rgba(255, 255, 255, 0.50)" />
+              <stop offset="50%" stop-color="rgba(255, 255, 255, 0.28)" />
+              <stop offset="100%" stop-color="rgba(255, 255, 255, 0.08)" />
             </linearGradient>
           </defs>
-          <!-- Structural Radial Web Strands -->
-          <g stroke="url(#webSilkGrad)" stroke-width="1.1" stroke-linecap="round" opacity="0.85">
-            <line x1="130" y1="0" x2="15" y2="0" />
-            <line x1="130" y1="0" x2="30" y2="55" />
-            <line x1="130" y1="0" x2="60" y2="115" />
-            <line x1="130" y1="0" x2="100" y2="155" />
-            <line x1="130" y1="0" x2="130" y2="175" />
-            <line x1="130" y1="0" x2="160" y2="155" />
-            <line x1="130" y1="0" x2="200" y2="115" />
-            <line x1="130" y1="0" x2="230" y2="55" />
-            <line x1="130" y1="0" x2="245" y2="0" />
+          <!-- Structural Radial Strands from Top-Left Corner (0,0) -->
+          <g stroke="url(#webSilkGrad)" stroke-width="1.2" stroke-linecap="round" opacity="0.88">
+            <line x1="0" y1="0" x2="230" y2="0" />
+            <line x1="0" y1="0" x2="215" y2="40" />
+            <line x1="0" y1="0" x2="190" y2="85" />
+            <line x1="0" y1="0" x2="155" y2="130" />
+            <line x1="0" y1="0" x2="110" y2="175" />
+            <line x1="0" y1="0" x2="55" y2="205" />
+            <line x1="0" y1="0" x2="0" y2="215" />
           </g>
-          <!-- Concentric Spiral Web Arcs with Natural Catenary Sag -->
-          <g stroke="rgba(255, 255, 255, 0.30)" stroke-width="0.9" fill="none" opacity="0.75">
-            <path d="M 45 12 Q 85 24, 130 28 Q 175 24, 215 12" />
-            <path d="M 55 35 Q 90 50, 130 54 Q 170 50, 205 35" />
-            <path d="M 70 65 Q 98 84, 130 88 Q 162 84, 190 65" />
-            <path d="M 85 100 Q 106 122, 130 126 Q 154 122, 175 100" />
-            <path d="M 102 138 Q 116 156, 130 160 Q 144 156, 158 138" />
+          <!-- Concentric Spiral Cobweb Arcs with Natural Sag -->
+          <g stroke="rgba(255, 255, 255, 0.32)" stroke-width="0.9" fill="none" opacity="0.80">
+            <path d="M 0 35 Q 22 22, 35 0" />
+            <path d="M 0 70 Q 45 45, 70 0" />
+            <path d="M 0 110 Q 75 75, 110 0" />
+            <path d="M 0 155 Q 110 110, 155 0" />
+            <path d="M 0 200 Q 150 150, 205 0" />
           </g>
-          <!-- Subtle Dew-Drop Silk Glints on Intersections -->
-          <g fill="#FFFFFF" opacity="0.65">
-            <circle cx="130" cy="28" r="1.1" />
-            <circle cx="130" cy="54" r="1.2" />
-            <circle cx="130" cy="88" r="1.1" />
-            <circle cx="130" cy="126" r="1.3" />
-            <circle cx="130" cy="160" r="1.5" filter="drop-shadow(0 0 2px #fff)" />
-            <circle cx="90" cy="50" r="0.9" />
-            <circle cx="170" cy="50" r="0.9" />
-            <circle cx="98" cy="84" r="0.9" />
-            <circle cx="162" cy="84" r="0.9" />
+          <!-- Subtle Dew-Drop Silk Glints on Corner Web Nodes -->
+          <g fill="#FFFFFF" opacity="0.75">
+            <circle cx="28" cy="18" r="1.1" />
+            <circle cx="56" cy="38" r="1.2" />
+            <circle cx="92" cy="62" r="1.3" />
+            <circle cx="132" cy="94" r="1.4" filter="drop-shadow(0 0 2px #fff)" />
+            <circle cx="48" cy="88" r="1.0" />
+            <circle cx="88" cy="135" r="1.1" />
           </g>
         </svg>
       </div>
@@ -230,18 +329,18 @@
       <div class="hero-content">
         <div class="spray-reveal-text">
           <h1>
-            <span class="hero-title-white">Queensland's Trusted</span>
+            <span class="hero-title-white">Sydney's Trusted</span>
             <span class="hero-title-gold">Pest &amp; Termite</span>
             <span class="hero-title-gold">Specialists</span>
           </h1>
           <div class="hero-tech-tags">
             <span>TERMITE ERADICATION</span>
             <span class="tag-dot">✦</span>
-            <span>QBCC LICENSED #655077</span>
+            <span>NSW LICENSED &amp; CERTIFIED</span>
             <span class="tag-dot">✦</span>
             <span>100% MONEY-BACK GUARANTEE</span>
           </div>
-          <p>Fast, pet-safe pest &amp; termite eradication across Queensland — backed by <strong>40+ years of trust</strong> and certified AS 3660 protocols.</p>
+          <p>Fast, pet-safe pest &amp; termite eradication across Sydney &amp; Western Suburbs — backed by <strong>40+ years of trust</strong>, certified AS 3660 protocols, and our local Glenmore Park franchise team.</p>
           <div class="hero-ctas">
             <a class="btn btn-gold btn-hero-gold" href="#calculator">
               <span>Instant $50 Online Quote</span>
@@ -263,13 +362,122 @@
 
     <!-- ZERO-LAG FULL-SCREEN SPRAY REVEAL RIG -->
     <div class="spray-rig" id="sprayRig">
+      <canvas id="sprayCanvas" class="spray-canvas"></canvas>
       <div id="can3dContainer" class="spray-can-3d"></div>
     </div>
 
   </section>
 
-  <!-- 5. QUICK PEST IDENTIFICATION & ACTION GRID -->
-  <section class="pest-quick-selector" id="pest-selector">
+  <!-- 2. SINGLE BLACK TRUST BAND (WHITE TEXT & FAVICONS) -->
+  <div class="trust-black-band" id="trust-bar">
+    <div class="wrap">
+      <div class="trust-band-item">
+        <span class="trust-band-icon icon-gold">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </span>
+        <span class="trust-band-text">100% Money-Back Eradication Guarantee</span>
+      </div>
+
+      <div class="trust-band-item">
+        <span class="trust-band-icon icon-gold">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <circle cx="12" cy="8" r="6"/>
+            <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </span>
+        <span class="trust-band-text">QBCC Licensed Technicians (#655077)</span>
+      </div>
+
+      <div class="trust-band-item">
+        <span class="trust-band-icon icon-green">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <path d="M11 20A7 7 0 0 1 4 13a7 7 0 0 1 12.7-3.9 7 7 0 0 1 4.3 9.9 7 7 0 0 1-9 1z"/>
+            <path d="M11 20v-9"/>
+          </svg>
+        </span>
+        <span class="trust-band-text">Pet &amp; Child Safe Micro-Encapsulated Formulations</span>
+      </div>
+
+      <div class="trust-band-item">
+        <span class="trust-band-icon icon-gold">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <path d="M3 21h18M3 7v14M21 7v14M6 7V3h12v4M10 11h4M10 15h4"/>
+          </svg>
+        </span>
+        <span class="trust-band-text">AS 3660.2 Termite Management Certified</span>
+      </div>
+
+      <div class="trust-band-item">
+        <span class="trust-band-icon icon-cyan">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <path d="M12 2a10 10 0 0 1 10 10M12 6a6 6 0 0 1 6 6M12 10a2 2 0 0 1 2 2"/>
+            <circle cx="12" cy="12" r="1"/>
+            <path d="M12 12L4 4"/>
+          </svg>
+        </span>
+        <span class="trust-band-text">Termatrac Radar &amp; Flir Thermal Scanners</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: LIVE FLEET DISPATCH (WHITE THEME) -->
+  <section class="section dispatch-section theme-white" id="dispatch-fleet">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Check Today's Technician Dispatch in Your Suburb</h2>
+        <p>Real-time GPS fleet monitoring across Sydney &amp; Western Suburbs. Check active mobile response units dispatched from our Glenmore Park base, next available inspection slots, and same-day emergency protection.</p>
+      </div>
+
+      <div class="dispatch-console-card reveal">
+        <div class="dispatch-left-col">
+          <label for="postcode-input" class="dispatch-input-label">
+            <span>📍</span> Enter Postcode or Suburb
+          </label>
+          <div class="dispatch-input-group">
+            <div class="dispatch-input-wrapper">
+              <svg class="search-pin-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input type="text" id="postcode-input" class="dispatch-input"
+                placeholder="e.g. 2745 Glenmore Park, 2750 Penrith, 2150 Parramatta, 2148 Blacktown..." value="2745">
+            </div>
+            <button class="btn btn-gold" id="check-dispatch-btn" type="button">Check Availability</button>
+          </div>
+          <div class="dispatch-quick-chips">
+            <span class="chips-label">Sydney Hubs:</span>
+            <button type="button" class="quick-chip" data-code="2745">Glenmore Park 2745 (HQ)</button>
+            <button type="button" class="quick-chip" data-code="2750">Penrith 2750</button>
+            <button type="button" class="quick-chip" data-code="2148">Blacktown 2148</button>
+            <button type="button" class="quick-chip" data-code="2150">Parramatta 2150</button>
+            <button type="button" class="quick-chip" data-code="2154">Castle Hill 2154</button>
+            <button type="button" class="quick-chip" data-code="2170">Liverpool 2170</button>
+            <button type="button" class="quick-chip" data-code="2560">Campbelltown 2560</button>
+          </div>
+        </div>
+
+        <div class="dispatch-status-box active-dispatch" id="dispatch-result-box">
+          <div class="status-pill status-pill-badge" id="dispatch-badge">🟢 4 Units Active in Sydney &amp; Western Suburbs Today</div>
+          <div class="dispatch-status-text" id="dispatch-details">
+            Next available inspection window: <b>Tomorrow 8:30 AM</b>.<br>
+            Same-day emergency timber &amp; pest response available across <b>2745 Glenmore Park, Penrith, and Greater Sydney</b>.
+          </div>
+          <a href="tel:1800814199" class="dispatch-call-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>Instant Dispatch: 1800 814 199</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. QUICK PEST IDENTIFICATION & ACTION GRID (DARK OVERLAYED IMAGE THEME) -->
+  <section class="pest-quick-selector theme-dark-image" id="pest-selector">
     <!-- REALISTIC COCKROACH INFESTATION SCATTER SYSTEM (Scurries away on scroll) -->
     <div class="cockroach-swarm-layer" id="cockroachSwarmLayer" aria-hidden="true">
       <!-- Roach 1 (Near Header Title Left) -->
@@ -345,37 +553,37 @@
           threat assessments, and price estimates.</p>
       </div>
       <div class="pest-grid-6 reveal">
-        <a href="#services" class="pest-item-card" data-pest="termites">
+        <a href="services.html" class="pest-item-card" data-pest="termites">
           <div class="pest-item-icon">🐜</div>
           <div class="pest-item-name">Termites</div>
           <div class="pest-item-subtitle">White ants &amp; timber damage</div>
           <span class="pest-item-threat threat-red">🔴 Severe Risk</span>
         </a>
-        <a href="#services" class="pest-item-card" data-pest="spiders">
+        <a href="services.html" class="pest-item-card" data-pest="spiders">
           <div class="pest-item-icon">🕷️</div>
           <div class="pest-item-name">Spiders</div>
           <div class="pest-item-subtitle">Redbacks, funnel-webs, huntsman</div>
           <span class="pest-item-threat threat-orange">🟠 Venomous</span>
         </a>
-        <a href="#services" class="pest-item-card" data-pest="cockroaches">
+        <a href="services.html" class="pest-item-card" data-pest="cockroaches">
           <div class="pest-item-icon">🪳</div>
           <div class="pest-item-name">Cockroaches</div>
           <div class="pest-item-subtitle">German &amp; American roaches</div>
           <span class="pest-item-threat threat-orange">🟠 High Health Risk</span>
         </a>
-        <a href="#services" class="pest-item-card" data-pest="rodents">
+        <a href="services.html" class="pest-item-card" data-pest="rodents">
           <div class="pest-item-icon">🐀</div>
           <div class="pest-item-name">Rats &amp; Mice</div>
           <div class="pest-item-subtitle">Ceiling scratching &amp; wire gnawing</div>
           <span class="pest-item-threat threat-orange">🟠 Fire Hazard</span>
         </a>
-        <a href="#services" class="pest-item-card" data-pest="termites">
+        <a href="services.html" class="pest-item-card" data-pest="termites">
           <div class="pest-item-icon">🐜</div>
           <div class="pest-item-name">Ants &amp; Fire Ants</div>
           <div class="pest-item-subtitle">Kitchen trails &amp; painful stings</div>
           <span class="pest-item-threat threat-yellow">🟡 Nuisance</span>
         </a>
-        <a href="#services" class="pest-item-card" data-pest="fleas">
+        <a href="services.html" class="pest-item-card" data-pest="fleas">
           <div class="pest-item-icon">🦟</div>
           <div class="pest-item-name">Fleas &amp; Wasps</div>
           <div class="pest-item-subtitle">Pet itching &amp; aggressive nests</div>
@@ -385,178 +593,10 @@
     </div>
   </section>
 
-  <!-- 6. CREDIBILITY & STANDARDS BAR -->
-  <div class="trust">
-    <div class="wrap">
-      <span>✓ 100% Money-Back Eradication Guarantee</span>
-      <span>✓ QBCC Licensed Technicians (#655077)</span>
-      <span>✓ Pet &amp; Child Safe Micro-Encapsulated Formulations</span>
-      <span>✓ AS 3660.2 Termite Management Certified</span>
-      <span>✓ Termatrac Radar &amp; Flir Thermal Scanners</span>
-    </div>
-  </div>
-
-  <!-- LIVE FLEET AVAILABILITY & SUBURB DISPATCH SECTION -->
-  <section class="section dispatch-section" id="dispatch-fleet">
-    <div class="wrap">
-      <div class="head reveal">
-        <div class="status-pill status-pill-head">Live Fleet Availability</div>
-        <h2>Check Today's Technician Dispatch in Your Suburb</h2>
-        <p>Real-time GPS fleet monitoring across Queensland &amp; NSW. Check active mobile response units, next available inspection slots, and lock in same-day emergency protection.</p>
-      </div>
-
-      <div class="dispatch-console-card reveal">
-        <div class="dispatch-left-col">
-          <label for="postcode-input" class="dispatch-input-label">
-            <span>📍</span> Enter Postcode or Suburb
-          </label>
-          <div class="dispatch-input-group">
-            <div class="dispatch-input-wrapper">
-              <svg class="search-pin-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <input type="text" id="postcode-input" class="dispatch-input"
-                placeholder="e.g. 4350 Toowoomba, 4000 Brisbane, 4217 Gold Coast..." value="4350">
-            </div>
-            <button class="btn btn-gold" id="check-dispatch-btn" type="button">Check Availability</button>
-          </div>
-          <div class="dispatch-quick-chips">
-            <span class="chips-label">Popular Hubs:</span>
-            <button type="button" class="quick-chip" data-code="4350">Toowoomba 4350</button>
-            <button type="button" class="quick-chip" data-code="4000">Brisbane 4000</button>
-            <button type="button" class="quick-chip" data-code="4217">Gold Coast 4217</button>
-            <button type="button" class="quick-chip" data-code="4551">Sunshine Coast 4551</button>
-            <button type="button" class="quick-chip" data-code="4700">Rockhampton 4700</button>
-            <button type="button" class="quick-chip" data-code="2150">Sydney 2150</button>
-          </div>
-        </div>
-
-        <div class="dispatch-status-box active-dispatch" id="dispatch-result-box">
-          <div class="status-pill status-pill-badge" id="dispatch-badge">🟢 3 Units Active in Toowoomba Today</div>
-          <div class="dispatch-status-text" id="dispatch-details">
-            Next available inspection window: <b>Tomorrow 8:30 AM</b>.<br>
-            Same-day emergency timber &amp; pest response available across <b>4350</b> and surrounding Darling Downs.
-          </div>
-          <a href="tel:1800814199" class="dispatch-call-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span>Instant Dispatch: 1800 814 199</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. INTERACTIVE PEST & SYMPTOM DIAGNOSIS HUB -->
-  <section class="section" id="services">
-    <div class="wrap">
-      <div class="head reveal">
-        <div class="tag">Pest Diagnostic Hub</div>
-        <h2>Every pest has a plan. Identify and solve yours.</h2>
-        <p>Select your pest symptom below to review threat levels, where to look in your home, and our certified AS 3660
-          eradication protocol.</p>
-      </div>
-
-      <!-- Diagnostic Tabs -->
-      <div class="pest-diag-tabs reveal">
-        <button class="diag-tab active" data-pest="termites"><span>🐜</span> Termites &amp; Timber</button>
-        <button class="diag-tab" data-pest="cockroaches"><span>🪳</span> Cockroaches &amp; Ants</button>
-        <button class="diag-tab" data-pest="spiders"><span>🕷️</span> Spiders &amp; Creepers</button>
-        <button class="diag-tab" data-pest="rodents"><span>🐀</span> Rodents &amp; Possums</button>
-        <button class="diag-tab" data-pest="fleas"><span>🦟</span> Fleas &amp; Bed Bugs</button>
-      </div>
-
-      <!-- Dynamic Diagnostic Display Card -->
-      <div class="diag-card-grid reveal" id="pest-diag-card">
-        <div class="diag-info">
-          <div class="threat-badge threat-severe" id="diag-threat">🚨 Severe Structural Threat · $10K+ Damage Risk</div>
-          <h3 style="font-size:24px; color:var(--navy); margin-bottom:10px;" id="diag-title">Subterranean Termites
-            (White Ants)</h3>
-          <p id="diag-desc" style="font-size:15px; color:var(--slate-mid);">Coptotermes and Schedorhinotermes colonies
-            penetrate structural slabs and timber frames silently. Often unnoticed until catastrophic hollow damage
-            occurs.</p>
-
-          <div class="diag-checklist">
-            <div
-              style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--slate-muted); margin-bottom:6px;">
-              Telltale Warning Signs:</div>
-            <div class="diag-check-item"><span>⚠️</span> <span id="diag-sign-1">Mud tracking conduits along brick weep
-                holes or foundation perimeter</span></div>
-            <div class="diag-check-item"><span>⚠️</span> <span id="diag-sign-2">Hollow or papery sound when tapping
-                skirting boards and door jambs</span></div>
-            <div class="diag-check-item"><span>⚠️</span> <span id="diag-sign-3">Tight or sticking doors and windows
-                caused by moisture buildup</span></div>
-          </div>
-
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn btn-gold" href="#calculator">Calculate Treatment Cost</a>
-            <a class="btn btn-line" href="tel:1800814199">Emergency Scan: 1800 814 199</a>
-          </div>
-        </div>
-
-        <div class="diag-protocol-box">
-          <div>
-            <div
-              style="font-size:12px; font-weight:700; color:var(--emerald); text-transform:uppercase; letter-spacing:.06em;">
-              Certified Eradication Protocol</div>
-            <h4 style="font-size:19px; color:var(--navy); margin-top:4px;" id="diag-protocol-title">AS 3660.2 Thermal
-              Scan &amp; Chemical Zone</h4>
-            <ul class="diag-spec-list">
-              <li><span>🔬</span> <span><b>Detection:</b> Flir Infrared Thermal + Termatrac Radar</span></li>
-              <li><span>🛡️</span> <span><b>Treatment:</b> Termidor® Non-Repellent Liquid Barrier</span></li>
-              <li><span>🔄</span> <span><b>Prevention:</b> Plasmite™ Underground Reticulation Conduits</span></li>
-              <li><span>📋</span> <span><b>Certification:</b> Written 47-point digital audit on completion</span></li>
-            </ul>
-          </div>
-          <div
-            style="border-top:1px solid var(--line); padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
-            <span style="font-size:13px; font-weight:600; color:var(--slate-mid);">Warranty Period:</span>
-            <span style="font-size:14px; font-weight:700; color:var(--navy);" id="diag-warranty">Up to 8 Years
-              Protection</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. TECHNOLOGY PARTNER SECTION -->
-  <section class="partner-section" id="partner">
-    <div class="partner-wrap">
-      <div class="partner-text">
-        <div class="partner-eyebrow"><span class="line"></span> ✦ TECHNOLOGY PARTNER</div>
-        <h2>Local pest control.<br><span class="accent">Serious technology.</span></h2>
-        <p>Creepy Crawly runs on JobGen.AI, the AI workforce company powering our call answering and booking. Every
-          enquiry gets answered, every quote gets followed up — so our technicians can focus on what they do best:
-          getting rid of pests.</p>
-        <div class="partner-ctas">
-          <a class="btn btn-gold" href="#services">Meet the AI Team →</a>
-          <a class="btn btn-outline" href="https://jobgen.ai/" target="_blank" rel="noopener">Visit JobGen.AI ↗</a>
-        </div>
-      </div>
-
-      <div class="partner-photo">
-        <div class="partner-frame">
-          <div class="partner-frame-inner">
-            <img src="partner-owners.jpg" alt="Creepy Crawly and JobGen.AI Leadership Partnership" width="1024"
-              height="683" loading="lazy">
-          </div>
-        </div>
-        <div class="partner-caption"><span class="dot"></span> CREEPY CRAWLY &amp; JOBGEN.AI · TECHNOLOGY PARTNERSHIP
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. TRANSPARENT 3-STEP TREATMENT & QUOTE CALCULATOR -->
-  <section class="section calc-section-enhanced" id="calculator">
+  <!-- 4. TRANSPARENT 3-STEP TREATMENT & QUOTE CALCULATOR (WHITE THEME) -->
+  <section class="section calc-section-enhanced theme-white" id="calculator">
     <div class="wrap">
       <div class="head reveal" style="text-align:center; margin:0 auto 48px;">
-        <div class="kicker"
-          style="display:inline-flex; align-items:center; gap:6px; background:rgba(234,179,8,0.18); color:var(--gold); border:1px solid rgba(234,179,8,0.4); padding:5px 14px; border-radius:50px; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px;">
-          <span>⚡</span> INSTANT TRANSPARENT ESTIMATOR
-        </div>
         <h2>Calculate your estimated treatment in 30 seconds</h2>
         <p style="margin:12px auto 0;">No hidden contractor callout fees. Transparent pricing backed by our $50
           first-service discount.</p>
@@ -653,11 +693,11 @@
     </div>
   </section>
 
-  <!-- 5. "CREEPY CRAWLY vs. BUDGET CONTRACTOR" COMPARISON MATRIX -->
-  <section class="section" id="comparison">
+  <!-- 5. "CREEPY CRAWLY vs. BUDGET CONTRACTOR" COMPARISON MATRIX (DARK OVERLAYED IMAGE THEME) -->
+  <section class="section theme-dark-image" id="comparison">
     <div class="wrap">
       <div class="head reveal">
-        <h2>Why Queensland homeowners choose Creepy Crawly</h2>
+        <h2>Why Sydney homeowners choose Creepy Crawly</h2>
         <p>Not all pest treatments are equal. Here is how our four decades of licensed protection compare against
           typical budget spray operators.</p>
       </div>
@@ -666,55 +706,157 @@
         <table class="comp-table">
           <thead>
             <tr>
-              <th style="width:38%;">Standard / Quality Metric</th>
-              <th style="width:31%;">Typical Budget Sprayer</th>
-              <th class="brand-col" style="width:31%;">Creepy Crawly Pest Control</th>
+              <th style="width:34%;">Standard / Quality Metric</th>
+              <th class="col-budget" style="width:33%;">
+                <div class="col-header-box">
+                  <span class="col-title">Typical Budget Sprayer</span>
+                  <span class="col-badge-budget">⚠️ High Risk Exclusions</span>
+                </div>
+              </th>
+              <th class="brand-col" style="width:33%;">
+                <div class="col-header-box">
+                  <span class="col-title">Creepy Crawly Pest Control</span>
+                  <span class="col-badge-champion">🏆 Certified Gold Standard</span>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><b>Inspection Technology</b></td>
-              <td><span class="comp-badge-no">✕ Visual torch only</span></td>
-              <td class="brand-col"><span class="comp-badge-yes">✓ Termatrac Radar + Flir Thermal Imaging</span></td>
-            </tr>
-            <tr>
-              <td><b>Chemical Formulations</b></td>
-              <td><span class="comp-badge-no">✕ Cheap repellent sprays (pests scatter into walls)</span></td>
-              <td class="brand-col"><span class="comp-badge-yes">✓ Termidor® Non-Repellent Transfer Chemistry</span>
+              <td class="col-metric">
+                <div class="metric-title-wrap">
+                  <span class="metric-icon-circle">📡</span>
+                  <span>Inspection Technology</span>
+                </div>
+              </td>
+              <td class="col-budget">
+                <span class="comp-badge-pill pill-no">
+                  <span class="pill-icon">✕</span>
+                  <span>Visual torch only (misses concealed termites)</span>
+                </span>
+              </td>
+              <td class="brand-col">
+                <span class="comp-badge-pill pill-yes">
+                  <span class="pill-icon">✓</span>
+                  <span>Termatrac Radar + Flir Thermal Non-Invasive Scanners</span>
+                </span>
               </td>
             </tr>
             <tr>
-              <td><b>Satisfaction Guarantee</b></td>
-              <td><span class="comp-badge-no">✕ "30-day warranty" with hidden exclusion clauses</span></td>
-              <td class="brand-col"><span class="comp-badge-yes">✓ 100% Money-Back &amp; Free Callback Guarantee</span>
+              <td class="col-metric">
+                <div class="metric-title-wrap">
+                  <span class="metric-icon-circle">🧪</span>
+                  <span>Chemical Formulations</span>
+                </div>
+              </td>
+              <td class="col-budget">
+                <span class="comp-badge-pill pill-no">
+                  <span class="pill-icon">✕</span>
+                  <span>Generic repellent sprays (pests scatter deeper into walls)</span>
+                </span>
+              </td>
+              <td class="brand-col">
+                <span class="comp-badge-pill pill-yes">
+                  <span class="pill-icon">✓</span>
+                  <span>Termidor® HE &amp; Non-Repellent Micro-Encapsulated Formulations</span>
+                </span>
               </td>
             </tr>
             <tr>
-              <td><b>Accreditation &amp; Licensing</b></td>
-              <td><span class="comp-badge-no">✕ Subcontracted trainee operators</span></td>
-              <td class="brand-col"><span class="comp-badge-yes">✓ QBCC #655077 Licensed &amp;
-                  Entomologist-Trained</span></td>
+              <td class="col-metric">
+                <div class="metric-title-wrap">
+                  <span class="metric-icon-circle">🛡️</span>
+                  <span>Satisfaction Guarantee</span>
+                </div>
+              </td>
+              <td class="col-budget">
+                <span class="comp-badge-pill pill-no">
+                  <span class="pill-icon">✕</span>
+                  <span>"30-day warranty" with hidden exclusion clauses</span>
+                </span>
+              </td>
+              <td class="brand-col">
+                <span class="comp-badge-pill pill-yes">
+                  <span class="pill-icon">✓</span>
+                  <span>100% Money-Back &amp; 12-Month Free Return Callout Warranty</span>
+                </span>
+              </td>
             </tr>
             <tr>
-              <td><b>Written Compliance Audit</b></td>
-              <td><span class="comp-badge-no">✕ Generic paper invoice receipt</span></td>
-              <td class="brand-col"><span class="comp-badge-yes">✓ Hand-Signed 47-Point Digital Certificate &amp;
-                  Photos</span></td>
+              <td class="col-metric">
+                <div class="metric-title-wrap">
+                  <span class="metric-icon-circle">📜</span>
+                  <span>Accreditation &amp; Licensing</span>
+                </div>
+              </td>
+              <td class="col-budget">
+                <span class="comp-badge-pill pill-no">
+                  <span class="pill-icon">✕</span>
+                  <span>Subcontracted operators with basic chemical ticket</span>
+                </span>
+              </td>
+              <td class="brand-col">
+                <span class="comp-badge-pill pill-yes">
+                  <span class="pill-icon">✓</span>
+                  <span>QBCC #655077 Licensed, AS 3660.2 Certified &amp; Police Checked</span>
+                </span>
+              </td>
             </tr>
             <tr>
-              <td><b>Family &amp; Pet Safety</b></td>
-              <td><span class="comp-badge-no">✕ Lingering solvent chemical odors</span></td>
-              <td class="brand-col"><span class="comp-badge-yes">✓ Water-based, zero airborne toxins once dry</span>
+              <td class="col-metric">
+                <div class="metric-title-wrap">
+                  <span class="metric-icon-circle">📋</span>
+                  <span>Written Compliance Audit</span>
+                </div>
+              </td>
+              <td class="col-budget">
+                <span class="comp-badge-pill pill-no">
+                  <span class="pill-icon">✕</span>
+                  <span>Generic receipt without structural moisture logs</span>
+                </span>
+              </td>
+              <td class="brand-col">
+                <span class="comp-badge-pill pill-yes">
+                  <span class="pill-icon">✓</span>
+                  <span>Hand-Signed 47-Point Digital Audit, Thermal Photos &amp; Barcode Log</span>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-metric">
+                <div class="metric-title-wrap">
+                  <span class="metric-icon-circle">🐾</span>
+                  <span>Family &amp; Pet Safety</span>
+                </div>
+              </td>
+              <td class="col-budget">
+                <span class="comp-badge-pill pill-no">
+                  <span class="pill-icon">✕</span>
+                  <span>Strong lingering petroleum solvent chemical fumes</span>
+                </span>
+              </td>
+              <td class="brand-col">
+                <span class="comp-badge-pill pill-yes">
+                  <span class="pill-icon">✓</span>
+                  <span>Water-based, zero airborne toxins once dry (child &amp; pet safe)</span>
+                </span>
               </td>
             </tr>
           </tbody>
         </table>
+        <div class="comp-table-footer">
+          <div class="comp-footer-tip">
+            <span style="font-size:18px;">💡</span>
+            <span><b>Queensland Standard Tip:</b> AS 3660.2 requires active timber pest inspections every 12 months minimum. Budget visual inspections without radar leave you unprotected against subterranean ingress.</span>
+          </div>
+          <a href="#calculator" class="btn btn-gold" style="padding:10px 20px; font-size:13px;">Calculate My Protection →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. 4-STEP CUSTOMER JOURNEY TIMELINE -->
-  <section class="section" id="journey">
+  <!-- 6. 4-STEP CUSTOMER JOURNEY TIMELINE (WHITE THEME) -->
+  <section class="section theme-white" id="journey">
     <div class="wrap">
       <div class="head reveal">
         <h2>Your 4-step home protection journey</h2>
@@ -754,13 +896,12 @@
     </div>
   </section>
 
-  <!-- 7. GUARANTEE SECTION -->
-  <section class="section guarantee" id="guarantee">
+  <!-- 7. GUARANTEE SECTION (DARK OVERLAYED IMAGE THEME) -->
+  <section class="section guarantee theme-dark-image" id="guarantee">
     <div class="wrap">
       <div class="guarantee-flex">
         <div class="guarantee-text">
           <div class="head reveal">
-            <div class="tag">Our promise</div>
             <h2>If pests come back, so do we — free.</h2>
           </div>
           <div class="g-row reveal">
@@ -796,8 +937,8 @@
     </div>
   </section>
 
-  <!-- 8. TESTIMONIALS & AUTHENTIC CUSTOMER REVIEWS -->
-  <section class="section" id="reviews">
+  <!-- 8. TESTIMONIALS & AUTHENTIC CUSTOMER REVIEWS (WHITE THEME) -->
+  <section class="section theme-white" id="reviews">
     <div class="wrap">
       <div class="head reveal">
         <h2>What Queensland families are saying</h2>
@@ -809,7 +950,7 @@
       <div class="reviews-trust-ribbon reveal">
         <div class="trust-ribbon-badge">
           <span class="ribbon-star">★</span>
-          <span>200,000+ Queensland &amp; NSW Families Protected Since 1985</span>
+          <span>200,000+ Australian Families Protected Since 1985</span>
         </div>
         <div class="trust-ribbon-stats">
           <span>Toowoomba · Brisbane · Sunshine Coast · Regional NSW</span>
@@ -875,8 +1016,8 @@
     </div>
   </section>
 
-  <!-- 9. INTERACTIVE CATEGORIZED ACCORDION FAQ -->
-  <section class="section" id="faq">
+  <!-- 9. INTERACTIVE CATEGORIZED ACCORDION FAQ (DARK OVERLAYED IMAGE THEME) -->
+  <section class="section theme-dark-image" id="faq">
     <div class="wrap">
       <div class="head reveal">
         <h2>Frequently Asked Questions</h2>
@@ -949,48 +1090,89 @@
     </div>
   </section>
 
-  <!-- 10. LOCATIONS SECTION -->
-  <section class="section" id="locations">
+  <!-- 10. LOCATIONS SECTION (WHITE THEME) -->
+  <section class="section theme-white" id="locations">
     <div class="wrap">
       <div class="head reveal">
-        <h2>Six regions across QLD &amp; NSW</h2>
-        <p>Local teams based directly in your community for rapid dispatch and emergency same-day callouts.</p>
+        <h2>Sydney Franchise Hub &amp; Service Locations</h2>
+        <p>Direct owner-operated dispatch from our Glenmore Park base across Greater Western Sydney and regional corridors.</p>
       </div>
       <div class="locations-container reveal">
         <div class="locations-info">
           <div class="loc-row">
-            <span class="loc-chip">📍 Toowoomba (HQ)</span>
-            <span class="loc-chip">📍 Brisbane Metro</span>
-            <span class="loc-chip">📍 Gold Coast</span>
-            <span class="loc-chip">📍 Sunshine Coast</span>
-            <span class="loc-chip">📍 Darling Downs</span>
-            <span class="loc-chip">📍 Rockhampton / Gladstone</span>
-            <span class="loc-chip">📍 Sydney Western Suburbs</span>
+            <span class="loc-chip">📍 Glenmore Park (Franchise HQ)</span>
+            <span class="loc-chip">📍 Penrith &amp; Nepean</span>
+            <span class="loc-chip">📍 Blacktown Corridor</span>
+            <span class="loc-chip">📍 Parramatta &amp; Central West</span>
+            <span class="loc-chip">📍 The Hills District</span>
+            <span class="loc-chip">📍 Liverpool &amp; South West</span>
+            <span class="loc-chip">📍 Campbelltown &amp; Macarthur</span>
+            <span class="loc-chip">📍 Lower Blue Mountains</span>
           </div>
+
+          <!-- Featured Sydney Franchise Owner & Office Card -->
+          <div style="margin-top:20px; background:#FFFFFF; border:1.5px solid var(--line); border-radius:18px; padding:20px; box-shadow:0 8px 24px rgba(15,23,42,0.06); display:flex; gap:18px; align-items:center;">
+            <img src="images/franchise-owner.jpg" alt="Sydney Franchise Owner" style="width:96px; height:96px; border-radius:14px; object-fit:cover; border:2px solid var(--gold); flex-shrink:0;">
+            <div>
+              <div style="display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:800; color:var(--gold-hover); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px;">
+                ★ LOCAL SYDNEY FRANCHISE OWNER
+              </div>
+              <strong style="color:var(--navy); font-size:16px; display:block;">Sydney Regional Branch Headquarters</strong>
+              <span style="font-size:13px; color:var(--slate-mid); display:block; margin:2px 0 6px;">📍 5 Hovea Close, Glenmore Park, NSW 2745</span>
+              <span style="font-size:12.5px; color:var(--emerald); font-weight:700;">✓ Licensed NSW Pest Management Specialist · Direct Local Dispatch</span>
+            </div>
+          </div>
+
+          <!-- Sydney Regional Service Corridors Grid -->
+          <div style="margin-top:16px; display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
+            <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:12px; padding:12px 14px;">
+              <strong style="color:var(--navy); font-size:13.5px; display:block;">Penrith &amp; Nepean Valley</strong>
+              <span style="font-size:12px; color:var(--slate-mid);">Glenmore Park, Penrith, Jamisontown, Emu Plains, St Marys, Jordan Springs</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:12px; padding:12px 14px;">
+              <strong style="color:var(--navy); font-size:13.5px; display:block;">Blacktown &amp; Western Hub</strong>
+              <span style="font-size:12px; color:var(--slate-mid);">Blacktown, Seven Hills, Mount Druitt, Rooty Hill, Marsden Park, Schofields</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:12px; padding:12px 14px;">
+              <strong style="color:var(--navy); font-size:13.5px; display:block;">Parramatta &amp; Central West</strong>
+              <span style="font-size:12px; color:var(--slate-mid);">Parramatta, Westmead, Auburn, Granville, Silverwater, Ryde, Olympic Park</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:12px; padding:12px 14px;">
+              <strong style="color:var(--navy); font-size:13.5px; display:block;">The Hills &amp; Norwest</strong>
+              <span style="font-size:12px; color:var(--slate-mid);">Castle Hill, Baulkham Hills, Bella Vista, Kellyville, Rouse Hill, Norwest</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:12px; padding:12px 14px;">
+              <strong style="color:var(--navy); font-size:13.5px; display:block;">Liverpool &amp; South West</strong>
+              <span style="font-size:12px; color:var(--slate-mid);">Liverpool, Casula, Prestons, Moorebank, Warwick Farm, Cabramatta</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--line); border-radius:12px; padding:12px 14px;">
+              <strong style="color:var(--navy); font-size:13.5px; display:block;">Campbelltown &amp; Foothills</strong>
+              <span style="font-size:12px; color:var(--slate-mid);">Campbelltown, Gregory Hills, Oran Park, Camden, Narellan, Lower Blue Mtns</span>
+            </div>
+          </div>
+
           <div
-            style="margin-top:24px; padding:22px; background:#fff; border-radius:18px; border:1px solid var(--line);">
-            <h4 style="font-size:16.5px; margin-bottom:8px; color:var(--navy);">Rapid Fleet Response Units</h4>
-            <p style="font-size:14px; opacity:.8; margin:0; line-height:1.6;">Our licensed technicians are on the road
-              daily with fully equipped mobile units carrying AS 3660 compliant termiticides and high-resolution thermal
-              imaging equipment.</p>
+            style="margin-top:18px; padding:18px 22px; background:#fff; border-radius:16px; border:1px solid var(--line);">
+            <h4 style="font-size:15.5px; margin-bottom:6px; color:var(--navy);">Sydney Mobile Fleet With Real-Time GPS Response</h4>
+            <p style="font-size:13.5px; color:var(--slate-mid); margin:0; line-height:1.6;">Dispatched daily from Glenmore Park across Greater Sydney with AS 3660 &amp; AS 4349 compliant non-repellent transfer termiticides and high-resolution Flir thermal imaging &amp; Termatrac radar equipment.</p>
           </div>
         </div>
         <div class="locations-map-card">
           <div class="locations-img-wrap">
-            <img src="locations-map.jpg" alt="Creepy Crawly Pest Control Queensland and NSW Service Region Map"
+            <img src="locations-map.jpg" alt="Creepy Crawly Pest Control Sydney and Regional Service Region Map"
               loading="lazy">
-            <div class="locations-map-badge">🛰️ Active Service Zone Map</div>
+            <div class="locations-map-badge">🛰️ Sydney &amp; Regional Service Map</div>
           </div>
           <div class="locations-caption">
-            <span><b>Coverage Hubs</b>: Queensland Wide &amp; Greater Sydney service corridors</span>
+            <span><b>Sydney Franchise Base</b>: 5 Hovea Close, Glenmore Park NSW 2745 · Dispatched Greater Sydney Wide</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 11. CTA SECTION (Background: guarantee.jpg) -->
-  <div class="cta reveal" id="quote">
+  <!-- 11. CTA SECTION (DARK OVERLAYED IMAGE THEME) -->
+  <div class="cta reveal theme-dark-image" id="quote">
     <h2>Ready to send the pests packing?</h2>
     <p>Free quotes, fast response, and a $50 voucher waiting for new customers.</p>
     <div class="hero-ctas"><a class="btn btn-gold" href="tel:1800814199">Call 1800 814 199</a><a
@@ -1011,10 +1193,18 @@
     <div class="footer-wrap">
       <!-- 1. Top Centered Nav Links (Matching reference) -->
       <div class="footer-nav">
-        <a href="#services">THE PEST BLOG</a>
-        <a href="#comparison">OUR TEAM</a>
-        <a href="#guarantee">ABOUT</a>
-        <a href="#faq">TESTIMONIALS</a>
+        <a href="index.html">HOME</a>
+        <a href="services.html">PEST CONTROL</a>
+        <a href="services.html#termites">TERMITES</a>
+        <a href="services.html#commercial">COMMERCIAL</a>
+        <a href="services.html#builders">BUILDERS</a>
+        <a href="services.html#home-buyers">HOME BUYERS</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="technology-partner.html">TECH PARTNER</a>
+        <a href="news.html">NEWS &amp; ALERTS</a>
+        <button type="button" onclick="document.getElementById('openPaypalModal').click()" style="background:none; border:none; color:inherit; font:inherit; cursor:pointer; text-transform:uppercase;">PAY INVOICE (PAYPAL)</button>
+        <button type="button" onclick="document.getElementById('openFranchiseModal').click()" style="background:none; border:none; color:inherit; font:inherit; cursor:pointer; text-transform:uppercase;">FRANCHISE</button>
+        <button type="button" onclick="document.getElementById('openClientLoginModal').click()" style="background:none; border:none; color:inherit; font:inherit; cursor:pointer; text-transform:uppercase;">CLIENT LOGIN</button>
         <a href="tel:1800814199">CONTACT</a>
       </div>
 
@@ -1193,11 +1383,180 @@
     </button>
   </div>
 
+  <!-- MODAL 1: PAYPAL INVOICE PAYMENT -->
+  <div class="cc-modal-backdrop" id="paypalModal" role="dialog" aria-modal="true" aria-labelledby="ppModalTitle">
+    <div class="cc-modal-card">
+      <div class="cc-modal-header">
+        <h3 class="cc-modal-title" id="ppModalTitle">
+          <span style="font-size:24px;">💳</span>
+          <span>Pay An Invoice With PayPal</span>
+        </h3>
+        <button type="button" class="cc-modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="cc-modal-body">
+        <p style="font-size:13.5px; color:var(--slate-mid); margin-bottom:18px; line-height:1.5;">
+          Enter your Creepy Crawly account details below to make an instant secure payment via PayPal or credit card.
+        </p>
+        <form id="paypalInvoiceForm" onsubmit="event.preventDefault(); alert('Redirecting to PayPal Secure Payment Gateway for Invoice #' + document.getElementById('ppInvNum').value + '...');">
+          <div class="modal-form-group">
+            <label class="modal-form-label" for="ppCustName">Account / Homeowner Name *</label>
+            <input type="text" id="ppCustName" class="modal-form-input" placeholder="e.g. John Smith" required>
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-form-label" for="ppInvNum">Invoice Number *</label>
+            <input type="text" id="ppInvNum" class="modal-form-input" placeholder="e.g. INV-84920" required>
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-form-label" for="ppAmount">Amount to Pay (AUD $) *</label>
+            <input type="number" id="ppAmount" class="modal-form-input" placeholder="e.g. 295.00" step="0.01" min="10" required>
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-form-label" for="ppAddress">Property Address</label>
+            <input type="text" id="ppAddress" class="modal-form-input" placeholder="e.g. 42 Queen St, Brisbane">
+          </div>
+          <button type="submit" class="modal-paypal-pay-btn">
+            <span>Pay with</span>
+            <span class="paypal-logo-badge" style="filter: brightness(1.2);"><span class="pp-p1" style="color:#FFF;">Pay</span><span class="pp-p2" style="color:#FFF;">Pal</span></span>
+            <span style="font-size:14px; font-weight:600; opacity:0.9;">/ Card</span>
+          </button>
+          <div style="margin-top:14px; text-align:center; font-size:12px; color:var(--slate-muted); display:flex; align-items:center; justify-content:center; gap:6px;">
+            <span>🔒</span> 256-Bit SSL Encrypted Official Creepy Crawly Merchant Gateway
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: CLIENT LOGIN -->
+  <div class="cc-modal-backdrop" id="clientLoginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <div class="cc-modal-card">
+      <div class="cc-modal-header">
+        <h3 class="cc-modal-title" id="loginModalTitle">
+          <span>🔐</span>
+          <span>Creepy Crawly Client Portal</span>
+        </h3>
+        <button type="button" class="cc-modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="cc-modal-body">
+        <p style="font-size:13.5px; color:var(--slate-mid); margin-bottom:18px; line-height:1.5;">
+          Sign in to download your certified AS 3660 termite reports, Form 16 builder certificates, and warranty receipts.
+        </p>
+        <form onsubmit="event.preventDefault(); alert('Logging in to Client Portal...');">
+          <div class="modal-form-group">
+            <label class="modal-form-label" for="clientEmail">Email or Account ID *</label>
+            <input type="email" id="clientEmail" class="modal-form-input" placeholder="name@domain.com.au" required>
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-form-label" for="clientPass">Password *</label>
+            <input type="password" id="clientPass" class="modal-form-input" placeholder="••••••••" required>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; margin-bottom:16px;">
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" checked> Remember me
+            </label>
+            <a href="#" style="color:var(--gold-hover); font-weight:600;" onclick="event.preventDefault(); alert('Password reset link sent to your registered email.');">Forgot password?</a>
+          </div>
+          <button type="submit" class="modal-primary-btn">Sign In to Portal →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: CONTACTLESS TREATMENT POLICY -->
+  <div class="cc-modal-backdrop" id="covidPolicyModal" role="dialog" aria-modal="true" aria-labelledby="covidModalTitle">
+    <div class="cc-modal-card">
+      <div class="cc-modal-header" style="background:#FFF7ED;">
+        <h3 class="cc-modal-title" id="covidModalTitle" style="color:#C2410C;">
+          <span>🛡️</span>
+          <span>Contactless Treatment Policy</span>
+        </h3>
+        <button type="button" class="cc-modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="cc-modal-body">
+        <div style="display:inline-block; background:#FFEDD5; color:#9A3412; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; margin-bottom:12px; letter-spacing:0.06em; text-transform:uppercase;">
+          COVID-19 &amp; HYGIENE ASSURANCE PROTOCOL
+        </div>
+        <p style="font-size:14px; color:var(--slate-mid); line-height:1.65; margin-bottom:14px;">
+          To ensure 100% safety for Queensland families, elderly residents, and pets, Creepy Crawly operates strict contactless pest defense protocols:
+        </p>
+        <ul style="list-style:none; padding:0; margin:0 0 18px; display:flex; flex-direction:column; gap:10px; font-size:13.5px; color:var(--navy);">
+          <li style="display:flex; gap:8px;"><span>✓</span> <b>Zero-Contact Exterior Spraying:</b> No need to be home or face-to-face; technicians treat perimeter, weepholes, and fence lines independently.</li>
+          <li style="display:flex; gap:8px;"><span>✓</span> <b>Electronic Digital Invoicing &amp; Reports:</b> Comprehensive AS 3660 PDF reports and invoices delivered straight to your email and SMS.</li>
+          <li style="display:flex; gap:8px;"><span>✓</span> <b>Sanitized PPE &amp; Pet-Safe Formulations:</b> Technicians sanitize all equipment before arrival; treatments dry within 30 minutes with zero odor.</li>
+        </ul>
+        <button type="button" class="modal-primary-btn" onclick="document.getElementById('covidPolicyModal').classList.remove('active');">Got it, Thanks!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: FRANCHISE OPPORTUNITIES -->
+  <div class="cc-modal-backdrop" id="franchiseModal" role="dialog" aria-modal="true" aria-labelledby="franchiseModalTitle">
+    <div class="cc-modal-card">
+      <div class="cc-modal-header">
+        <h3 class="cc-modal-title" id="franchiseModalTitle">
+          <span>🤝</span>
+          <span>Franchise Opportunities</span>
+        </h3>
+        <button type="button" class="cc-modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="cc-modal-body">
+        <p style="font-size:14px; color:var(--slate-mid); line-height:1.6; margin-bottom:16px;">
+          Join Queensland's trusted brand established in 1985. We have prime exclusive regional territories available across South East Queensland, Central QLD, and regional NSW corridors.
+        </p>
+        <form onsubmit="event.preventDefault(); alert('Thank you! A Creepy Crawly Franchise Director will contact you within 24 hours.'); document.getElementById('franchiseModal').classList.remove('active');">
+          <div class="modal-form-group">
+            <label class="modal-form-label">Full Name *</label>
+            <input type="text" class="modal-form-input" placeholder="e.g. David Miller" required>
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-form-label">Phone Number *</label>
+            <input type="tel" class="modal-form-input" placeholder="0400 000 000" required>
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-form-label">Desired Territory / Region *</label>
+            <input type="text" class="modal-form-input" placeholder="e.g. Sunshine Coast, Toowoomba, Brisbane North, etc." required>
+          </div>
+          <button type="submit" class="modal-primary-btn">Submit Franchise Enquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: INSTANT SEARCH MODAL -->
+  <div class="cc-modal-backdrop" id="searchModal" role="dialog" aria-modal="true" aria-labelledby="searchModalTitle">
+    <div class="cc-modal-card">
+      <div class="cc-modal-header">
+        <h3 class="cc-modal-title" id="searchModalTitle">
+          <span>🔍</span>
+          <span>Search Creepy Crawly</span>
+        </h3>
+        <button type="button" class="cc-modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <div class="cc-modal-body">
+        <div class="modal-form-group">
+          <input type="search" id="liveSearchInput" class="modal-form-input" placeholder="Search termites, spiders, PayPal, warranty, postcodes..." autofocus>
+        </div>
+        <div style="margin-top:12px; font-size:12px; font-weight:700; color:var(--slate-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">
+          Popular Quick Links:
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <a href="services.html#termites" class="status-pill">Termite Eradication</a>
+          <button type="button" class="status-pill" onclick="document.getElementById('searchModal').classList.remove('active'); document.getElementById('openPaypalModal').click();">Pay Invoice (PayPal)</button>
+          <a href="services.html#commercial" class="status-pill">Commercial / Sterimist</a>
+          <a href="services.html#builders" class="status-pill">Builders (Form 16)</a>
+          <a href="services.html#home-buyers" class="status-pill">Home Buyers (AS 4349.3)</a>
+          <a href="news.html" class="status-pill">News &amp; Alerts</a>
+          <a href="#calculator" class="status-pill" onclick="document.getElementById('searchModal').classList.remove('active');">Instant Quote Calculator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="three.min.js"></script>
-  <script src="js/spray-bottle.js?v=2"></script>
-  <script src="js/main.js?v=2"></script>
-  <script src="js/footer-bugs.js?v=1"></script>
+  <script src="js/spray-bottle.js?v=6"></script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/footer-bugs.js?v=2"></script>
 </body>
 
 </html>
