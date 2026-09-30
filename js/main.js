@@ -89,22 +89,27 @@
       }
     }
 
-    document.getElementById('check-dispatch-btn').addEventListener('click', () => {
-      const val = document.getElementById('postcode-input').value;
-      if (val) updateDispatch(val);
-    });
+    const checkDispatchBtn = document.getElementById('check-dispatch-btn');
+    const postcodeInput = document.getElementById('postcode-input');
 
-    document.getElementById('postcode-input').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        updateDispatch(e.target.value);
-      }
-    });
+    if (checkDispatchBtn && postcodeInput) {
+      checkDispatchBtn.addEventListener('click', () => {
+        const val = postcodeInput.value;
+        if (val) updateDispatch(val);
+      });
+
+      postcodeInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          updateDispatch(e.target.value);
+        }
+      });
+    }
 
     document.querySelectorAll('.quick-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const code = chip.dataset.code;
-        document.getElementById('postcode-input').value = code;
+        if (postcodeInput) postcodeInput.value = code;
         updateDispatch(code);
       });
     });
@@ -246,15 +251,19 @@
       });
     });
 
-    document.getElementById('calc-submit-btn').addEventListener('click', () => {
-      const phone = document.getElementById('calc-phone-input').value.trim();
-      if (!phone || phone.length < 8) {
-        alert('Please enter a valid mobile number (e.g. 0400 123 456) to receive your instant quote and lock in your $50 voucher.');
-        document.getElementById('calc-phone-input').focus();
-        return;
-      }
-      alert(`Thank you! Your $50 voucher has been locked in for ${phone}. A senior technician will send your customized estimate and booking options shortly.`);
-    });
+    const calcSubmitBtn = document.getElementById('calc-submit-btn');
+    if (calcSubmitBtn) {
+      calcSubmitBtn.addEventListener('click', () => {
+        const phoneInput = document.getElementById('calc-phone-input');
+        const phone = phoneInput ? phoneInput.value.trim() : '';
+        if (!phone || phone.length < 8) {
+          alert('Please enter a valid mobile number (e.g. 0400 123 456) to receive your instant quote and lock in your $50 voucher.');
+          if (phoneInput) phoneInput.focus();
+          return;
+        }
+        alert(`Thank you! Your $50 voucher has been locked in for ${phone}. A senior technician will send your customized estimate and booking options shortly.`);
+      });
+    }
 
     // 6. Interactive FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(header => {
@@ -478,8 +487,73 @@
     if (mobileToggle) mobileToggle.addEventListener('click', openMobileDrawer);
     if (mobileClose) mobileClose.addEventListener('click', closeMobileDrawer);
     if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileDrawer);
+
+    // Mobile Navigation Accordion Sublist Toggle
+    document.querySelectorAll('.mobile-dd-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const group = btn.closest('.mobile-nav-group');
+        const sublist = group ? group.querySelector('.mobile-dd-sublist') : null;
+        const isActive = btn.classList.contains('active');
+        
+        // Optional: close other open accordions for accordion behavior
+        document.querySelectorAll('.mobile-dd-toggle.active').forEach(otherBtn => {
+          if (otherBtn !== btn) {
+            otherBtn.classList.remove('active');
+            const otherGroup = otherBtn.closest('.mobile-nav-group');
+            if (otherGroup) otherGroup.classList.remove('is-open');
+            const otherSub = otherGroup ? otherGroup.querySelector('.mobile-dd-sublist') : null;
+            if (otherSub) otherSub.classList.remove('active');
+          }
+        });
+
+        if (isActive) {
+          btn.classList.remove('active');
+          if (group) group.classList.remove('is-open');
+          if (sublist) sublist.classList.remove('active');
+        } else {
+          btn.classList.add('active');
+          if (group) group.classList.add('is-open');
+          if (sublist) sublist.classList.add('active');
+        }
+      });
+    });
+
+    // Close drawer when any mobile link is clicked
     document.querySelectorAll('.mobile-nav-links a').forEach(a => {
       a.addEventListener('click', closeMobileDrawer);
+    });
+
+    // Desktop Navigation Dropdowns Mouse & Focus Events
+    document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(other => {
+          if (other !== item) other.classList.remove('is-open');
+        });
+        item.classList.add('is-open');
+      });
+
+      item.addEventListener('mouseleave', () => {
+        item.classList.remove('is-open');
+      });
+
+      item.addEventListener('focusin', () => {
+        item.classList.add('is-open');
+      });
+
+      item.addEventListener('focusout', (e) => {
+        if (!item.contains(e.relatedTarget)) {
+          item.classList.remove('is-open');
+        }
+      });
+    });
+
+    // Desktop Dropdowns: Click outside or Escape to close any open dropdown
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item.has-dropdown')) {
+        document.querySelectorAll('.nav-item.has-dropdown.is-open').forEach(el => el.classList.remove('is-open'));
+      }
     });
 
 
