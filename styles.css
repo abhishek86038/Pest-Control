@@ -936,25 +936,34 @@
     }
 
     .pest-item-card {
-      background: #111D30;
-      border: 1.5px solid rgba(255, 255, 255, 0.10);
-      border-radius: 18px;
-      padding: 20px 14px;
+      background: linear-gradient(145deg, #13243A 0%, #0D1726 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      padding: 22px 16px;
       text-align: center;
-      transition: all .3s cubic-bezier(.16, 1, .3, 1);
+      transition: all .35s cubic-bezier(.16, 1, .3, 1);
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      box-shadow:
+        12px 16px 36px rgba(0, 0, 0, 0.5),
+        -4px -4px 16px rgba(255, 255, 255, 0.03),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.12),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.5);
       cursor: pointer;
       position: relative;
     }
 
     .pest-item-card:hover {
-      transform: translateY(-5px);
-      background: #16253E;
+      transform: translateY(-6px) scale(1.02);
+      background: linear-gradient(145deg, #182E4B 0%, #101E32 100%);
       border-color: var(--gold);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.2);
+      box-shadow:
+        18px 24px 44px rgba(0, 0, 0, 0.65),
+        -6px -6px 20px rgba(255, 255, 255, 0.06),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.2),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.45),
+        0 0 24px rgba(245, 158, 11, 0.25);
     }
 
     .pest-item-icon {
@@ -1179,15 +1188,37 @@
     .theme-white p {
       color: #475569 !important;
     }
+    /* CLAYMORPHISM: Light Tactile Surfaces (White Sections) */
     .theme-white .dispatch-console-card,
     .theme-white .calc-console,
     .theme-white .journey-card,
     .theme-white .t-card,
-    .theme-white .locations-map-card {
-      background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+    .theme-white .locations-map-card,
+    .theme-white .locations-info {
+      background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+      border-radius: 26px !important;
+      box-shadow:
+        14px 18px 36px -4px rgba(15, 23, 42, 0.08),
+        -8px -8px 24px rgba(255, 255, 255, 0.95),
+        inset 3px 3px 6px rgba(255, 255, 255, 1),
+        inset -3px -3px 8px rgba(15, 23, 42, 0.04) !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
+
+    .theme-white .journey-card:hover,
+    .theme-white .t-card:hover,
+    .theme-white .dispatch-console-card:hover,
+    .theme-white .locations-map-card:hover {
+      transform: translateY(-6px) scale(1.01) !important;
+      box-shadow:
+        18px 26px 48px -4px rgba(15, 23, 42, 0.12),
+        -10px -10px 28px rgba(255, 255, 255, 1),
+        inset 2px 2px 4px rgba(255, 255, 255, 1),
+        inset -2px -2px 6px rgba(15, 23, 42, 0.03),
+        0 0 0 2px rgba(245, 158, 11, 0.45) !important;
+    }
+
     .theme-white .journey-card h4,
     .theme-white .t-card .name {
       color: #0F2438 !important;
@@ -1611,11 +1642,25 @@
     }
 
     .guarantee-frame {
-      background: #111D30;
-      border: 1.5px solid rgba(255, 255, 255, 0.12);
-      border-radius: 24px;
+      background: linear-gradient(145deg, #13243A 0%, #0D1726 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      border-radius: 26px;
       overflow: hidden;
-      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+      box-shadow:
+        16px 22px 48px rgba(0, 0, 0, 0.55),
+        -6px -6px 20px rgba(255, 255, 255, 0.03),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.12),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.5);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    }
+
+    .guarantee-frame:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        20px 28px 56px rgba(0, 0, 0, 0.65),
+        -8px -8px 24px rgba(255, 255, 255, 0.05),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.18),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.45);
     }
 
     .guarantee-img-box {
@@ -2650,11 +2695,16 @@
     }
 
     .comp-table-wrap {
-      background: linear-gradient(160deg, #0C1B2C 0%, #060E18 100%);
-      border: 1.5px solid rgba(245, 158, 11, 0.30);
-      border-radius: 24px;
+      background: linear-gradient(160deg, #102135 0%, #08121E 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      border-radius: 26px;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 40px rgba(245, 158, 11, 0.08);
+      box-shadow:
+        18px 24px 52px rgba(0, 0, 0, 0.65),
+        -6px -6px 20px rgba(255, 255, 255, 0.03),
+        inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.12),
+        inset -4px -4px 10px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(245, 158, 11, 0.1);
       position: relative;
     }
 
@@ -3021,25 +3071,37 @@
     }
 
     .faq-item {
-      background: #111D30 !important;
-      border: 1.5px solid rgba(255, 255, 255, 0.10) !important;
-      border-radius: 18px;
+      background: linear-gradient(145deg, #13243A 0%, #0D1726 100%) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.14) !important;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      box-shadow:
+        12px 16px 36px rgba(0, 0, 0, 0.5),
+        -4px -4px 16px rgba(255, 255, 255, 0.03),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.12),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.5) !important;
+      transition: all .32s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .faq-item:hover {
-      background: #15233A !important;
-      border-color: rgba(245, 158, 11, 0.4) !important;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
-      transform: translateY(-2px);
+      background: linear-gradient(145deg, #182E4B 0%, #101E32 100%) !important;
+      border-color: rgba(245, 158, 11, 0.5) !important;
+      box-shadow:
+        16px 22px 44px rgba(0, 0, 0, 0.62),
+        -6px -6px 20px rgba(255, 255, 255, 0.06),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.18),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.45) !important;
+      transform: translateY(-3px) scale(1.008);
     }
 
     .faq-item.open {
-      background: #142238 !important;
+      background: linear-gradient(145deg, #162B46 0%, #0F1B2C 100%) !important;
       border-color: var(--gold) !important;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
+      box-shadow:
+        16px 22px 44px rgba(0, 0, 0, 0.65),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.18),
+        inset -3px -3px 8px rgba(0, 0, 0, 0.45),
+        0 0 24px rgba(245, 158, 11, 0.22) !important;
       transform: none;
     }
 
@@ -4867,4 +4929,153 @@
   position: relative;
   z-index: 1;
 }
+
+/* ==========================================================================
+   DOTS AT RANDOM CORNERS IN WHITE SECTIONS
+   Architectural tactile dot matrices for modern graphic polish
+   ========================================================================== */
+.section.theme-white {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-dots {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.section-dots svg {
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.06));
+}
+
+.dots-top-left {
+  top: 30px;
+  left: 36px;
+}
+
+.dots-top-right {
+  top: 32px;
+  right: 40px;
+}
+
+.dots-bottom-right {
+  bottom: 28px;
+  right: 36px;
+}
+
+.dots-bottom-left {
+  bottom: 30px;
+  left: 40px;
+}
+
+.dots-mid-right {
+  top: 48%;
+  right: 28px;
+  transform: translateY(-50%);
+}
+
+.dots-mid-left {
+  top: 52%;
+  left: 28px;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .section-dots {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+  .dots-top-left { top: 12px; left: 14px; }
+  .dots-top-right { top: 12px; right: 14px; }
+  .dots-bottom-right { bottom: 12px; right: 14px; }
+  .dots-bottom-left { bottom: 12px; left: 14px; }
+}
+
+/* ==========================================================================
+   WHITE THIN LINES AT RANDOM PARTS OF DARKER SECTIONS
+   Sleek architectural hairline vectors, technical crosshairs, & code marks
+   ========================================================================== */
+.section.theme-dark-image,
+.pest-quick-selector.theme-dark-image,
+.cta.theme-dark-image {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Thin horizontal light bar with soft amber highlight core */
+.tech-line-h {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 30%, rgba(245, 158, 11, 0.75) 50%, rgba(255, 255, 255, 0.45) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+}
+
+/* Technical corner crosshair brackets */
+.tech-corner-bracket {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
+}
+
+.bracket-tl {
+  top: 32px;
+  left: 40px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.bracket-tr {
+  top: 32px;
+  right: 40px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.bracket-br {
+  bottom: 32px;
+  right: 40px;
+  border-left: none;
+  border-top: none;
+}
+
+.bracket-bl {
+  bottom: 32px;
+  left: 40px;
+  border-right: none;
+  border-top: none;
+}
+
+/* Angled hairline accent ticks */
+.tech-diagonal-tick {
+  position: absolute;
+  width: 55px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), transparent);
+  transform: rotate(-45deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Technical coordinate stamps */
+.tech-code-mark {
+  position: absolute;
+  font-family: 'SF Mono', 'Roboto Mono', Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 1;
+}
+
 
