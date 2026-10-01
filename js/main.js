@@ -260,7 +260,7 @@
           const lines = [['Name', 'name'], ['Phone', 'phone'], ['Email', 'email'], ['Suburb', 'suburb'],
             ['Property type', 'property_type'], ['Service', 'service'], ['Message', 'message']]
             .map(([label, field]) => `${label}: ${data.get(field) || '-'}`);
-          window.location.href = 'mailto:info@creepycrawly.com.au?subject=' + encodeURIComponent('Quote request') +
+          window.location.href = 'mailto:info@creepycrawly.com.au,creepysw@gmail.com?subject=' + encodeURIComponent('Quote request') +
             '&body=' + encodeURIComponent(lines.join('\n'));
           setStatus('Your email app should open with your details filled in. Prefer to talk? Call 1800 814 199.', 'success');
           return;

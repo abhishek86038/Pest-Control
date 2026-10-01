@@ -1229,15 +1229,13 @@
       }
 
     }
-    /* ================================================================
-   SPRAY RIG & 3D CYLINDRICAL BOTTLE AEROSOL MIST ANIMATIONS
-   ================================================================ */
+    /* Hero text entrance */
     .spray-reveal-text {
         opacity: 0;
         transform: translate3d(0, 16px, 0) scale(0.97);
         filter: blur(14px);
         animation: heroSmokeReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: 2.05s; /* Smoke sprays first, then text emerges from the mist */
+        animation-delay: 0.15s;
         will-change: transform, opacity, filter;
       }
 
@@ -1258,99 +1256,6 @@
         }
       }
 
-    .spray-rig {
-        position: absolute;
-        inset: 0;
-        z-index: 20;
-        pointer-events: none;
-        overflow: hidden;
-      }
-
-    /* 3D Cylindrical Spray Bottle Canvas & Container - Left-to-Right Slide & Spray */
-    .spray-can-3d {
-        position: absolute;
-        left: -320px;
-        top: 8%;
-        width: clamp(220px, 20vw, 320px);
-        height: clamp(360px, 38vw, 560px);
-        z-index: 25;
-        pointer-events: none;
-        contain: layout paint;
-        filter: drop-shadow(0 24px 34px rgba(0, 0, 0, .85));
-        animation: canSlideLeftToRight 4.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        will-change: transform, opacity;
-      }
-
-    @keyframes canSlideLeftToRight {
-        0% {
-          transform: translate3d(0, 0, 0) rotate(-2deg) scale(0.92);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        26% {
-          /* Gliding into spray position beside hero text with natural forward tilt */
-          transform: translate3d(calc(22vw + 140px), 0px, 0) rotate(-4.5deg) scale(1);
-          opacity: 1;
-        }
-        54% {
-          /* Smoothly sweeping across text while discharging pressurized aerosol mist */
-          transform: translate3d(calc(52vw + 180px), -6px, 0) rotate(-3.5deg) scale(1);
-          opacity: 1;
-        }
-        78% {
-          /* Gliding smoothly past text towards right edge */
-          transform: translate3d(calc(82vw + 220px), 4px, 0) rotate(-2deg) scale(0.96);
-          opacity: 0.95;
-        }
-        94% {
-          /* Smooth exit off-screen right */
-          transform: translate3d(calc(105vw + 280px), 14px, 0) rotate(-1deg) scale(0.88);
-          opacity: 0.40;
-        }
-        100% {
-          /* Cleanly vanished off-screen */
-          transform: translate3d(calc(120vw + 340px), 20px, 0) rotate(0deg) scale(0.80);
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
-        }
-      }
-
-    .spray-can-3d canvas {
-        width: 100% !important;
-        height: 100% !important;
-        display: block;
-        cursor: grab;
-      }
-
-    .spray-can-3d canvas:active {
-        cursor: grabbing;
-      }
-
-    /* High-Performance 60FPS Aerosol Mist Plume Canvas */
-    .spray-canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 26;
-        contain: strict;
-        will-change: transform;
-      }
-
-    @media (max-width: 768px) {
-      .spray-can-3d {
-          width: clamp(150px, 32vw, 220px);
-          height: clamp(250px, 46vw, 360px);
-          right: 2%;
-          top: 8%;
-        }
-
-    }
     /* Nav Actions: Search + Mobile Hamburger */
     .nav-actions-wrap {
   display: flex;
@@ -1971,6 +1876,18 @@
       grid-template-columns: 5fr 7fr;
       gap: 56px;
       align-items: center;
+    }
+
+    .areas-map {
+      margin: 0 0 24px;
+    }
+
+    .areas-map iframe {
+      display: block;
+      width: 100%;
+      height: 260px;
+      border: 0;
+      border-radius: 14px;
     }
 
     .areas-intro p {
