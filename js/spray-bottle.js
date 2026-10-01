@@ -338,8 +338,28 @@
           // Initial orientation: front label faces camera directly
           canGroup.rotation.y = 0;
 
+          // Drop the can so its nozzle sits level with the hero text, so the mist sweeps across it
+          function alignCanToHeroText(){
+            const headline = document.querySelector('.hero h1') || document.querySelector('.hero-content');
+            if(!headline) return;
+            scene.updateMatrixWorld(true);
+            camera.updateMatrixWorld(true); // projection is NaN until the camera matrices exist
+            const v = new THREE.Vector3();
+            nozzleMarker.getWorldPosition(v);
+            v.project(camera);
+            if(!Number.isFinite(v.y)) return;
+            // Nozzle height inside the untransformed container (the slide-in animation scales/rotates it)
+            const nozzleOffset = (-v.y * 0.5 + 0.5) * container.clientHeight;
+            const rigTop = rig.getBoundingClientRect().top;
+            const h = headline.getBoundingClientRect();
+            const targetY = (h.top - rigTop) + h.height / 2;
+            container.style.top = Math.max(0, Math.round(targetY - nozzleOffset)) + 'px';
+          }
+          alignCanToHeroText();
+
           // Responsive Window Resize
           function onWindowResize(){
+            alignCanToHeroText();
             const newW = container.clientWidth || 360;
             const newH = container.clientHeight || 560;
             camera.aspect = newW / newH;

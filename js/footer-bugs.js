@@ -1,5 +1,5 @@
 /**
- * Creepy Crawly Pest Control — Interactive Footer Bugs Simulation
+ * Creepy Crawly Pest Control: Interactive Footer Bugs Simulation
  * "footer page pe chhota chhota keeda makoda chalte hua dikha do jayada nahi kuch kuch bas jidhar mouse le jaun sab udhar hi aye aaisa"
  * 
  * Features:

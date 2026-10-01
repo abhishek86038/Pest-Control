@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Contact Us | Creepy Crawly Sydney Western Suburbs</title>
+  <meta name="description"
+    content="Request a personalised pest control quote or call 1800 814 199. Servicing homes and businesses across Western Sydney.">
+  <meta name="theme-color" content="#0F2438">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=21">
+</head>
+
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header" id="siteHeader">
+    <nav id="nav" aria-label="Main">
+      <div class="wrap">
+        <div class="nav-brand-cluster">
+          <a href="index.html" class="logo" aria-label="Creepy Crawly Pest Control home">
+            <img src="logo.png" alt="Creepy Crawly Pest Control" class="brand-logo-img">
+          </a>
+        </div>
+
+        <div class="navlinks-container">
+          <div class="navlinks" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html" class="active" aria-current="page">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="nav-actions-wrap">
+          <a href="tel:1800814199" class="nav-call-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>1800 814 199</span>
+          </a>
+          <button type="button" class="nav-mobile-toggle" id="navMobileToggle" aria-label="Open menu" aria-controls="mobileNavDrawer" aria-expanded="false">
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+            <span class="ham-line"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile navigation">
+    <div class="mobile-drawer-header">
+      <img src="logo.png" alt="Creepy Crawly" class="mobile-drawer-logo">
+      <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="mobile-nav-links" aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html" class="active" aria-current="page">Contact Us</a>
+    </nav>
+    <div class="mobile-nav-actions">
+      <a href="tel:1800814199" class="btn btn-gold">Call 1800 814 199</a>
+      <a href="contact.html" class="btn btn-line">Request a Quote</a>
+    </div>
+  </aside>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Contact Us</h1>
+      <p class="page-hero-sub">Tell us about your pest problem and we'll get back to you with a personalised quote.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="wrap contact-grid">
+
+      <!-- QUOTE REQUEST FORM -->
+      <div class="contact-form-col">
+        <h2>Request a personalised quote</h2>
+        <span class="title-bar" aria-hidden="true"></span>
+        <p class="contact-form-intro">We give every customer a quote based on their property and pest problem rather than generic pricing. Fill in the form below and we'll be in touch, usually within one business day.</p>
+
+        <div class="contact-form-card">
+
+        <form id="quoteForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <!-- Web3Forms: replace with the access key for the inbox that should receive enquiries (https://web3forms.com). -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New quote request from the website">
+          <input type="hidden" name="from_name" value="Creepy Crawly website">
+          <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="qName">Full name <span aria-hidden="true">*</span></label>
+              <input type="text" id="qName" name="name" autocomplete="name" required>
+            </div>
+            <div class="form-field">
+              <label for="qPhone">Phone <span aria-hidden="true">*</span></label>
+              <input type="tel" id="qPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="qEmail">Email</label>
+              <input type="email" id="qEmail" name="email" autocomplete="email">
+            </div>
+            <div class="form-field">
+              <label for="qSuburb">Suburb or postcode <span aria-hidden="true">*</span></label>
+              <input type="text" id="qSuburb" name="suburb" autocomplete="address-level2" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="qProperty">Property type</label>
+              <select id="qProperty" name="property_type">
+                <option value="">Select&hellip;</option>
+                <option>House</option>
+                <option>Townhouse / Unit</option>
+                <option>Commercial</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="qService">Service needed</label>
+              <select id="qService" name="service">
+                <option value="">Select&hellip;</option>
+                <option>General pest control</option>
+                <option>Termite inspection</option>
+                <option>Termite treatment</option>
+                <option>Rats &amp; mice</option>
+                <option>Pre-purchase inspection</option>
+                <option>Commercial pest control</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="qMessage">How can we help?</label>
+            <textarea id="qMessage" name="message" rows="5" placeholder="e.g. Seeing ants in the kitchen and spiders around the back deck."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold contact-submit">Send quote request</button>
+          <p class="form-status" id="quoteFormStatus" role="status" aria-live="polite"></p>
+        </form>
+        </div>
+      </div>
+
+      <!-- FIND US -->
+      <aside class="contact-info" aria-label="Contact details">
+        <h2>Find us</h2>
+        <span class="title-bar" aria-hidden="true"></span>
+        <ul class="contact-info-list">
+          <li><strong>Free call:</strong> <a href="tel:1800814199">1800 814 199</a></li>
+          <li><strong>Andy Kraus (owner):</strong> <a href="tel:0412074484">0412 074 484</a></li>
+          <li><strong>Email:</strong> <a href="mailto:info@creepycrawly.com.au">info@creepycrawly.com.au</a></li>
+          <li><strong>Office:</strong> Glenmore Park, NSW 2745</li>
+        </ul>
+
+        <div class="contact-map">
+          <iframe title="Map of Glenmore Park, NSW" src="https://www.google.com/maps?q=Glenmore+Park+NSW+2745&amp;z=11&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="contact-areas">
+          <h3>Our service areas</h3>
+          <p>We look after homes and businesses across Penrith, Blacktown, Parramatta, The Hills, Liverpool, Campbelltown and the lower Blue Mountains.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="Creepy Crawly Pest Control home">
+            <img src="logo.png" alt="Creepy Crawly Pest Control">
+          </a>
+          <p class="footer-tagline">Pest &amp; termite specialists for Western Sydney.</p>
+          <ul class="footer-contact">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:1800814199">1800 814 199</a>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+              <a href="tel:0412074484">0412 074 484 <span class="footer-muted">(Andy)</span></a>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              <a href="mailto:info@creepycrawly.com.au">info@creepycrawly.com.au</a>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Glenmore Park, NSW<br>Servicing Western Sydney</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="technology-partner.html">Technology Partner</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html#residential">Residential Pest Control</a>
+          <a href="services.html#commercial">Commercial Pest Control</a>
+          <a href="services.html#builders">Builders &amp; New Homes</a>
+          <a href="services.html#home-buyers">Pre-Purchase Inspections</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Service Areas</h4>
+          <span>Penrith &amp; Nepean</span>
+          <span>Blacktown</span>
+          <span>Parramatta</span>
+          <span>The Hills</span>
+          <span>Liverpool</span>
+          <span>Campbelltown</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Creepy Crawly Sydney Western Suburbs. All rights reserved.</span>
+        <a href="technology-partner.html" class="footer-partner">Powered by <img src="jobgen-icon.png" alt="" width="18" height="18"> <strong>JobGen.AI</strong></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=13"></script>
+  <script src="js/footer-bugs.js?v=4"></script>
+</body>
+
+</html>
