@@ -428,6 +428,16 @@
       object-fit: cover;
       transform: translate(-50%, -50%);
       filter: brightness(0.85) contrast(1.05);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hero-bg-video.is-active {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-bg-video { transition: none; }
     }
 
     .hero-video-overlay {

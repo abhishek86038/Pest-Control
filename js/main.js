@@ -1,3 +1,40 @@
+    // Hero playlist: V2 indoors then outdoors, followed by the remaining outdoor film.
+    // Keep the outgoing frame visible until the next preloaded clip is playing.
+    const heroVideos = [...document.querySelectorAll('.hero-bg-video')];
+    if (heroVideos.length > 1) {
+      let currentVideo = 0;
+      const failedVideos = new Set();
+      const playNextHeroVideo = () => {
+        for (let step = 1; step <= heroVideos.length; step++) {
+          const nextIndex = (currentVideo + step) % heroVideos.length;
+          if (failedVideos.has(nextIndex)) continue;
+          const next = heroVideos[nextIndex];
+          next.currentTime = 0;
+          // Preserve the previous frame if the browser declines playback.
+          next.play().catch(() => {});
+          return;
+        }
+      };
+
+      heroVideos.forEach((video, index) => {
+        video.muted = true;
+        video.addEventListener('playing', () => {
+          currentVideo = index;
+          heroVideos.forEach((clip, clipIndex) => {
+            clip.classList.toggle('is-active', clipIndex === index);
+            if (clipIndex !== index) clip.pause();
+          });
+        });
+        video.addEventListener('ended', playNextHeroVideo);
+        video.addEventListener('error', () => {
+          failedVideos.add(index);
+          if (index === currentVideo || heroVideos[currentVideo].ended || heroVideos[currentVideo].error) {
+            playNextHeroVideo();
+          }
+        }, true);
+      });
+    }
+
     // 1. Reveal Animations on Scroll
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
