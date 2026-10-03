@@ -485,7 +485,8 @@
     .spider-web-rig {
       position: absolute;
       top: -15px;
-      right: clamp(15px, 6vw, 130px);
+      left: auto !important;
+      right: clamp(15px, 6vw, 130px) !important;
       width: 220px;
       height: 150px;
       pointer-events: none;
@@ -506,12 +507,13 @@
       display: block;
     }
 
-    /* Spider Unit suspended on the right side */
+    /* Spider Unit suspended strictly on the right side */
     .spider-unit {
       position: absolute;
       width: 120px;
       height: 136px;
-      right: clamp(35px, calc(6vw + 35px), 165px);
+      left: auto !important;
+      right: clamp(35px, calc(6vw + 35px), 165px) !important;
       top: 135px;
       transform-origin: 55px 48px;
       opacity: 0;
@@ -1364,252 +1366,7 @@
       }
 
     }
-    /* ================================================================
-   CINEMATIC HERO SPIDER ANIMATION & PEST-CONTROL ERADICATION FOG
-   ================================================================ */
-    .spider-hero-rig {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 5;
-      overflow: hidden;
-    }
 
-    .spider-unit {
-      position: absolute;
-      width: 125px;
-      height: 140px;
-      left: clamp(20px, 4vw, 55px);
-      top: var(--spider-top, 190px);
-      transform-origin: 62px 72px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translate3d(0, -380px, 0);
-    }
-
-    .spider-hero-rig.active .spider-unit {
-      will-change: transform, opacity;
-      animation: spiderCinematicSequence 4.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* Natural Ceiling Spider Web (Jal) Rig - Anchored in Top-Left Corner */
-    .spider-web-rig {
-      position: absolute;
-      top: var(--web-top, 60px);
-      left: var(--web-left, 80px);
-      width: 220px;
-      height: 150px;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 4;
-      opacity: 0.9;
-      animation: webFadeIn 0.8s ease both;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
-    }
-
-    /* The web is in place from page load; the spider drops in later (see main.js) */
-    @keyframes webFadeIn {
-      from { opacity: 0; }
-      to { opacity: 0.9; }
-
-    }
-
-    .spider-web-svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .spider-svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.45)) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.95));
-    }
-
-    /* Embedded Silk Dragline Strand Glow Sheen */
-    .spider-dragline-strand {
-      pointer-events: none;
-      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.75));
-    }
-
-    /* Articulated Leg Gait Cycles - Organic 60fps Smooth Stepping */
-    .leg {
-      transform-box: fill-box;
-      will-change: transform;
-    }
-
-    .leg-l1 { transform-origin: 100% 100%; animation: crawlLegL1 0.38s infinite alternate ease-in-out; }
-
-    .leg-l2 { transform-origin: 100% 70%;  animation: crawlLegL2 0.38s infinite alternate ease-in-out; }
-
-    .leg-l3 { transform-origin: 100% 30%;  animation: crawlLegL3 0.38s infinite alternate ease-in-out; }
-
-    .leg-l4 { transform-origin: 100% 0%;   animation: crawlLegL4 0.38s infinite alternate ease-in-out; }
-
-    .leg-r1 { transform-origin: 0% 100%; animation: crawlLegR1 0.38s infinite alternate ease-in-out; }
-
-    .leg-r2 { transform-origin: 0% 70%;  animation: crawlLegR2 0.38s infinite alternate ease-in-out; }
-
-    .leg-r3 { transform-origin: 0% 30%;  animation: crawlLegR3 0.38s infinite alternate ease-in-out; }
-
-    .leg-r4 { transform-origin: 0% 0%;   animation: crawlLegR4 0.38s infinite alternate ease-in-out; }
-
-    @keyframes crawlLegL1 { 0% { transform: rotate(-7deg); } 100% { transform: rotate(7deg); } }
-
-    @keyframes crawlLegL2 { 0% { transform: rotate(6deg); }  100% { transform: rotate(-6deg); } }
-
-    @keyframes crawlLegL3 { 0% { transform: rotate(-6deg); } 100% { transform: rotate(6deg); } }
-
-    @keyframes crawlLegL4 { 0% { transform: rotate(7deg); }  100% { transform: rotate(-7deg); } }
-
-    @keyframes crawlLegR1 { 0% { transform: rotate(7deg); }  100% { transform: rotate(-7deg); } }
-
-    @keyframes crawlLegR2 { 0% { transform: rotate(-6deg); } 100% { transform: rotate(6deg); } }
-
-    @keyframes crawlLegR3 { 0% { transform: rotate(6deg); }  100% { transform: rotate(-6deg); } }
-
-    @keyframes crawlLegR4 { 0% { transform: rotate(-7deg); } 100% { transform: rotate(7deg); } }
-
-    /* Spider Abdomen breathing pulse */
-    .spider-abdomen {
-      transform-origin: 55px 75px;
-      animation: spiderAbdomenPulse 2.0s infinite ease-in-out;
-    }
-
-    @keyframes spiderAbdomenPulse {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.04, 0.97); }
-
-    }
-
-    /* Pedipalps twitch */
-    .spider-pedipalps {
-      transform-origin: 55px 45px;
-      animation: palpTwitch 1.0s infinite alternate ease-in-out;
-    }
-
-    @keyframes palpTwitch {
-      0%   { transform: rotate(-2.5deg); }
-      100% { transform: rotate(2.5deg); }
-
-    }
-
-    /* CINEMATIC TIMELINE - SILKY SMOOTH GPU TRANSFORM DESCENT:
-       0.0s - 1.2s: Glides smoothly down on glistening silk line with natural silk elastic deceleration
-       1.2s - 2.2s: Gentle elastic rebound, legs micro-twitch, abdomen pulses
-       2.2s - onward: Settles permanently on screen suspended on its silk thread
-    */
-    @keyframes spiderCinematicSequence {
-      0% {
-        opacity: 0;
-        transform: translate3d(0, -380px, 0);
-      }
-      8% {
-        opacity: 1;
-      }
-      32% {
-        /* Smooth descent with silk elasticity */
-        transform: translate3d(0, 5px, 0);
-      }
-      44% {
-        /* Subtle natural rebound */
-        transform: translate3d(0, -2.5px, 0);
-      }
-      58% {
-        transform: translate3d(0, 1px, 0);
-      }
-      72% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        /* Permanently stationed on screen */
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-
-    }
-
-    /* Idle subtle lifelike vertical drift once settled on screen */
-    .spider-hero-rig.settled .spider-unit {
-      top: var(--spider-top, 190px) !important;
-      opacity: 1 !important;
-      animation: spiderIdleDrift 3.8s infinite ease-in-out alternate;
-    }
-
-    @keyframes spiderIdleDrift {
-      0%   { transform: translate3d(0, 0, 0); }
-      50%  { transform: translate3d(0, 4px, 0); }
-      100% { transform: translate3d(0, -2px, 0); }
-
-    }
-
-    /* Subtle relaxed idle leg micro-movements when settled */
-    .spider-hero-rig.settled .leg-l1 { animation: idleLegL1 2.4s infinite alternate ease-in-out; }
-
-    .spider-hero-rig.settled .leg-l2 { animation: idleLegL2 2.8s infinite alternate ease-in-out; }
-
-    .spider-hero-rig.settled .leg-l3 { animation: idleLegL3 2.2s infinite alternate ease-in-out; }
-
-    .spider-hero-rig.settled .leg-l4 { animation: idleLegL4 3.0s infinite alternate ease-in-out; }
-
-    .spider-hero-rig.settled .leg-r1 { animation: idleLegR1 2.5s infinite alternate ease-in-out; }
-
-    .spider-hero-rig.settled .leg-r2 { animation: idleLegR2 2.9s infinite alternate ease-in-out; }
-
-    .spider-hero-rig.settled .leg-r3 { animation: idleLegR3 2.3s infinite alternate ease-in-out; }
-
-    .spider-hero-rig.settled .leg-r4 { animation: idleLegR4 3.1s infinite alternate ease-in-out; }
-
-    @keyframes idleLegL1 { 0% { transform: rotate(-3deg); } 100% { transform: rotate(3deg); } }
-
-    @keyframes idleLegL2 { 0% { transform: rotate(2.5deg); } 100% { transform: rotate(-2.5deg); } }
-
-    @keyframes idleLegL3 { 0% { transform: rotate(-2deg); } 100% { transform: rotate(2.5deg); } }
-
-    @keyframes idleLegL4 { 0% { transform: rotate(2deg); } 100% { transform: rotate(-2deg); } }
-
-    @keyframes idleLegR1 { 0% { transform: rotate(2.5deg); } 100% { transform: rotate(-3deg); } }
-
-    @keyframes idleLegR2 { 0% { transform: rotate(-2.5deg); } 100% { transform: rotate(2deg); } }
-
-    @keyframes idleLegR3 { 0% { transform: rotate(2deg); } 100% { transform: rotate(-2.5deg); } }
-
-    @keyframes idleLegR4 { 0% { transform: rotate(-2deg); } 100% { transform: rotate(2deg); } }
-
-    /* Tablet & Mobile Responsiveness for Spider Rig & Web (Anchored in Top-Left Corner) */
-    @media (max-width: 900px) {
-      .spider-unit {
-        width: 85px;
-        height: 98px;
-        left: 20px;
-        right: auto;
-      }
-
-    }
-    @media (max-width: 600px) {
-      .spider-unit {
-        width: 68px;
-        height: 78px;
-        left: 12px;
-        right: auto;
-      }
-
-    }
-    /* Short drop without the web on tablets and phones, where the hero text sits close to the logo */
-    @media (max-width: 960px) {
-      .spider-web-rig {
-        display: none;
-      }
-
-    }
-    /* Accessibility: Respect prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      .spider-hero-rig {
-        display: none !important;
-      }
-
-    }
     /* Hero text entrance */
     .spray-reveal-text {
         opacity: 0;
@@ -1959,60 +1716,221 @@
       color: var(--gold-hover);
     }
 
-    /* Why choose us */
-    .why-grid {
+    /* ================================================================
+       WHY CHOOSE US - SOPHISTICATED EDITORIAL LIGHT SECTION
+       ================================================================ */
+    .why-section-light {
+      background-color: #F8FAFC !important;
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      padding: clamp(64px, 8vw, 92px) 0;
+      position: relative;
+    }
+
+    .why-section-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      grid-template-columns: 46% 54%;
+      gap: clamp(36px, 5vw, 64px);
       align-items: center;
     }
 
-    .why-media img {
+    /* LEFT COLUMN: Large editorial photograph with rounded corners & amber accent offset */
+    .why-media-card {
+      position: relative;
       width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+    }
+
+    .why-media-card::before {
+      content: "";
+      position: absolute;
+      inset: -8px -8px 8px 8px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(217, 119, 6, 0.08) 100%);
+      border-radius: 26px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .why-media-frame {
+      position: relative;
+      z-index: 2;
       border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 
+        0 24px 48px -12px rgba(8, 20, 32, 0.16),
+        0 4px 16px rgba(8, 20, 32, 0.06);
+      border: 1.5px solid rgba(245, 158, 11, 0.35);
+      aspect-ratio: 4 / 3;
+      background: #E2E8F0;
+    }
+
+    .why-media-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .why-media-card:hover .why-media-frame img {
+      transform: scale(1.025);
+    }
+
+    /* Floating Badge over image */
+    .why-image-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: rgba(8, 20, 32, 0.86);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .why-image-badge .badge-icon {
+      color: #F59E0B;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+
+    /* RIGHT COLUMN: Content & Benefit Cards */
+    .why-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .why-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(28px, 3.4vw, 40px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #081420;
+      margin: 0 0 14px;
     }
 
     .why-intro {
-      margin: 16px 0 28px;
-      font-size: 16.5px;
-      color: var(--slate-mid);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #475569;
+      margin: 0 0 24px;
+      max-width: 580px;
     }
 
-    .why-list {
+    /* 4 Benefits Stack */
+    .why-benefits-list {
       list-style: none;
+      padding: 0;
+      margin: 0;
       display: grid;
-      gap: 22px;
+      gap: 12px;
     }
 
-    .why-list li {
+    .why-benefit-card {
       display: flex;
-      gap: 16px;
       align-items: flex-start;
+      gap: 15px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: #FFFFFF;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow: 0 2px 8px rgba(8, 20, 32, 0.035);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
-    .why-icon {
+    .why-benefit-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px -6px rgba(8, 20, 32, 0.08), 0 0 1px 1px rgba(245, 158, 11, 0.3);
+      border-color: rgba(245, 158, 11, 0.45);
+    }
+
+    .why-benefit-icon {
       display: grid;
       place-items: center;
       flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--gold-soft);
-      color: var(--gold-hover);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(245, 158, 11, 0.12);
+      color: #D97706;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
     }
 
-    .why-list h3 {
-      font-size: 17px;
-      color: var(--navy);
-      margin-bottom: 2px;
+    .why-benefit-card:hover .why-benefit-icon {
+      background: #F59E0B;
+      color: #081420;
+      transform: scale(1.05);
     }
 
-    .why-list p {
-      font-size: 15px;
-      color: var(--slate-mid);
+    .why-benefit-body h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #081420;
+      margin: 0 0 3px;
+      letter-spacing: 0.01em;
+    }
+
+    .why-benefit-body p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.8px;
+      line-height: 1.5;
+      color: #475569;
+      margin: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .why-section-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .why-media-card {
+        max-width: 580px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .why-benefit-card {
+        padding: 12px 14px;
+        gap: 12px;
+      }
+      .why-benefit-icon {
+        width: 36px;
+        height: 36px;
+      }
+      .why-benefit-icon svg {
+        width: 17px;
+        height: 17px;
+      }
+      .why-benefit-body h3 {
+        font-size: 15px;
+      }
+      .why-benefit-body p {
+        font-size: 13px;
+      }
+      .why-image-badge {
+        bottom: 12px;
+        left: 12px;
+        font-size: 12px;
+        padding: 6px 12px;
+      }
     }
 
     /* How it works */
