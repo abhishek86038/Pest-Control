@@ -503,77 +503,16 @@
     }
 
     /* ================================================================
-       REALISTIC AUSTRALIAN HOUSE SPIDER (UPPER-RIGHT ENVIRONMENTAL OVERLAY)
+       REALISTIC ANIMATED LIVING SPIDER & AEROSOL PEST-CONTROL SEQUENCE CANVAS
        ================================================================ */
-    .hero-realistic-spider-wrap {
+    .hero-spider-canvas {
       position: absolute;
-      top: clamp(88px, 14vh, 145px);
-      right: clamp(48px, 8vw, 160px);
-      z-index: 5;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      user-select: none;
-      transform: translateZ(0);
-      will-change: transform;
-    }
-
-    .hero-realistic-spider {
+      z-index: 5;
       display: block;
-      width: clamp(74px, 5.8vw, 98px);
-      height: auto;
-      object-fit: contain;
-      filter: 
-        drop-shadow(0 7px 15px rgba(0, 0, 0, 0.75))
-        drop-shadow(0 2px 5px rgba(0, 0, 0, 0.85));
-      transform: rotate(-18deg);
-      opacity: 0.94;
-      animation: spiderLifelikeDrift 7.5s ease-in-out infinite alternate;
-      will-change: transform;
-    }
-
-    /* Extremely subtle lifelike organic breathing / micro-shift */
-    @keyframes spiderLifelikeDrift {
-      0% {
-        transform: rotate(-18deg) translate3d(0, 0, 0) scale(1);
-      }
-      38% {
-        transform: rotate(-17.5deg) translate3d(0.6px, -0.8px, 0) scale(1.008, 0.995);
-      }
-      72% {
-        transform: rotate(-18.4deg) translate3d(-0.4px, 0.4px, 0) scale(0.994, 1.006);
-      }
-      100% {
-        transform: rotate(-18deg) translate3d(0, 0, 0) scale(1);
-      }
-    }
-
-    @media (max-width: 960px) {
-      .hero-realistic-spider-wrap {
-        top: 86px;
-        right: 24px;
-      }
-      .hero-realistic-spider {
-        width: 64px;
-        filter: 
-          drop-shadow(0 5px 12px rgba(0, 0, 0, 0.7))
-          drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-realistic-spider-wrap {
-        top: 76px;
-        right: 14px;
-      }
-      .hero-realistic-spider {
-        width: 46px;
-        opacity: 0.86;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-realistic-spider {
-        animation: none;
-      }
     }
 
     /* ================================================================
