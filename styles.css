@@ -3425,10 +3425,14 @@
     }
 
     /* Hide trigger smoothly when chat panel is open */
-    .cc-chat-widget.is-open .cc-chat-trigger {
+    .cc-chat-widget.is-open .cc-chat-trigger,
+    .cc-chat-widget.active .cc-chat-trigger,
+    .cc-chat-trigger.is-active,
+    .cc-chat-trigger.active {
       transform: scale(0.7) translateY(12px);
       opacity: 0;
-      pointer-events: none;
+      pointer-events: none !important;
+      visibility: hidden;
     }
 
     /* ----------------------------------------------------------------
@@ -3456,20 +3460,24 @@
       z-index: 100000;
       pointer-events: none;
       opacity: 0;
+      visibility: hidden;
       transform: scale(0.88) translateY(24px);
       transform-origin: bottom right;
       filter: blur(8px);
       transition:
         opacity 0.34s cubic-bezier(0.16, 1, 0.3, 1),
         transform 0.34s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+        filter 0.34s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.34s;
     }
 
-    .cc-chat-panel.active {
-      pointer-events: auto;
-      opacity: 1;
-      transform: scale(1) translateY(0);
-      filter: blur(0);
+    .cc-chat-panel.active,
+    .cc-chat-panel.is-open {
+      visibility: visible !important;
+      pointer-events: auto !important;
+      opacity: 1 !important;
+      transform: scale(1) translateY(0) !important;
+      filter: blur(0) !important;
     }
 
     /* Ambient Glow Background Effect */
