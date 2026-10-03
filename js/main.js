@@ -103,6 +103,65 @@
     // Initial state calculation on page load
     updateNavbarScrolled();
 
+    // 1b. Premium Yellow/Orange Mouse-Following Navigation Spotlight Effect
+    const navLinksEl = document.getElementById('nav-links') || document.querySelector('.navlinks');
+    if (navLinksEl && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      let spotlight = navLinksEl.querySelector('.nav-cursor-spotlight');
+      if (!spotlight) {
+        spotlight = document.createElement('div');
+        spotlight.className = 'nav-cursor-spotlight';
+        spotlight.setAttribute('aria-hidden', 'true');
+        navLinksEl.prepend(spotlight);
+      }
+
+      let currentX = 0;
+      let currentY = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let isInside = false;
+      let rafId = null;
+      const spotW = 100;
+      const spotH = 38;
+
+      function renderSpotlight() {
+        // High-precision smooth easing (lerp)
+        currentX += (targetX - currentX) * 0.18;
+        currentY += (targetY - currentY) * 0.18;
+
+        spotlight.style.transform = `translate3d(${Math.round(currentX - spotW / 2)}px, ${Math.round(currentY - spotH / 2)}px, 0)`;
+
+        if (isInside || Math.abs(targetX - currentX) > 0.25 || Math.abs(targetY - currentY) > 0.25) {
+          rafId = requestAnimationFrame(renderSpotlight);
+        } else {
+          rafId = null;
+        }
+      }
+
+      navLinksEl.addEventListener('mouseenter', (e) => {
+        const rect = navLinksEl.getBoundingClientRect();
+        targetX = e.clientX - rect.left;
+        targetY = e.clientY - rect.top;
+        currentX = targetX;
+        currentY = targetY;
+        spotlight.style.transform = `translate3d(${Math.round(currentX - spotW / 2)}px, ${Math.round(currentY - spotH / 2)}px, 0)`;
+        spotlight.style.opacity = '1';
+        isInside = true;
+        if (!rafId) rafId = requestAnimationFrame(renderSpotlight);
+      });
+
+      navLinksEl.addEventListener('mousemove', (e) => {
+        const rect = navLinksEl.getBoundingClientRect();
+        targetX = e.clientX - rect.left;
+        targetY = e.clientY - rect.top;
+        isInside = true;
+        if (!rafId) rafId = requestAnimationFrame(renderSpotlight);
+      });
+
+      navLinksEl.addEventListener('mouseleave', () => {
+        isInside = false;
+        spotlight.style.opacity = '0';
+      });
+    }
 
     // 2. Pest Guide Tabs (services.html)
     const pestInfo = {
@@ -353,4 +412,12 @@
 
       buildDots();
       restart();
+    }
+
+    // 7. Fixed "Chat With Us" Widget Auto-Initializer
+    if (!window.CreepyCrawlyChat && !document.querySelector('script[src*="chat-widget.js"]')) {
+      const chatScript = document.createElement('script');
+      chatScript.src = 'js/chat-widget.js?v=1';
+      chatScript.defer = true;
+      document.body.appendChild(chatScript);
     }
