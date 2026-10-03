@@ -96,8 +96,145 @@
       <div class="hero-video-overlay"></div>
     </div>
 
-    <!-- REALISTIC ANIMATED LIVING SPIDER & AEROSOL PEST-CONTROL SEQUENCE CANVAS -->
-    <canvas id="heroSpiderCanvas" class="hero-spider-canvas" aria-hidden="true"></canvas>
+    <!-- SUBTLE CORNER SPIDER WEB & 3 HANGING SPIDERS (Right side empty space) -->
+    <div class="hidden md:block absolute inset-0 pointer-events-none overflow-hidden z-10" aria-hidden="true">
+      <style>
+        @keyframes spiderDrop1 {
+          0% {
+            transform: translateY(-200px);
+            opacity: 0;
+          }
+          15% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        @keyframes spiderDrop2 {
+          0% {
+            transform: translateY(-200px);
+            opacity: 0;
+          }
+          15% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        @keyframes spiderDrop3 {
+          0% {
+            transform: translateY(-200px);
+            opacity: 0;
+          }
+          15% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        @keyframes spiderGentleSwing {
+          0% {
+            transform: rotate(-4deg);
+          }
+          100% {
+            transform: rotate(4deg);
+          }
+        }
+
+        .spider-anim-1 {
+          animation: spiderDrop1 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.2s both;
+        }
+        .spider-anim-2 {
+          animation: spiderDrop2 1.4s cubic-bezier(0.25, 1, 0.5, 1) 0.6s both;
+        }
+        .spider-anim-3 {
+          animation: spiderDrop3 1.6s cubic-bezier(0.25, 1, 0.5, 1) 1.0s both;
+        }
+        .spider-swing-unit {
+          transform-origin: top center;
+          animation: spiderGentleSwing 3s ease-in-out infinite alternate;
+        }
+      </style>
+
+      <!-- 1. Subtle Spider Web SVG hanging from top-right corner -->
+      <svg class="absolute top-0 right-0 w-64 h-64 lg:w-80 lg:h-80 pointer-events-none opacity-25" viewBox="0 0 320 320" fill="none" stroke="#FFFFFF" stroke-width="1.2">
+        <!-- Radial Spokes radiating from (320, 0) -->
+        <line x1="320" y1="0" x2="0" y2="220" />
+        <line x1="320" y1="0" x2="40" y2="300" />
+        <line x1="320" y1="0" x2="130" y2="320" />
+        <line x1="320" y1="0" x2="210" y2="320" />
+        <line x1="320" y1="0" x2="275" y2="320" />
+        <!-- Concentric Curves -->
+        <path d="M 320,55 Q 280,60 260,40 Q 240,20 265,0" />
+        <path d="M 320,110 Q 245,120 215,85 Q 185,45 215,0" />
+        <path d="M 320,175 Q 220,195 165,135 Q 120,75 160,0" />
+        <path d="M 320,245 Q 195,270 120,195 Q 60,105 110,0" />
+        <path d="M 320,315 Q 165,340 65,260 Q 5,145 55,0" />
+      </svg>
+
+      <!-- 2. Spider 1: top 20%, right 18%, delay 0.2s, duration 1.2s -->
+      <div class="spider-anim-1 absolute top-0" style="right: 18%; height: 20%;">
+        <div class="spider-swing-unit h-full flex flex-col items-center">
+          <div class="w-px bg-white/40 flex-1"></div>
+          <svg class="w-5 h-5 flex-shrink-0 -mt-0.5 filter drop-shadow" viewBox="0 0 32 32" fill="#111827">
+            <ellipse cx="16" cy="19" rx="4.5" ry="5.5" fill="#111827"/>
+            <ellipse cx="16" cy="11.5" rx="3.5" ry="3.5" fill="#1f2937"/>
+            <path d="M14 10.5 C10 6.5, 6 7.5, 4 12.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M13 11.5 C8 10.5, 5 13.5, 3 17.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M13 13.5 C8 15.5, 5 19.5, 5 24.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M14 14.5 C10 19.5, 8 23.5, 7 28.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M18 10.5 C22 6.5, 26 7.5, 28 12.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M19 11.5 C24 10.5, 27 13.5, 29 17.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M19 13.5 C24 15.5, 27 19.5, 27 24.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M18 14.5 C22 19.5, 24 23.5, 25 28.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 3. Spider 2: top 38%, right 12%, delay 0.6s, duration 1.4s -->
+      <div class="spider-anim-2 absolute top-0" style="right: 12%; height: 38%;">
+        <div class="spider-swing-unit h-full flex flex-col items-center" style="animation-delay: -1.2s;">
+          <div class="w-px bg-white/40 flex-1"></div>
+          <svg class="w-5 h-5 flex-shrink-0 -mt-0.5 filter drop-shadow" viewBox="0 0 32 32" fill="#111827">
+            <ellipse cx="16" cy="19" rx="4.5" ry="5.5" fill="#111827"/>
+            <ellipse cx="16" cy="11.5" rx="3.5" ry="3.5" fill="#1f2937"/>
+            <path d="M14 10.5 C10 6.5, 6 7.5, 4 12.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M13 11.5 C8 10.5, 5 13.5, 3 17.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M13 13.5 C8 15.5, 5 19.5, 5 24.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M14 14.5 C10 19.5, 8 23.5, 7 28.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M18 10.5 C22 6.5, 26 7.5, 28 12.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M19 11.5 C24 10.5, 27 13.5, 29 17.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M19 13.5 C24 15.5, 27 19.5, 27 24.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M18 14.5 C22 19.5, 24 23.5, 25 28.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 4. Spider 3: top 65%, right 8%, delay 1.0s, duration 1.6s -->
+      <div class="spider-anim-3 absolute top-0" style="right: 8%; height: 65%;">
+        <div class="spider-swing-unit h-full flex flex-col items-center" style="animation-delay: -2.3s;">
+          <div class="w-px bg-white/40 flex-1"></div>
+          <svg class="w-4 h-4 flex-shrink-0 -mt-0.5 filter drop-shadow" viewBox="0 0 32 32" fill="#111827">
+            <ellipse cx="16" cy="19" rx="4.5" ry="5.5" fill="#111827"/>
+            <ellipse cx="16" cy="11.5" rx="3.5" ry="3.5" fill="#1f2937"/>
+            <path d="M14 10.5 C10 6.5, 6 7.5, 4 12.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M13 11.5 C8 10.5, 5 13.5, 3 17.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M13 13.5 C8 15.5, 5 19.5, 5 24.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M14 14.5 C10 19.5, 8 23.5, 7 28.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M18 10.5 C22 6.5, 26 7.5, 28 12.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M19 11.5 C24 10.5, 27 13.5, 29 17.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M19 13.5 C24 15.5, 27 19.5, 27 24.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M18 14.5 C22 19.5, 24 23.5, 25 28.5" stroke="#111827" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
 
     <!-- SUBTLE FLOATING PEST PROTECTION CARD (Right / Lower-Right Placement) -->
     <div class="hero-floating-card" aria-label="Pest Protection Services">
@@ -766,7 +903,6 @@
 
   <!-- Scripts -->
   <script src="js/main.js?v=17"></script>
-  <script src="js/hero-spider-anim.js?v=1"></script>
   <script src="js/chat-widget.js?v=5"></script>
   <script src="js/footer-bugs.js?v=4"></script>
 </body>
