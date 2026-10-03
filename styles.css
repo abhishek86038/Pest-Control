@@ -1629,8 +1629,8 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: var(--emerald-soft);
-      color: var(--emerald);
+      background: var(--gold-soft);
+      color: var(--gold-hover);
     }
 
     .why-list h3 {
@@ -2260,7 +2260,7 @@
 
     .split-checklist svg {
       flex-shrink: 0;
-      color: var(--emerald);
+      color: var(--gold-hover);
     }
 
     .split-checklist strong {
