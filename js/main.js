@@ -103,46 +103,6 @@
     // Initial state calculation on page load
     updateNavbarScrolled();
 
-    // Hero Spider Animation Auto-Trigger on Right Side
-    const spiderHeroRig = document.getElementById('spiderHeroRig');
-    if (spiderHeroRig) {
-      function triggerSpiderSequence() {
-        spiderHeroRig.classList.remove('active', 'settled');
-        void spiderHeroRig.offsetWidth; // Force reflow
-        setTimeout(() => {
-          spiderHeroRig.classList.add('active');
-        }, 300);
-        setTimeout(() => {
-          spiderHeroRig.classList.add('settled');
-        }, 3900);
-      }
-
-      if (document.readyState === 'complete') {
-        triggerSpiderSequence();
-      } else {
-        window.addEventListener('load', triggerSpiderSequence, { once: true });
-        setTimeout(() => {
-          if (!spiderHeroRig.classList.contains('active')) {
-            triggerSpiderSequence();
-          }
-        }, 1200);
-      }
-
-      // Interactive click / touch on spider: quick startled jump
-      const heroSpider = document.getElementById('heroSpider');
-      if (heroSpider) {
-        heroSpider.addEventListener('click', () => {
-          spiderHeroRig.classList.remove('settled');
-          heroSpider.style.animation = 'none';
-          void heroSpider.offsetWidth;
-          heroSpider.style.animation = 'spiderStartleJump 0.85s cubic-bezier(0.16, 1, 0.3, 1)';
-          setTimeout(() => {
-            heroSpider.style.animation = '';
-            spiderHeroRig.classList.add('settled');
-          }, 850);
-        });
-      }
-    }
 
     // 2. Pest Guide Tabs (services.html)
     const pestInfo = {
