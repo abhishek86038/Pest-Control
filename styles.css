@@ -2625,6 +2625,22 @@
       }
 
     }
+    /* Image + text side by side (About, Technology Partner) */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .why-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
     /* Portrait photos (About page owner photo) keep their natural shape */
     .why-media-portrait img {
       aspect-ratio: 935 / 1024;
@@ -3426,9 +3442,10 @@
     .cc-chat-trigger {
       pointer-events: auto !important;
       position: relative;
-      width: 60px;
       height: 60px;
-      border-radius: 50%;
+      padding: 0 22px 0 12px;
+      gap: 10px;
+      border-radius: 999px;
       background: #000000;
       border: 1px solid rgba(245, 158, 11, 0.45);
       box-shadow:
@@ -3450,7 +3467,7 @@
     .cc-trigger-halo {
       position: absolute;
       inset: -8px;
-      border-radius: 50%;
+      border-radius: 999px;
       background: radial-gradient(circle, rgba(234, 88, 12, 0.4) 0%, rgba(234, 88, 12, 0.08) 60%, transparent 75%);
       pointer-events: none;
       animation: ccTriggerAuraBreath 3.5s ease-in-out infinite;
@@ -3466,6 +3483,11 @@
       position: relative;
       width: 36px;
       height: 36px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
       border-radius: 50%;
       background: radial-gradient(circle at 35% 32%, #FFE8B8 0%, #FFA94D 20%, #E8590C 46%, #9A3412 72%, #380D02 92%, #140401 100%);
       box-shadow:
@@ -3473,6 +3495,20 @@
         inset 3px 3px 8px rgba(255, 240, 190, 0.65),
         0 0 16px rgba(232, 89, 12, 0.65);
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cc-trigger-label {
+      position: relative;
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: 15.5px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #FFFFFF;
+      white-space: nowrap;
+    }
+
+    .cc-3d-sphere-launcher svg {
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
     }
 
     .cc-trigger-status-dot {
@@ -4057,8 +4093,12 @@
       }
 
       .cc-chat-trigger {
-        width: 54px;
         height: 54px;
+        padding: 0 18px 0 10px;
+      }
+
+      .cc-trigger-label {
+        font-size: 14.5px;
       }
 
       .cc-3d-sphere-launcher {

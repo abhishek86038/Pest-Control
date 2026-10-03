@@ -119,9 +119,12 @@
 
       wrapper.innerHTML = `
         <!-- Floating Launcher Button with 3D Glowing Sphere -->
-        <button type="button" class="cc-chat-trigger" id="ccChatTrigger" aria-expanded="false" aria-controls="ccChatPanel" aria-label="Open AI Pest Assistant chat">
+        <button type="button" class="cc-chat-trigger" id="ccChatTrigger" aria-expanded="false" aria-controls="ccChatPanel" aria-label="Ask Andy: open chat">
           <div class="cc-trigger-halo" aria-hidden="true"></div>
-          <div class="cc-3d-sphere-launcher" aria-hidden="true"></div>
+          <div class="cc-3d-sphere-launcher" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></svg>
+          </div>
+          <span class="cc-trigger-label">Ask Andy</span>
           <span class="cc-trigger-status-dot" aria-hidden="true"></span>
         </button>
 
