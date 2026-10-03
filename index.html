@@ -23,7 +23,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=26">
 </head>
 
 <body>
@@ -180,61 +180,120 @@
             </div>
           </div>
 
-          <!-- TRUST INFORMATION STRIP (Near bottom of hero content) -->
-          <div class="hero-trust-strip" aria-label="Trust Credentials">
-            <div class="trust-badge-pill">
-              <svg class="trust-pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                <path d="m9 12 2 2 4-4"/>
-              </svg>
-              <span>Licensed &amp; Insured</span>
-            </div>
-            <div class="trust-badge-pill">
-              <svg class="trust-pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="8" r="6"/>
-                <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-              </svg>
-              <span>40+ Years Experience</span>
-            </div>
-            <div class="trust-badge-pill">
-              <svg class="trust-pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>Trusted Service</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRUST BAND -->
-  <div class="trust-black-band" id="trust-bar">
-    <div class="wrap">
-      <div class="trust-band-item">
-        <span class="trust-band-icon icon-gold">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-        </span>
-        <span class="trust-band-text">Backed by a 40+ year brand</span>
-      </div>
-      <div class="trust-band-item">
-        <span class="trust-band-icon icon-gold">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        </span>
-        <span class="trust-band-text">Licensed &amp; insured technicians</span>
-      </div>
-      <div class="trust-band-item">
-        <span class="trust-band-icon icon-gold">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
-        </span>
-        <span class="trust-band-text">Pet &amp; family-safe treatments</span>
-      </div>
-      <div class="trust-band-item">
-        <span class="trust-band-icon icon-gold">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
-        </span>
-        <span class="trust-band-text">Free re-treatment guarantee</span>
+  <!-- TRUST MARQUEE BAND (LEFT-TO-RIGHT CONTINUOUS MOVEMENT) -->
+  <div class="trust-black-band" id="trust-bar" aria-label="Trust & Credentials">
+    <div class="trust-marquee-container">
+      <div class="trust-marquee-track">
+        <!-- MARQUEE SET 1 -->
+        <div class="trust-marquee-content">
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <span class="trust-band-text">Licensed &amp; Insured</span>
+          </div>
+          <span class="trust-marquee-dot" aria-hidden="true">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </span>
+            <span class="trust-band-text">40+ Years Experience</span>
+          </div>
+          <span class="trust-marquee-dot" aria-hidden="true">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </span>
+            <span class="trust-band-text">Trusted Service</span>
+          </div>
+          <span class="trust-marquee-dot" aria-hidden="true">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </span>
+            <span class="trust-band-text">Backed by a 40+ Year Brand</span>
+          </div>
+          <span class="trust-marquee-dot" aria-hidden="true">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <span class="trust-band-text">Licensed &amp; Insured Technicians</span>
+          </div>
+          <span class="trust-marquee-dot" aria-hidden="true">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
+            </span>
+            <span class="trust-band-text">Pet &amp; Family-Safe Treatments</span>
+          </div>
+          <span class="trust-marquee-dot" aria-hidden="true">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+            </span>
+            <span class="trust-band-text">Free Re-Treatment Guarantee</span>
+          </div>
+          <span class="trust-marquee-dot" aria-hidden="true">•</span>
+        </div>
+
+        <!-- MARQUEE SET 2 (DUPLICATE FOR SEAMLESS 100% INFINITE LOOP) -->
+        <div class="trust-marquee-content" aria-hidden="true">
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <span class="trust-band-text">Licensed &amp; Insured</span>
+          </div>
+          <span class="trust-marquee-dot">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </span>
+            <span class="trust-band-text">40+ Years Experience</span>
+          </div>
+          <span class="trust-marquee-dot">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </span>
+            <span class="trust-band-text">Trusted Service</span>
+          </div>
+          <span class="trust-marquee-dot">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            </span>
+            <span class="trust-band-text">Backed by a 40+ Year Brand</span>
+          </div>
+          <span class="trust-marquee-dot">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <span class="trust-band-text">Licensed &amp; Insured Technicians</span>
+          </div>
+          <span class="trust-marquee-dot">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
+            </span>
+            <span class="trust-band-text">Pet &amp; Family-Safe Treatments</span>
+          </div>
+          <span class="trust-marquee-dot">•</span>
+          <div class="trust-band-item">
+            <span class="trust-band-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+            </span>
+            <span class="trust-band-text">Free Re-Treatment Guarantee</span>
+          </div>
+          <span class="trust-marquee-dot">•</span>
+        </div>
       </div>
     </div>
   </div>

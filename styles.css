@@ -134,7 +134,7 @@
       width: 100%;
       max-width: 100%;
       z-index: 1051;
-      padding: 10px 0;
+      padding: 5px 0;
       background: #0F2438;
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -147,7 +147,7 @@
 
     .site-header.scrolled-header nav,
     nav.scrolled {
-      padding: 10px 0;
+      padding: 5px 0;
       background: rgba(11, 25, 40, 0.98);
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
     }
@@ -157,8 +157,8 @@
       position: relative;
       width: min(calc(100% - 36px), 1380px);
       margin: 0 auto;
-      border-radius: 20px;
-      padding: 10px 0;
+      border-radius: 14px;
+      padding: 5px 0;
       background: rgba(11, 25, 40, 0.95) !important;
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -242,41 +242,36 @@
       overflow: visible;
     }
 
-    /* PROMINENT EVEN BIGGER BRAND LOGO WITH DIE-CUT STICKER SHADOW */
+    /* SLEEK COMPACT BRAND LOGO */
     .brand-logo-img {
-      height: 62px;
+      height: 38px;
       width: auto;
-      max-width: 160px;
+      max-width: 120px;
       object-fit: contain;
       display: block;
       position: relative;
       z-index: 60;
       margin: 0;
-      /* Physical die-cut sticker effect: layered shadows for realistic lift */
-      filter:
-        drop-shadow(0 8px 18px rgba(0, 0, 0, 0.52))
-        drop-shadow(0 2px 5px rgba(0, 0, 0, 0.38));
-      transform: rotate(-1.2deg);
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
+      transform: rotate(-0.8deg);
       transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), filter .25s ease, height .25s ease;
       will-change: transform;
     }
 
     nav.nav-floating .brand-logo-img {
-      height: 74px;
-      max-width: 170px;
-      margin: -18px 0;
-      transform: rotate(-1deg);
+      height: 40px;
+      max-width: 125px;
+      margin: 0;
+      transform: rotate(-0.5deg);
     }
 
     .logo:hover .brand-logo-img {
-      transform: scale(1.06) rotate(0deg);
-      filter:
-        drop-shadow(0 14px 28px rgba(0, 0, 0, 0.65))
-        drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+      transform: scale(1.05) rotate(0deg);
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
     }
 
     nav.nav-floating .logo:hover .brand-logo-img {
-      transform: scale(1.06) rotate(0deg);
+      transform: scale(1.05) rotate(0deg);
     }
 
     /* Center Navigation Links (Compact & Non-Clipping) */
@@ -292,8 +287,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: clamp(20px, 2.6vw, 40px);
-      font-size: 15.5px;
+      gap: clamp(14px, 2vw, 28px);
+      font-size: 14px;
       font-weight: 600;
       white-space: nowrap;
     }
@@ -302,7 +297,7 @@
       color: #FFFFFF !important;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
       transition: color 150ms ease, transform 150ms ease;
-      padding: 8px 2px;
+      padding: 4px 2px;
       position: relative;
       display: inline-flex;
       align-items: center;
@@ -400,7 +395,7 @@
       min-height: 100dvh;
       display: flex;
       align-items: center;
-      padding: 120px 0 64px;
+      padding: 96px 0 54px;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #081420;
@@ -751,82 +746,102 @@
         display: none;
       }
     }
-    /* 2. SINGLE BLACK TRUST BAND (DEEP BLACK WITH WHITE TEXT & FAVICONS) */
+    /* 2. CONTINUOUS HORIZONTAL TRUST MARQUEE (LEFT-TO-RIGHT MOVEMENT) */
     .trust-black-band {
-      background: #000000;
+      background: #081420;
       border-top: 1px solid rgba(255, 255, 255, 0.12);
-      border-bottom: 2px solid rgba(245, 158, 11, 0.40);
-      padding: 16px 0;
+      border-bottom: 2px solid rgba(245, 158, 11, 0.45);
+      padding: 13px 0;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
       position: relative;
       z-index: 30;
+      overflow: hidden;
     }
 
-    .trust-black-band .wrap {
+    .trust-marquee-container {
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    }
+
+    .trust-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: tickerLeftToRight 38s linear infinite;
+      will-change: transform;
+    }
+
+    .trust-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes tickerLeftToRight {
+      0% {
+        transform: translateX(-50%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .trust-marquee-track {
+        animation: none;
+        transform: none;
+      }
+    }
+
+    .trust-marquee-content {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      gap: 28px;
+      padding-right: 28px;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .trust-band-item {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       color: #FFFFFF;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
       font-family: 'Outfit', sans-serif;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.02em;
       white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .trust-band-item:hover {
+      color: #F59E0B;
     }
 
     .trust-band-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       flex-shrink: 0;
-    }
-
-    .trust-band-icon.icon-gold {
-      background: rgba(245, 158, 11, 0.18);
+      background: rgba(245, 158, 11, 0.16);
       color: #F59E0B;
       border: 1px solid rgba(245, 158, 11, 0.40);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.18);
     }
 
     .trust-band-text {
       color: #FFFFFF;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
     }
 
-    @media (max-width: 1080px) {
-      .trust-black-band .wrap {
-        justify-content: center;
-        gap: 12px 18px;
-      }
-
-    }
-    @media (max-width: 768px) {
-      .trust-black-band {
-        padding: 16px 0;
-      }
-      .trust-black-band .wrap {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px 12px;
-      }
-      .trust-band-item {
-        white-space: normal;
-        font-size: 12.5px;
-      }
-
+    .trust-marquee-dot {
+      color: rgba(245, 158, 11, 0.5);
+      font-size: 14px;
+      line-height: 1;
+      user-select: none;
     }
     /* SECTION HEAD */
     .section {
@@ -1557,16 +1572,16 @@
     .nav-call-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 9px 18px;
+      gap: 7px;
+      padding: 6px 14px;
       border-radius: 100px;
       background: var(--gold);
       color: var(--navy-deep);
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
-      font-size: 14.5px;
+      font-size: 13.5px;
       white-space: nowrap;
-      transition: background .2s ease, color .2s ease;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
     }
 
     .nav-call-btn:hover {
