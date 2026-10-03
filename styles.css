@@ -125,7 +125,7 @@
       padding-top: 12px;
     }
 
-    /* MAIN NAVIGATION BAR */
+    /* MAIN NAVIGATION BAR - GLASSY TRANSLUCENT AESTHETIC */
     nav {
       position: relative;
       top: auto;
@@ -134,22 +134,26 @@
       width: 100%;
       max-width: 100%;
       z-index: 1051;
-      padding: 5px 0;
-      background: #0F2438;
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 0;
+      background: rgba(11, 25, 40, 0.52);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 0;
-      box-shadow: none;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
       transition: background 0.28s ease, padding 0.28s ease, border-radius 0.28s ease, box-shadow 0.28s ease, width 0.28s ease;
       pointer-events: auto;
+      overflow: visible;
     }
 
     .site-header.scrolled-header nav,
     nav.scrolled {
-      padding: 5px 0;
-      background: rgba(11, 25, 40, 0.98);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+      padding: 6px 0;
+      background: rgba(11, 25, 40, 0.78);
+      backdrop-filter: blur(20px) saturate(190%);
+      -webkit-backdrop-filter: blur(20px) saturate(190%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
     }
 
     /* POP-OUT FLOATING NAV BAR WHEN HERO SECTION IS SCROLLED + TOP PADDING */
@@ -157,18 +161,19 @@
       position: relative;
       width: min(calc(100% - 36px), 1380px);
       margin: 0 auto;
-      border-radius: 14px;
-      padding: 5px 0;
-      background: rgba(11, 25, 40, 0.95) !important;
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      border-radius: 16px;
+      padding: 6px 0;
+      background: rgba(11, 25, 40, 0.72) !important;
+      backdrop-filter: blur(20px) saturate(190%);
+      -webkit-backdrop-filter: blur(20px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
       box-shadow: 
-        0 18px 45px rgba(0, 0, 0, 0.55),
-        0 0 1px 1px rgba(255, 255, 255, 0.12),
+        0 20px 48px rgba(0, 0, 0, 0.6),
+        0 0 1px 1px rgba(255, 255, 255, 0.15),
         0 0 25px rgba(245, 158, 11, 0.12) !important;
       animation: navPopOut 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
       transform-origin: center top;
+      overflow: visible;
     }
 
     @keyframes navPopOut {
@@ -223,55 +228,63 @@
       margin: 0 auto;
       padding: 0 clamp(10px, 1.8vw, 24px);
       box-sizing: border-box;
+      overflow: visible;
     }
 
     .nav-brand-cluster {
       display: flex;
       align-items: center;
       position: relative;
-      z-index: 40;
+      z-index: 70;
       flex-shrink: 0;
+      overflow: visible;
     }
 
     .logo {
       display: flex;
       align-items: center;
       position: relative;
-      z-index: 50;
+      z-index: 75;
       text-decoration: none;
       overflow: visible;
     }
 
-    /* SLEEK COMPACT BRAND LOGO */
+    /* PROMINENT OVERHANGING BRAND LOGO */
     .brand-logo-img {
-      height: 38px;
+      height: 64px;
       width: auto;
-      max-width: 120px;
+      max-width: 155px;
       object-fit: contain;
       display: block;
       position: relative;
-      z-index: 60;
-      margin: 0;
-      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
-      transform: rotate(-0.8deg);
-      transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), filter .25s ease, height .25s ease;
+      z-index: 80;
+      margin-top: -6px;
+      margin-bottom: -18px;
+      filter:
+        drop-shadow(0 6px 16px rgba(0, 0, 0, 0.65))
+        drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+      transform: rotate(-1deg);
+      transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), filter .25s ease;
       will-change: transform;
     }
 
     nav.nav-floating .brand-logo-img {
-      height: 40px;
-      max-width: 125px;
-      margin: 0;
-      transform: rotate(-0.5deg);
+      height: 66px;
+      max-width: 160px;
+      margin-top: -8px;
+      margin-bottom: -18px;
+      transform: rotate(-0.8deg);
     }
 
     .logo:hover .brand-logo-img {
-      transform: scale(1.05) rotate(0deg);
-      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
+      transform: scale(1.06) rotate(0deg);
+      filter:
+        drop-shadow(0 10px 22px rgba(0, 0, 0, 0.75))
+        drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5));
     }
 
     nav.nav-floating .logo:hover .brand-logo-img {
-      transform: scale(1.05) rotate(0deg);
+      transform: scale(1.06) rotate(0deg);
     }
 
     /* Center Navigation Links (Compact & Non-Clipping) */
