@@ -43,8 +43,22 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Immediate and load fallback: Reveal any element already in or near view
+    function revealInView() {
+      document.querySelectorAll('.reveal:not(.in)').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < (window.innerHeight || document.documentElement.clientHeight) + 120) {
+          el.classList.add('in');
+          if (io) io.unobserve(el);
+        }
+      });
+    }
+    revealInView();
+    window.addEventListener('load', revealInView, { once: true });
+    setTimeout(revealInView, 350);
 
     const navEl = document.getElementById('nav');
     const siteHeaderEl = document.getElementById('siteHeader');
@@ -233,52 +247,7 @@
       });
     });
 
-    // 4. Cinematic Hero Spider Animation Auto-Trigger on Every Page Load/Refresh
-    const spiderHeroRig = document.getElementById('spiderHeroRig');
-    if (spiderHeroRig) {
-      // Hang the spider directly below the nav logo so its silk thread appears to drop from the logo
-      const heroSpider = document.getElementById('heroSpider');
-      const navLogo = document.querySelector('#nav .brand-logo-img');
-      function positionSpiderUnderLogo() {
-        if (!heroSpider || !navLogo || !navEl) return;
-        const logoRect = navLogo.getBoundingClientRect();
-        const rigLeft = spiderHeroRig.getBoundingClientRect().left;
-        const logoCenter = Math.round(logoRect.left + logoRect.width / 2 - rigLeft);
-        heroSpider.style.left = (logoCenter - Math.round(heroSpider.offsetWidth / 2)) + 'px';
-        // Wide screens: long drop through the web; narrow screens: short drop so it clears the headline
-        const drop = window.innerWidth > 960 ? 210 : (window.innerWidth <= 600 ? 0 : 24);
-        spiderHeroRig.style.setProperty('--spider-top', (navEl.offsetHeight + drop) + 'px');
-        // Most of the web sits up behind the nav bar; only its lower edge shows beneath the logo
-        spiderHeroRig.style.setProperty('--web-top', (navEl.offsetHeight - 70) + 'px');
-        spiderHeroRig.style.setProperty('--web-left', logoCenter + 'px');
-      }
-      positionSpiderUnderLogo();
-      window.addEventListener('resize', positionSpiderUnderLogo, { passive: true });
 
-      function triggerSpiderSequence() {
-        positionSpiderUnderLogo();
-        spiderHeroRig.classList.remove('active', 'settled');
-        void spiderHeroRig.offsetWidth; // Force reflow
-        // Synchronized with hero smoke text reveal at ~2.05s
-        setTimeout(() => {
-          spiderHeroRig.classList.add('active');
-        }, 2050);
-        setTimeout(() => {
-          spiderHeroRig.classList.add('settled');
-        }, 4800);
-      }
-
-      if (document.readyState === 'complete') {
-        triggerSpiderSequence();
-      } else {
-        window.addEventListener('load', triggerSpiderSequence, { once: true });
-        setTimeout(() => {
-          if (!spiderHeroRig.classList.contains('active')) {
-            triggerSpiderSequence();
-          }
-        }, 2200);
-      }
-    }
 
     // 5. Mobile Navigation Drawer
     const mobileToggle = document.getElementById('navMobileToggle');
