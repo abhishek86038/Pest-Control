@@ -392,7 +392,7 @@
       }
 
     }
-    /* HERO SECTION: CINEMATIC ERADICATION VIDEO BACKGROUND */
+    /* HERO SECTION: CINEMATIC ERADICATION VIDEO BACKGROUND & PREMIUM LEFT-SIDE COMPOSITION */
     .hero {
       position: relative;
       color: #FFFFFF;
@@ -400,11 +400,11 @@
       min-height: 100dvh;
       display: flex;
       align-items: center;
-      padding: 96px 0 56px;
+      padding: 120px 0 64px;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #081420;
-      border-bottom: 3px solid var(--gold);
+      border-bottom: 2px solid rgba(245, 158, 11, 0.45);
     }
 
     .hero-video-wrap {
@@ -427,7 +427,7 @@
       height: 100%;
       object-fit: cover;
       transform: translate(-50%, -50%);
-      filter: brightness(0.85) contrast(1.05);
+      filter: brightness(0.92) contrast(1.04);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -440,12 +440,13 @@
       .hero-bg-video { transition: none; }
     }
 
+    /* Sophisticated Left-Heavy Dark Gradient Overlay: Keeps technician & house visible on right */
     .hero-video-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(8, 20, 32, 0.72) 0%, rgba(8, 20, 32, 0.52) 44%, rgba(8, 20, 32, 0.22) 72%, rgba(8, 20, 32, 0.08) 100%),
-        linear-gradient(180deg, rgba(8, 20, 32, 0.32) 0%, transparent 35%, rgba(8, 20, 32, 0.45) 100%);
+        linear-gradient(90deg, rgba(8, 20, 32, 0.94) 0%, rgba(8, 20, 32, 0.84) 38%, rgba(8, 20, 32, 0.48) 64%, rgba(8, 20, 32, 0.15) 86%, rgba(8, 20, 32, 0.04) 100%),
+        linear-gradient(180deg, rgba(8, 20, 32, 0.45) 0%, transparent 25%, transparent 75%, rgba(8, 20, 32, 0.65) 100%);
       pointer-events: none;
       z-index: 2;
     }
@@ -454,9 +455,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(245, 158, 11, .06) 1px, transparent 1px);
-      background-size: 24px 24px;
-      opacity: .35;
+      background-image: radial-gradient(rgba(245, 158, 11, .05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: .28;
       pointer-events: none;
       z-index: 3;
     }
@@ -465,158 +466,290 @@
       position: relative;
       z-index: 10;
       width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero-layout {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      width: 100%;
     }
 
     .hero-content {
-      max-width: 880px;
-      margin: 0 auto;
+      max-width: 640px;
+      margin: 0;
       position: relative;
-      text-align: center;
+      text-align: left;
     }
 
-    /* Ambient Golden Glow Spotlight behind typography */
+    /* Subtle Amber Ambient Glow behind left content */
     .hero-content::before {
       content: "";
       position: absolute;
-      top: -15%;
-      left: -10%;
-      width: 125%;
-      height: 125%;
-      background: radial-gradient(ellipse at 30% 45%, rgba(245, 176, 39, 0.22) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 72%);
+      top: -10%;
+      left: -12%;
+      width: 115%;
+      height: 115%;
+      background: radial-gradient(ellipse at 25% 35%, rgba(245, 158, 11, 0.14) 0%, rgba(245, 158, 11, 0.04) 55%, transparent 75%);
       pointer-events: none;
       z-index: -1;
-      filter: blur(40px);
+      filter: blur(48px);
     }
 
-    .hero h1 {
-      font-family: 'Bebas Neue', 'Outfit', sans-serif;
-      font-size: clamp(52px, 6.2vw, 86px);
-      font-weight: 900;
-      line-height: 0.90;
-      letter-spacing: 0.025em;
+    /* Small Eyebrow Badge */
+    .hero-eyebrow {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .hero-eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #F59E0B;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #F59E0B;
+      box-shadow: 0 0 8px #F59E0B;
+      animation: pulseDot 2.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.7; }
+    }
+
+    /* Main Headline */
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(38px, 4.4vw, 62px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
       text-transform: uppercase;
       color: #FFFFFF;
-      margin: 0;
+      margin: 0 0 18px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .hero-title-white {
       display: block;
       color: #FFFFFF !important;
-      font-family: 'Bebas Neue', 'Outfit', sans-serif;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      text-shadow:
-        0 0 24px rgba(255, 255, 255, 0.35),
-        0 4px 16px rgba(0, 0, 0, 0.95);
-      margin-bottom: 2px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.75);
     }
 
-    .hero-title-gold {
+    .hero-title-accent {
       display: block;
-      font-family: 'Bebas Neue', 'Outfit', sans-serif;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      color: #F5B027;
-      background: linear-gradient(180deg, #FFF6BD 0%, #FFE277 20%, #F5B027 48%, #CE7504 76%, #7E3900 100%) !important;
+      color: #F59E0B;
+      background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 55%, #D97706 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      filter:
-        drop-shadow(0 0 30px rgba(245, 176, 39, 0.55))
-        drop-shadow(0 0 65px rgba(245, 176, 39, 0.28))
-        drop-shadow(0 6px 16px rgba(0, 0, 0, 0.92));
-      margin-bottom: 0px;
+      filter: drop-shadow(0 2px 14px rgba(245, 158, 11, 0.38));
     }
 
-    .hero p {
-      font-family: 'Outfit', sans-serif;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 17.5px;
-      font-weight: 400;
-      margin: 18px auto 0;
-      max-width: 48ch;
+    /* Supporting Description */
+    .hero-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 16.5px;
       line-height: 1.6;
-      letter-spacing: -0.01em;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 530px;
+      margin: 0 0 26px;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.75);
     }
 
-    .hero p strong {
-      font-weight: 600;
-      color: #FFFFFF;
-    }
-
-    .hero .hero-ctas {
-      justify-content: center;
-    }
-
+    /* CTA Buttons */
     .hero-ctas {
       display: flex;
-      gap: 16px;
-      margin-top: 28px;
+      gap: 14px;
       flex-wrap: wrap;
       align-items: center;
+      margin-bottom: 26px;
     }
 
-    .btn-hero-gold {
-      background: linear-gradient(135deg, #F5B027 0%, #D97706 100%) !important;
+    .btn-hero-primary {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
       color: #081622 !important;
-      font-weight: 800 !important;
-      letter-spacing: 0.02em;
-      box-shadow: 0 8px 28px -4px rgba(245, 176, 39, 0.6) !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 15.5px !important;
+      letter-spacing: 0.01em;
       padding: 13px 26px !important;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 100px;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      border-radius: 10px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 9px !important;
+      box-shadow: 0 6px 20px -3px rgba(245, 158, 11, 0.45) !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
-    .btn-hero-gold:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 14px 36px -4px rgba(245, 176, 39, 0.75) !important;
+    .btn-hero-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 28px -3px rgba(245, 158, 11, 0.6) !important;
       color: #000000 !important;
     }
 
-    .btn-hero-glass {
-      background: rgba(15, 23, 42, 0.65) !important;
-      backdrop-filter: blur(14px) !important;
-      -webkit-backdrop-filter: blur(14px) !important;
-      border: 1.5px solid rgba(255, 255, 255, 0.28) !important;
+    .btn-hero-primary .btn-arrow {
+      transition: transform 0.25s ease;
+    }
+
+    .btn-hero-primary:hover .btn-arrow {
+      transform: translateX(3px);
+    }
+
+    .btn-hero-secondary {
+      background: rgba(15, 23, 42, 0.68) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
       color: #FFFFFF !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.02em;
-      padding: 13px 24px !important;
-      border-radius: 100px;
+      font-family: 'Outfit', sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 15.5px !important;
+      letter-spacing: 0.01em;
+      padding: 13px 22px !important;
+      border-radius: 10px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 9px !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .btn-hero-secondary:hover {
+      border-color: rgba(245, 158, 11, 0.75) !important;
+      background: rgba(15, 23, 42, 0.88) !important;
+      color: #F59E0B !important;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(245, 158, 11, 0.2) !important;
+    }
+
+    /* Service Highlights Horizontal Bar */
+    .hero-services-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+      margin-bottom: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-service-item {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      gap: 7px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.88);
     }
 
-    .btn-hero-glass:hover {
-      border-color: rgba(245, 176, 39, 0.8) !important;
-      background: rgba(15, 23, 42, 0.85) !important;
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 176, 39, 0.3) !important;
-      color: #F5B027 !important;
+    .hero-service-item .service-icon {
+      color: #F59E0B;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
     }
 
-    /* Hero Visual Showcase Card */
-    @media (max-width:960px) {
+    .service-sep {
+      color: rgba(245, 158, 11, 0.45);
+      font-size: 12px;
+    }
+
+    /* Trust Strip */
+    .hero-trust-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .trust-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.58);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #FFFFFF;
+      transition: all 0.25s ease;
+    }
+
+    .trust-badge-pill:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .trust-pill-icon {
+      color: #F59E0B;
+      flex-shrink: 0;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 960px) {
       .hero {
+        padding: 135px 0 54px;
         min-height: auto;
-        padding: 150px 0 64px;
       }
       .hero-content {
         max-width: 100%;
       }
+      .hero-title {
+        font-size: clamp(34px, 5.8vw, 48px);
+      }
+      .hero-video-overlay {
+        background:
+          linear-gradient(90deg, rgba(8, 20, 32, 0.94) 0%, rgba(8, 20, 32, 0.86) 60%, rgba(8, 20, 32, 0.65) 100%),
+          linear-gradient(180deg, rgba(8, 20, 32, 0.5) 0%, transparent 20%, transparent 80%, rgba(8, 20, 32, 0.7) 100%);
+      }
+    }
 
+    @media (max-width: 600px) {
+      .hero {
+        padding: 115px 0 45px;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-hero-primary,
+      .btn-hero-secondary {
+        justify-content: center;
+        width: 100%;
+      }
+      .hero-services-bar {
+        gap: 8px 12px;
+      }
+      .service-sep {
+        display: none;
+      }
     }
     /* 2. SINGLE BLACK TRUST BAND (DEEP BLACK WITH WHITE TEXT & FAVICONS) */
     .trust-black-band {
