@@ -134,13 +134,13 @@
       width: 100%;
       max-width: 100%;
       z-index: 1051;
-      padding: 6px 0;
-      background: rgba(11, 25, 40, 0.52);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 7px 0;
+      background: rgba(8, 20, 32, 0.20);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 0;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.20);
       transition: background 0.28s ease, padding 0.28s ease, border-radius 0.28s ease, box-shadow 0.28s ease, width 0.28s ease;
       pointer-events: auto;
       overflow: visible;
@@ -148,12 +148,12 @@
 
     .site-header.scrolled-header nav,
     nav.scrolled {
-      padding: 6px 0;
-      background: rgba(11, 25, 40, 0.78);
-      backdrop-filter: blur(20px) saturate(190%);
-      -webkit-backdrop-filter: blur(20px) saturate(190%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      padding: 7px 0;
+      background: rgba(8, 20, 32, 0.45);
+      backdrop-filter: blur(18px) saturate(190%);
+      -webkit-backdrop-filter: blur(18px) saturate(190%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     }
 
     /* POP-OUT FLOATING NAV BAR WHEN HERO SECTION IS SCROLLED + TOP PADDING */
@@ -162,13 +162,13 @@
       width: min(calc(100% - 36px), 1380px);
       margin: 0 auto;
       border-radius: 16px;
-      padding: 6px 0;
-      background: rgba(11, 25, 40, 0.72) !important;
+      padding: 7px 0;
+      background: rgba(8, 20, 32, 0.65) !important;
       backdrop-filter: blur(20px) saturate(190%);
       -webkit-backdrop-filter: blur(20px) saturate(190%);
       border: 1px solid rgba(255, 255, 255, 0.18) !important;
       box-shadow: 
-        0 20px 48px rgba(0, 0, 0, 0.6),
+        0 20px 48px rgba(0, 0, 0, 0.55),
         0 0 1px 1px rgba(255, 255, 255, 0.15),
         0 0 25px rgba(245, 158, 11, 0.12) !important;
       animation: navPopOut 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -407,12 +407,12 @@
       min-height: 100vh;
       min-height: 100dvh;
       display: flex;
-      align-items: center;
-      padding: 96px 0 54px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 85px 0 0;
       box-sizing: border-box;
       overflow: hidden;
       background-color: #081420;
-      border-bottom: 2px solid rgba(245, 158, 11, 0.45);
     }
 
     .hero-video-wrap {
@@ -475,8 +475,8 @@
       z-index: 10;
       width: 100%;
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+      margin: auto auto;
+      padding: 24px 24px 20px;
     }
 
     .hero-layout {
@@ -761,14 +761,18 @@
     }
     /* 2. CONTINUOUS HORIZONTAL TRUST MARQUEE (LEFT-TO-RIGHT MOVEMENT) */
     .trust-black-band {
-      background: #081420;
+      background: rgba(8, 20, 32, 0.35);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
       border-top: 1px solid rgba(255, 255, 255, 0.12);
       border-bottom: 2px solid rgba(245, 158, 11, 0.45);
       padding: 13px 0;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.35);
       position: relative;
-      z-index: 30;
+      z-index: 25;
       overflow: hidden;
+      width: 100%;
+      margin-top: auto;
     }
 
     .trust-marquee-container {
