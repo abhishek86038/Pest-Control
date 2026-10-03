@@ -1,29 +1,30 @@
 /**
- * Creepy Crawly Pest Control - Premium AI Chatbot Widget
- * Immersive AI Assistant UI inspired by dark ambient glow aesthetics.
- * Preserves all existing functionality, API hooks, and event handlers.
+ * Creepy Crawly Pest Control - Exact Reference Video AI Chatbot Interface
+ * Immersive ambient aura, 3D glowing copper/amber metallic sphere,
+ * centered frosted '✕ Close chat' pill, radiant orange user bubble,
+ * sleek dark translucent AI bubble with miniature 3D sphere,
+ * and floating bottom capsule input bar.
  */
 
 (function () {
   'use strict';
 
-  // Fallback responses for suggested topics & common questions
   const QUICK_ACTION_RESPONSES = {
     inspection: {
       userText: "Book a pest inspection",
-      botText: "We'd love to help! Andy's team provides comprehensive pest inspections across Greater Sydney with thermal imaging and moisture meters. Would you prefer a residential home inspection or a pre-purchase timber pest report? Call Andy directly on <strong>0412 074 484</strong> or use our booking form."
+      botText: "We'd love to help protect your home! Andy's team provides comprehensive thermal and moisture pest inspections across all Sydney suburbs. Would you prefer a standard residential check or a pre-purchase timber pest report? Call Andy directly on <strong>0412 074 484</strong> or use our quick booking form."
     },
     identify: {
       userText: "Identify a pest",
-      botText: "Spotting unwanted visitors? Common Sydney invaders include German cockroaches, Funnel-web & Redback spiders, subterranean termites, and black house ants. Describe the pest (size, color, location) or call Andy on <strong>0412 074 484</strong> for rapid identification and safe treatment."
+      botText: "Spotting unwanted pests? Common Sydney invaders include German cockroaches, Funnel-web & Redback spiders, subterranean termites, and black ants. Describe the pest (size, color, location) or call Andy on <strong>0412 074 484</strong> for rapid identification and safe treatment."
     },
     quote: {
       userText: "Get a treatment quote",
-      botText: "Our treatments start with fixed, transparent pricing: General Pest treatments from $220, Termite Inspections from $280, and combined packages with warranty protection. Call <strong>0412 074 484</strong> or fill out our online quote form for a custom price in minutes."
+      botText: "Transparent, fixed Sydney rates: General Pest treatments from $220, Termite Inspections from $280, and combined packages with full warranty. Call <strong>0412 074 484</strong> or submit our form for an exact quote tailored to your home."
     }
   };
 
-  const DEFAULT_FALLBACK_REPLY = "Thanks for your inquiry! Andy and the Creepy Crawly team are currently on site across Sydney. For urgent pest eradication or immediate booking, call Andy directly on <strong>0412 074 484</strong>, or let us know your suburb and pest issue!";
+  const DEFAULT_FALLBACK_REPLY = "Thanks for your inquiry! Andy and the Creepy Crawly team are currently on site across Sydney. For urgent pest eradication or immediate booking, call Andy directly on <strong>0412 074 484</strong>, or tell us your suburb and pest issue!";
 
   class CreepyChatbot {
     constructor() {
@@ -54,6 +55,7 @@
       this.input = document.getElementById('ccChatInput');
       this.typingEl = document.getElementById('ccTypingIndicator');
       this.emptyState = document.getElementById('ccChatEmptyState');
+      this.stream = document.getElementById('ccMessagesStream');
 
       this.bindEvents();
 
@@ -72,87 +74,72 @@
       wrapper.setAttribute('aria-label', 'Customer Support Chat');
 
       wrapper.innerHTML = `
-        <!-- Circular Floating Launcher Button -->
+        <!-- Floating Launcher Button with 3D Glowing Sphere -->
         <button type="button" class="cc-chat-trigger" id="ccChatTrigger" aria-expanded="false" aria-controls="ccChatPanel" aria-label="Open AI Pest Assistant chat">
-          <div class="cc-trigger-orb-halo" aria-hidden="true"></div>
-          <div class="cc-trigger-core" aria-hidden="true">
-            <svg class="cc-trigger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="m9 12 2 2 4-4"/>
-            </svg>
-            <span class="cc-trigger-status-dot" aria-hidden="true"></span>
-          </div>
+          <div class="cc-trigger-halo" aria-hidden="true"></div>
+          <div class="cc-3d-sphere-launcher" aria-hidden="true"></div>
+          <span class="cc-trigger-status-dot" aria-hidden="true"></span>
         </button>
 
-        <!-- Immersive Floating Chat Panel -->
+        <!-- Immersive Chat Panel (Exact Video Style) -->
         <div class="cc-chat-panel" id="ccChatPanel" role="dialog" aria-modal="false" aria-label="Creepy Crawly AI Assistant">
-          <!-- Ambient Background Glow -->
+          <!-- Ambient Glow (Rich Orange/Amber Aura + Dark Core) -->
           <div class="cc-ambient-glow" aria-hidden="true">
-            <div class="cc-glow-amber-top"></div>
-            <div class="cc-glow-navy-bottom"></div>
+            <div class="cc-aura-top"></div>
+            <div class="cc-aura-sides"></div>
+            <div class="cc-aura-bottom-dark"></div>
           </div>
 
-          <!-- Minimal Header -->
-          <div class="cc-chat-header">
-            <div class="cc-header-left">
-              <div class="cc-orb-avatar" aria-hidden="true">
-                <div class="cc-orb-glow-ring"></div>
-                <div class="cc-orb-core"></div>
-              </div>
-              <div class="cc-header-meta">
-                <span class="cc-assistant-name">Creepy Crawly AI</span>
-                <span class="cc-assistant-status">
-                  <span class="cc-status-pulse" aria-hidden="true"></span>
-                  Ready to help
-                </span>
-              </div>
-            </div>
-            <div class="cc-header-actions">
-              <button type="button" class="cc-chat-close-pill" id="ccChatClose" aria-label="Close chat" title="Close chat">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="18" y1="6" x2="6" y2="18"/>
-                  <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-              </button>
-            </div>
+          <!-- Top Centered '✕ Close chat' Pill (Identical to Video) -->
+          <div class="cc-top-bar">
+            <button type="button" class="cc-close-pill-top" id="ccChatClose" aria-label="Close chat">
+              <span class="cc-close-x" aria-hidden="true">✕</span>
+              <span>Close chat</span>
+            </button>
           </div>
 
-          <!-- Panel Body / Message Feed -->
+          <!-- Chat Body -->
           <div class="cc-chat-body" id="ccChatBody">
-            <!-- Atmospheric Empty State -->
+            <!-- Empty State / Listening Mode (Matches Video Frame 01 & 02) -->
             <div class="cc-chat-empty-state" id="ccChatEmptyState">
-              <div class="cc-empty-orb" aria-hidden="true">
-                <div class="cc-empty-orb-halo"></div>
-                <div class="cc-empty-orb-core"></div>
+              <!-- Large 3D Glowing Sphere -->
+              <div class="cc-sphere-container" aria-hidden="true">
+                <div class="cc-3d-sphere-large"></div>
               </div>
-              <h2 class="cc-empty-title">How can we help protect your home?</h2>
-              <p class="cc-empty-subtitle">Ask anything about pest inspections, treatments, or Sydney quote estimates.</p>
-              
-              <div class="cc-empty-suggestions" id="ccQuickActions" aria-label="Suggested topics">
-                <button type="button" class="cc-suggestion-pill" data-action="inspection">
-                  <span>Book a pest inspection</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+
+              <!-- Listening Status -->
+              <div class="cc-listening-text">Creepy Crawly AI is listening...</div>
+
+              <!-- Headline (Exact Two-Tone Typography) -->
+              <h2 class="cc-hero-headline">
+                What are we<br>
+                <span class="cc-headline-dim">protecting today?</span>
+              </h2>
+
+              <!-- Glass Suggestion Cards with Sparkle -->
+              <div class="cc-suggestion-cards" id="ccQuickActions" aria-label="Suggested topics">
+                <button type="button" class="cc-glass-card" data-action="inspection">
+                  <span class="cc-card-sparkle" aria-hidden="true">✦</span>
+                  <span class="cc-card-label">Book a pest inspection</span>
                 </button>
-                <button type="button" class="cc-suggestion-pill" data-action="identify">
-                  <span>Identify a pest</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <button type="button" class="cc-glass-card" data-action="identify">
+                  <span class="cc-card-sparkle" aria-hidden="true">✦</span>
+                  <span class="cc-card-label">Identify a pest</span>
                 </button>
-                <button type="button" class="cc-suggestion-pill" data-action="quote">
-                  <span>Get a treatment quote</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <button type="button" class="cc-glass-card" data-action="quote">
+                  <span class="cc-card-sparkle" aria-hidden="true">✦</span>
+                  <span class="cc-card-label">Get a treatment quote</span>
                 </button>
               </div>
             </div>
 
-            <!-- Messages Stream -->
+            <!-- Messages Stream (Matches Video Frame 8s) -->
             <div class="cc-messages-stream" id="ccMessagesStream"></div>
 
             <!-- Minimal Typing Indicator -->
             <div class="cc-msg-row cc-msg-bot" id="ccTypingIndicator" aria-hidden="true" style="display: none;">
-              <div class="cc-msg-avatar">
-                <div class="cc-orb-avatar cc-orb-avatar-sm" aria-hidden="true">
-                  <div class="cc-orb-core"></div>
-                </div>
+              <div class="cc-bot-avatar-col">
+                <div class="cc-3d-sphere-avatar" aria-hidden="true"></div>
               </div>
               <div class="cc-typing-bubble">
                 <span class="cc-typing-dot"></span>
@@ -162,23 +149,22 @@
             </div>
           </div>
 
-          <!-- Floating Pill-Shaped Input Area -->
-          <div class="cc-chat-input-wrapper">
-            <form class="cc-floating-input-bar" id="ccChatForm" autocomplete="off">
-              <button type="button" class="cc-input-attach-btn" aria-label="Attach details" title="Attach details">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
-                </svg>
+          <!-- Bottom Floating Pill Input Bar (Identical to Video) -->
+          <div class="cc-bottom-input-wrap">
+            <form class="cc-floating-pill-bar" id="ccChatForm" autocomplete="off">
+              <button type="button" class="cc-pill-icon-btn" aria-label="Attach details" title="Attach details">
+                <span class="cc-at-icon" aria-hidden="true">@</span>
               </button>
-              <input type="text" class="cc-pill-input" id="ccChatInput" placeholder="Ask about pest control..." maxlength="500" aria-label="Your message">
-              <button type="submit" class="cc-pill-send-btn" id="ccSendBtn" aria-label="Send message" title="Send message">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="22" y1="2" x2="11" y2="13"/>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              <input type="text" class="cc-pill-text-input" id="ccChatInput" placeholder="Ask AI a question" maxlength="500" aria-label="Your message">
+              <button type="submit" class="cc-pill-mic-btn" id="ccSendBtn" aria-label="Send message" title="Send message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                  <line x1="12" y1="19" x2="12" y2="23"/>
+                  <line x1="8" y1="23" x2="16" y2="23"/>
                 </svg>
               </button>
             </form>
-            <div class="cc-input-caption">Creepy Crawly AI • Rapid Sydney Pest Advice</div>
           </div>
         </div>
       `;
@@ -205,14 +191,14 @@
         });
       }
 
-      // Quick action suggestion pill clicks
+      // Quick action suggestion card clicks
       if (this.body) {
         this.body.addEventListener('click', (e) => {
-          const pill = e.target.closest('.cc-suggestion-pill');
-          if (pill) {
+          const card = e.target.closest('.cc-glass-card');
+          if (card) {
             e.preventDefault();
             e.stopPropagation();
-            const action = pill.dataset.action;
+            const action = card.dataset.action;
             this.handleQuickAction(action);
           }
         });
@@ -231,6 +217,34 @@
         });
       }
 
+      // Dynamic icon: if typing, show send arrow instead of mic
+      if (this.input) {
+        this.input.addEventListener('input', () => {
+          const sendBtn = document.getElementById('ccSendBtn');
+          if (!sendBtn) return;
+          const hasText = this.input.value.trim().length > 0;
+          if (hasText) {
+            sendBtn.innerHTML = `
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            `;
+            sendBtn.setAttribute('title', 'Send message');
+          } else {
+            sendBtn.innerHTML = `
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            `;
+            sendBtn.setAttribute('title', 'Speak or Send');
+          }
+        });
+      }
+
       // Keyboard Esc to close
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && this.isOpen) {
@@ -243,7 +257,6 @@
       this.isOpen = true;
       if (!this.panel) return;
 
-      // Ensure classes applied to panel, widget, and trigger
       this.panel.classList.add('active', 'is-open');
       if (this.widget) this.widget.classList.add('active', 'is-open');
       if (this.triggerBtn) {
@@ -296,11 +309,11 @@
       // 2. Show typing indicator
       this.setTyping(true);
 
-      // 3. Respond after subtle organic delay
+      // 3. Respond after organic delay
       setTimeout(() => {
         this.setTyping(false);
         this.appendBotMessage(config.botText);
-      }, 600);
+      }, 650);
     }
 
     sendUserMessage(text) {
@@ -314,7 +327,7 @@
          BACKEND INTEGRATION HOOK
          -------------------------------------------------------------------------
          If a backend handler is provided via `CreepyCrawlyChat.onSendMessage()`,
-         delegate execution to the backend API. Otherwise, respond with frontend fallback.
+         delegate execution to backend API. Otherwise, respond with frontend fallback.
          ========================================================================= */
       if (typeof this.customBackendHandler === 'function') {
         this.customBackendHandler(text, (replyText) => {
@@ -339,11 +352,10 @@
       const row = document.createElement('div');
       row.className = 'cc-msg-row cc-msg-user';
       row.innerHTML = `
-        <div class="cc-msg-content-wrap">
-          <div class="cc-msg-bubble cc-bubble-user">
+        <div class="cc-user-bubble-wrap">
+          <div class="cc-bubble-user">
             ${this.escapeHtml(text)}
           </div>
-          <span class="cc-msg-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
         </div>
       `;
 
@@ -360,16 +372,13 @@
       const row = document.createElement('div');
       row.className = 'cc-msg-row cc-msg-bot';
       row.innerHTML = `
-        <div class="cc-msg-avatar">
-          <div class="cc-orb-avatar cc-orb-avatar-sm" aria-hidden="true">
-            <div class="cc-orb-core"></div>
-          </div>
+        <div class="cc-bot-avatar-col">
+          <div class="cc-3d-sphere-avatar" aria-hidden="true"></div>
         </div>
-        <div class="cc-msg-content-wrap">
-          <div class="cc-msg-bubble cc-bubble-bot">
+        <div class="cc-bot-bubble-wrap">
+          <div class="cc-bubble-bot">
             ${htmlContent}
           </div>
-          <span class="cc-msg-time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
         </div>
       `;
 
