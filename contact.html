@@ -14,7 +14,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="css/chat-widget.css?v=1">
+  <script type="module" src="js/chat-widget.js?v=7"></script>
 </head>
 
 <body>
@@ -92,32 +94,28 @@
 
         <div class="contact-form-card">
 
-        <form id="quoteForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-          <!-- Web3Forms: replace with the access key for the inbox that should receive enquiries (https://web3forms.com). -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-          <input type="hidden" name="subject" value="New quote request from the website">
-          <input type="hidden" name="from_name" value="Creepy Crawly website">
+        <form id="quoteForm" class="contact-form" action="https://shared-contact-forms.onrender.com/v1/contact/creepycrawly-andy" method="POST" novalidate>
           <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <div class="form-row">
             <div class="form-field">
               <label for="qName">Full name <span aria-hidden="true">*</span></label>
-              <input type="text" id="qName" name="name" autocomplete="name" required>
+              <input type="text" id="qName" name="name" autocomplete="name" maxlength="150" required>
             </div>
             <div class="form-field">
               <label for="qPhone">Phone <span aria-hidden="true">*</span></label>
-              <input type="tel" id="qPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+              <input type="tel" id="qPhone" name="phone" autocomplete="tel" inputmode="tel" maxlength="40" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-field">
               <label for="qEmail">Email</label>
-              <input type="email" id="qEmail" name="email" autocomplete="email">
+              <input type="email" id="qEmail" name="email" autocomplete="email" maxlength="254">
             </div>
             <div class="form-field">
               <label for="qSuburb">Suburb or postcode <span aria-hidden="true">*</span></label>
-              <input type="text" id="qSuburb" name="suburb" autocomplete="address-level2" required>
+              <input type="text" id="qSuburb" name="suburb" autocomplete="address-level2" maxlength="150" required>
             </div>
           </div>
 
@@ -149,11 +147,12 @@
 
           <div class="form-field">
             <label for="qMessage">How can we help?</label>
-            <textarea id="qMessage" name="message" rows="5" placeholder="e.g. Seeing ants in the kitchen and spiders around the back deck."></textarea>
+            <textarea id="qMessage" name="message" rows="5" maxlength="5000" placeholder="e.g. Seeing ants in the kitchen and spiders around the back deck."></textarea>
           </div>
 
           <button type="submit" class="btn btn-gold contact-submit">Send quote request</button>
           <p class="form-status" id="quoteFormStatus" role="status" aria-live="polite"></p>
+          <noscript>Please enable JavaScript to send this form, or call 1800 814 199.</noscript>
         </form>
         </div>
       </div>
@@ -246,7 +245,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=13"></script>
+  <script src="js/main.js?v=19"></script>
   <script src="js/footer-bugs.js?v=4"></script>
 </body>
 

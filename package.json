@@ -1,0 +1,12 @@
+{
+  "name": "creepycrawly-andy-website",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env --env-file-if-exists=.env.local server/index.mjs",
+    "start": "node --env-file-if-exists=.env --env-file-if-exists=.env.local server/index.mjs",
+    "test": "node --test tests/chat.test.mjs",
+    "test:browser": "node --test tests/*test.cjs"
+  }
+}

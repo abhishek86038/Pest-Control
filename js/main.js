@@ -347,6 +347,11 @@
     if (quoteForm) {
       const statusEl = document.getElementById('quoteFormStatus');
       const submitBtn = quoteForm.querySelector('button[type="submit"]');
+      let submission = null;
+      const localPreview = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+      const contactEndpoint = localPreview
+        ? 'http://localhost:10000/v1/contact/creepycrawly-andy'
+        : quoteForm.action;
       const setStatus = (msg, type) => {
         statusEl.textContent = msg;
         statusEl.className = 'form-status' + (type ? ' is-' + type : '');
@@ -354,36 +359,38 @@
 
       quoteForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        if (submitBtn.disabled) return;
         if (!quoteForm.checkValidity()) {
           quoteForm.reportValidity();
           return;
         }
         const data = new FormData(quoteForm);
-        if (data.get('botcheck')) return;
-
-        const key = data.get('access_key');
-        if (!key || key === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-          // No form service configured yet: hand the enquiry to the visitor's email app rather than lose it.
-          const lines = [['Name', 'name'], ['Phone', 'phone'], ['Email', 'email'], ['Suburb', 'suburb'],
-            ['Property type', 'property_type'], ['Service', 'service'], ['Message', 'message']]
-            .map(([label, field]) => `${label}: ${data.get(field) || '-'}`);
-          window.location.href = 'mailto:info@creepycrawly.com.au,creepysw@gmail.com?subject=' + encodeURIComponent('Quote request') +
-            '&body=' + encodeURIComponent(lines.join('\n'));
-          setStatus('Your email app should open with your details filled in. Prefer to talk? Call 1800 814 199.', 'success');
-          return;
+        const values = Object.fromEntries(['name', 'phone', 'email', 'suburb', 'property_type', 'service', 'message']
+          .map(field => [field, String(data.get(field) || '').trim()]));
+        values.company = data.get('botcheck') ? 'bot' : '';
+        const fingerprint = JSON.stringify(values);
+        if (submission?.fingerprint !== fingerprint) {
+          submission = { fingerprint, payload: { ...values, submissionId: crypto.randomUUID() } };
         }
 
         submitBtn.disabled = true;
         setStatus('Sending\u2026');
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 40000);
         try {
-          const res = await fetch(quoteForm.action, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+          const res = await fetch(contactEndpoint, {
+            method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(submission.payload), signal: controller.signal,
+          });
           const json = await res.json();
-          if (!res.ok || !json.success) throw new Error(json.message || 'Request failed');
+          if (!res.ok || json.ok !== true || typeof json.submissionId !== 'string') throw new Error('Request failed');
           quoteForm.reset();
+          submission = null;
           setStatus("Thanks! We've received your request and will be in touch shortly.", 'success');
         } catch (err) {
           setStatus('Sorry, something went wrong sending your request. Please call us on 1800 814 199.', 'error');
         } finally {
+          clearTimeout(timeout);
           submitBtn.disabled = false;
         }
       });
@@ -453,12 +460,4 @@
 
       buildDots();
       restart();
-    }
-
-    // 7. Fixed "Chat With Us" Widget Auto-Initializer
-    if (!window.CreepyCrawlyChat && !document.querySelector('script[src*="chat-widget.js"]')) {
-      const chatScript = document.createElement('script');
-      chatScript.src = 'js/chat-widget.js?v=1';
-      chatScript.defer = true;
-      document.body.appendChild(chatScript);
     }
