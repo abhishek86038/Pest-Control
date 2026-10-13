@@ -2961,13 +2961,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px 24px;
+      gap: 16px 24px;
       flex-wrap: wrap;
       margin-top: 48px;
       padding: 22px 0 26px;
       border-top: 1px solid rgba(255, 255, 255, .1);
       font-size: 14px;
       color: #94A3B8;
+      position: relative;
     }
 
     .footer-partner {
@@ -2975,6 +2976,8 @@
       align-items: center;
       gap: 7px;
       color: #94A3B8;
+      margin-right: 180px; /* Safe clearance so floating 'Ask Andy' button never overlaps */
+      transition: margin .2s ease;
     }
 
     .footer-partner img {
@@ -2999,17 +3002,23 @@
       .footer-brand {
         grid-column: 1 / -1;
       }
-
+      .footer-partner {
+        margin-right: 160px;
+      }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 640px) {
       .footer-grid {
         grid-template-columns: 1fr;
       }
       .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
+        padding-bottom: 90px; /* Clearance for floating chat button on mobile */
       }
-
+      .footer-partner {
+        margin-right: 0;
+      }
     }
     /* Inner page hero (services, about, news, technology partner, contact) */
     .page-hero {
