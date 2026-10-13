@@ -1,7 +1,19 @@
-    // Hero playlist: V2 indoors then outdoors, followed by the remaining outdoor film.
-    // Keep the outgoing frame visible until the next preloaded clip is playing.
+    // Hero video: Unified continuous video playback with autoplay guarantee
     const heroVideos = [...document.querySelectorAll('.hero-bg-video')];
-    if (heroVideos.length > 1) {
+    if (heroVideos.length === 1) {
+      const heroVid = heroVideos[0];
+      heroVid.muted = true;
+      heroVid.loop = true;
+      const ensurePlay = () => {
+        if (heroVid.paused) heroVid.play().catch(() => {});
+      };
+      ensurePlay();
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) ensurePlay();
+      });
+      window.addEventListener('touchstart', ensurePlay, { once: true, passive: true });
+      window.addEventListener('click', ensurePlay, { once: true, passive: true });
+    } else if (heroVideos.length > 1) {
       let currentVideo = 0;
       const failedVideos = new Set();
       const playNextHeroVideo = () => {
@@ -10,7 +22,6 @@
           if (failedVideos.has(nextIndex)) continue;
           const next = heroVideos[nextIndex];
           next.currentTime = 0;
-          // Preserve the previous frame if the browser declines playback.
           next.play().catch(() => {});
           return;
         }
